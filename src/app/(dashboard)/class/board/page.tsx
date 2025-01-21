@@ -4,7 +4,6 @@ import * as s from './page.css';
 
 import {
   Badge,
-  BadgeTheme,
   colorVars,
   GlyphIcon,
   HStack,
@@ -14,20 +13,8 @@ import {
   Typo,
   Weight,
 } from '@tapie-kr/inspire-react';
-
-enum Unit {
-  DEVELOPER = '개발자',
-  DESIGNER = '디자이너',
-}
-
-enum Status {
-  CONFIRMED = '완료',
-  CANCELED = '취소',
-  SCHEDULED = '예정',
-  POSTPONED = '연기됨',
-  IN_PROGRESS = '진행중',
-}
-
+import { Status, Unit } from '@/lib/enum';
+import { getStatusIcon, getStatusTheme, getUnitIcon } from '@/lib/enum/util';
 interface DataType {
   title: string;
   status: Status;
@@ -73,26 +60,6 @@ const data: DataType[] = [
     date: '2025-01-01',
   },
 ];
-
-const statusIcon: {
-  [key in Status]: GlyphIcon;
-} = {
-  [Status.CONFIRMED]: GlyphIcon.CHECK,
-  [Status.CANCELED]: GlyphIcon.BLOCK,
-  [Status.SCHEDULED]: GlyphIcon.FLAG,
-  [Status.POSTPONED]: GlyphIcon.ERROR,
-  [Status.IN_PROGRESS]: GlyphIcon.SCHOOL,
-};
-
-const statusColor: {
-  [key in Status]: BadgeTheme;
-} = {
-  [Status.CONFIRMED]: BadgeTheme.GREEN,
-  [Status.CANCELED]: BadgeTheme.RED,
-  [Status.SCHEDULED]: BadgeTheme.MONOCHROME,
-  [Status.POSTPONED]: BadgeTheme.YELLOW,
-  [Status.IN_PROGRESS]: BadgeTheme.BLUE,
-};
 
 export default function ClassPage() {
   const handleClickAction = () => {};
@@ -153,8 +120,8 @@ export default function ClassPage() {
             <Table.Body.Cell>
               <Badge.Default
                 label={item.status}
-                leadingIcon={statusIcon[item.status]}
-                theme={statusColor[item.status]}
+                leadingIcon={getStatusIcon(item.status)}
+                theme={getStatusTheme(item.status)}
               />
             </Table.Body.Cell>
             <Table.Body.Cell>
@@ -163,8 +130,15 @@ export default function ClassPage() {
                 <Typo.Tiny weight={Weight.MEDIUM}>{item.instructor}</Typo.Tiny>
               </HStack>
             </Table.Body.Cell>
-            <Table.Body.Cell>{item.unit}</Table.Body.Cell>
-            <Table.Body.Cell>{item.date}</Table.Body.Cell>
+            <Table.Body.Cell>
+              <Badge.Default
+                label={item.unit}
+                leadingIcon={getUnitIcon(item.unit)}
+              />
+            </Table.Body.Cell>
+            <Table.Body.Cell>
+              <Typo.Tiny color={colorVars.content.default}>{item.date}</Typo.Tiny>
+            </Table.Body.Cell>
             <Table.Body.Cell>
               <HStack spacing={spacingVars.base}>
                 <Icon
