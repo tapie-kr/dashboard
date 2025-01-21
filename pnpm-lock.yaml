@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@tapie-kr/inspire-react':
-        specifier: ^0.1.13
-        version: 0.1.13(next@15.1.4(@babel/core@7.26.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        specifier: ^0.1.15
+        version: 0.1.15(next@15.1.4(@babel/core@7.26.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@vanilla-extract/css':
         specifier: ^1.17.0
         version: 1.17.0
@@ -798,8 +798,8 @@ packages:
   '@swc/helpers@0.5.15':
     resolution: {integrity: sha512-JQ5TuMi45Owi4/BIMAJBoSQoOJu12oOk/gADqlcUL9JEdHB8vyjUSsxqeNXnmXHjYKMi2WcYtezGEEhqUI/E2g==}
 
-  '@tapie-kr/inspire-react@0.1.13':
-    resolution: {integrity: sha512-yE+kE1MVwKPqwbkwpQaAnp2aJw96kgfuiQvcKKoLN1H+gu1/yFlme+rsYESACaZ4JYi5OBHpKGRp6klQ0sFCvg==}
+  '@tapie-kr/inspire-react@0.1.15':
+    resolution: {integrity: sha512-PSkv+iy8hOR51NFCCNCEPBGszjVSU7IHSs+QRf11+gg0g5d0EvjXlu/TEnyjQf8/mFCkq/w0QGEH98bIxTFI9w==}
     engines: {node: '>=22.0.0'}
     peerDependencies:
       react: 19.0.0
@@ -2814,7 +2814,7 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@tapie-kr/inspire-react@0.1.13(next@15.1.4(@babel/core@7.26.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+  '@tapie-kr/inspire-react@0.1.15(next@15.1.4(@babel/core@7.26.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
     dependencies:
       '@cottons-kr/react-foundation': 0.3.9(next@15.1.4(@babel/core@7.26.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       classnames: 2.5.1
