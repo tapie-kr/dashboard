@@ -1,6 +1,9 @@
+import * as s from './layout.css';
+
+import Breadcrumb from '@/components/breadcrumb';
 import Sidebar from '@/components/sidebar';
 
-import { HStack } from '@tapie-kr/inspire-react';
+import { GlyphIcon, HStack, VStack } from '@tapie-kr/inspire-react';
 
 export default function RootLayout(props: { children: React.ReactNode }) {
   return (
@@ -10,7 +13,20 @@ export default function RootLayout(props: { children: React.ReactNode }) {
         fullHeight
       >
         <Sidebar />
-        {props.children}
+        <VStack
+          fullWidth
+          fullHeight
+          className={s.base}
+        >
+          <Breadcrumb
+            hasRootLabel
+            hasLeadingIcon
+            root='Root'
+            leadingIcon={GlyphIcon.HOME}
+            className={s.breadcrumb}
+          />
+          {props.children}
+        </VStack>
       </HStack>
     </>
   );

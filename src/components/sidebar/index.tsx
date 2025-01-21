@@ -25,9 +25,7 @@ import React from 'react';
 import SidebarContent from './content';
 
 export default function Sidebar() {
-  const handleTogglePanel = () => {
-    console.log('clicked');
-  };
+  const handleTogglePanel = () => {};
 
   return (
     <VStack

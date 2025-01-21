@@ -36,7 +36,7 @@ export const pathMap: PathMapType = {
     index: '공지사항',
   },
   statistics: {
-    index: '공지사항',
+    index: '통계',
     site: {
       index: '사이트',
     },
