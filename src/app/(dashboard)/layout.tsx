@@ -17,12 +17,12 @@ export default function RootLayout(props: { children: React.ReactNode }) {
           fullWidth
           fullHeight
           justify={StackJustify.START}
-          spacing={spacingVars.jumbo}
           className={s.base}
         >
           <VStack
             fullWidth
             className={s.container}
+            spacing={spacingVars.jumbo}
           >
             <HStack
               fullWidth
