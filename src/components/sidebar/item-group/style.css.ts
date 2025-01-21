@@ -3,4 +3,5 @@ import { style } from '@vanilla-extract/css';
 
 export const titleContainer = style({
   padding: getShorthandedValue(0, spacingVars.micro),
+  userSelect: 'none',
 });
