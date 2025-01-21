@@ -6,10 +6,6 @@ export const base = style({
   position: 'relative',
 });
 
-export const container = style({
-  width: 300,
-});
-
 export const footer = style({
   position: 'absolute',
   bottom: 24,

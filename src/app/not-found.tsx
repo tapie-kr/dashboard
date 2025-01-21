@@ -1,45 +1,47 @@
-import * as s from './page.css';
+'use client';
+
+import * as s from './not-found.css';
 
 import {
-  BrandIcon,
   Button,
+  GlyphIcon,
   HStack,
   spacingVars,
-  StackAlign,
   TAPIESymbol,
   TAPIESymbolSize,
   Typo,
   VStack,
   Weight,
 } from '@tapie-kr/inspire-react';
+import { useRouter } from 'next/navigation';
 
-export default function IndexPage() {
+export default function NotFoundPage() {
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.back();
+  };
+
   return (
     <HStack
       className={s.base}
       fullWidth
       fullHeight
     >
-      <VStack
-        className={s.container}
-        spacing={spacingVars.moderate}
-        align={StackAlign.START}
-      >
-        <VStack
-          spacing={spacingVars.tiny}
-          align={StackAlign.START}
-        >
+      <VStack spacing={spacingVars.moderate}>
+        <VStack spacing={spacingVars.micro}>
           <TAPIESymbol
-            size={TAPIESymbolSize._16}
+            size={TAPIESymbolSize._32}
             hasLabel
           />
-          <Typo.Medium weight={Weight.MEDIUM}>관리 시스템</Typo.Medium>
+          <Typo.Jumbo weight={Weight.MEDIUM}>404 Not Found</Typo.Jumbo>
         </VStack>
         <Button.Default
-          leadingIcon={BrandIcon.GOOGLE}
+          leadingIcon={GlyphIcon.ARROW_BACK}
           isFullWidth
+          onClick={handleClick}
         >
-          Google로 TAPIE 로그인
+          뒤로 돌아가기
         </Button.Default>
       </VStack>
 
