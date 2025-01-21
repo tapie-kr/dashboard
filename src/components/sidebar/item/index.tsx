@@ -14,30 +14,30 @@ import {
 } from '@tapie-kr/inspire-react';
 import cn from 'classnames';
 import { usePathname, useRouter } from 'next/navigation';
+import { getPath, getSubItems } from '@/lib/pathmap';
+import { type PathNode } from '@/lib/pathmap/types';
 import SidebarSubItem from '../sub-item';
 
-export interface SubItemType {
-  title: string;
-  href: string;
-}
-
 interface SidebarItemProps {
-  title: string;
-  href: string;
-  subItems?: SubItemType[];
+  href: PathNode;
 }
 
 export default function SidebarItem(props: SidebarItemProps) {
-  const { title, href, subItems } = props;
+  const { href } = props;
+
+  const title = href.index;
+  const subItems = getSubItems(href);
 
   const currentPath = usePathname();
   const router = useRouter();
 
+  const hrefPath = getPath(href);
+
   const handleClick = () => {
-    router.push(href);
+    router.push(hrefPath);
   };
 
-  const isActive = href != '/' ? currentPath.startsWith(href) : currentPath === href;
+  const isActive = hrefPath != '/' ? currentPath.startsWith(hrefPath) : currentPath === hrefPath;
 
   return (
     <VStack
@@ -70,7 +70,7 @@ export default function SidebarItem(props: SidebarItemProps) {
           spacing={spacingVars.optical}
         >
           {subItems.map(subItem => {
-            const path = href + subItem.href;
+            const path = hrefPath + '/' + subItem.href;
 
             return (
               <SidebarSubItem

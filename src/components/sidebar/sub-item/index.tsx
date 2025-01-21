@@ -14,7 +14,7 @@ export default function SidebarSubItem(props: SidebarSubItemProps) {
   const router = useRouter();
   const currentPath = usePathname();
 
-  const isActive = currentPath === href;
+  const isActive = currentPath.startsWith(href);
 
   const handleClick = () => {
     router.push(href);
