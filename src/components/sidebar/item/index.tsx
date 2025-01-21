@@ -63,7 +63,7 @@ export default function SidebarItem(props: SidebarItemProps) {
           </Typo.Petite>
         </HStack>
       </HStack>
-      {isActive && subItems && (
+      {isActive && subItems.length > 0 && (
         <VStack
           fullWidth
           className={s.subItems}
