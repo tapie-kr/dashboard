@@ -1,13 +1,9 @@
-import { colorVars } from '@tapie-kr/inspire-react';
+import { colorVars, radiusVars } from '@tapie-kr/inspire-react';
 import { style } from '@vanilla-extract/css';
 
-export const base = style({
-  background: colorVars.surface.default,
-  position: 'relative',
-});
-
-export const footer = style({
-  position: 'absolute',
-  bottom: 24,
-  color: colorVars.content.muted,
+export const circle = style({
+  width: 22,
+  height: 22,
+  borderRadius: radiusVars.full,
+  background: colorVars.surface.raised,
 });
