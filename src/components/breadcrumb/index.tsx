@@ -16,7 +16,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { getPathList } from '@/lib/pathmap';
 
 interface BreadcrumbProps {
-  root: string;
+  root?: string;
   hasRootLabel?: boolean;
   hasLeadingIcon?: boolean;
   leadingIcon?: GlyphIcon;
@@ -24,7 +24,12 @@ interface BreadcrumbProps {
 }
 
 export default function Breadcrumb(props: BreadcrumbProps) {
-  const { root, hasRootLabel, hasLeadingIcon, leadingIcon } = props;
+  const {
+    root = 'Root',
+    hasRootLabel = false,
+    hasLeadingIcon = true,
+    leadingIcon = GlyphIcon.HOME,
+  } = props;
 
   const router = useRouter();
   const currentPath = usePathname();

@@ -37,6 +37,7 @@ export default function Sidebar() {
       <VStack
         fullWidth
         fullHeight
+        justify={StackJustify.START}
         spacing={spacingVars.moderate}
       >
         <HStack

@@ -1,6 +1,14 @@
 import * as s from './style.css';
 
-import { colorVars, HStack, spacingVars, Typo, VStack, Weight } from '@tapie-kr/inspire-react';
+import {
+  colorVars,
+  HStack,
+  spacingVars,
+  StackJustify,
+  Typo,
+  VStack,
+  Weight,
+} from '@tapie-kr/inspire-react';
 import React from 'react';
 
 interface SidebarItemGroupProps {
@@ -18,6 +26,7 @@ export default function SidebarItemGroup(props: SidebarItemGroupProps) {
     >
       <HStack
         fullWidth
+        justify={StackJustify.START}
         className={s.titleContainer}
       >
         <Typo.Mini

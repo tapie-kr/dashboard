@@ -1,6 +1,6 @@
 import * as s from './style.css';
 
-import { colorVars, HStack, Typo, Weight } from '@tapie-kr/inspire-react';
+import { colorVars, HStack, StackJustify, Typo, Weight } from '@tapie-kr/inspire-react';
 import { usePathname, useRouter } from 'next/navigation';
 
 interface SidebarSubItemProps {
@@ -24,6 +24,7 @@ export default function SidebarSubItem(props: SidebarSubItemProps) {
     <HStack
       fullWidth
       className={s.base}
+      justify={StackJustify.START}
       onClick={handleClick}
     >
       <Typo.Tiny

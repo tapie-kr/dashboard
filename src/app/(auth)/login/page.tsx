@@ -6,7 +6,6 @@ import {
   HStack,
   spacingVars,
   StackAlign,
-  StackJustify,
   TAPIESymbol,
   TAPIESymbolSize,
   Typo,
@@ -18,8 +17,6 @@ export default function IndexPage() {
   return (
     <HStack
       className={s.base}
-      align={StackAlign.CENTER}
-      justify={StackJustify.CENTER}
       fullWidth
       fullHeight
     >
@@ -39,7 +36,6 @@ export default function IndexPage() {
 
       <VStack
         spacing={spacingVars.micro}
-        align={StackAlign.CENTER}
         className={s.footer}
       >
         <Typo.Micro>© 2025 TAPIE. All rights reserved.</Typo.Micro>

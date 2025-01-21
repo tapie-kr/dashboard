@@ -1,12 +1,10 @@
-import { spacingVars } from '@tapie-kr/inspire-react';
+import { getShorthandedValue, spacingVars } from '@tapie-kr/inspire-react';
 import { style } from '@vanilla-extract/css';
 
 export const base = style({
-  position: 'relative',
+  padding: getShorthandedValue(spacingVars.large, spacingVars.base),
 });
 
-export const breadcrumb = style({
-  position: 'absolute',
-  top: spacingVars.large,
-  zIndex: 1,
+export const container = style({
+  maxWidth: 1000,
 });
