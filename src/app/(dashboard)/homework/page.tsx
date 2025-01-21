@@ -1,5 +1,7 @@
 'use client';
 
+import * as s from './page.css';
+
 import {
   Badge,
   colorVars,
@@ -11,9 +13,13 @@ import {
   Typo,
   Weight,
 } from '@tapie-kr/inspire-react';
+import { useRouter } from 'next/navigation';
 import { Status, Unit } from '@/lib/enum';
 import { getStatusIcon, getStatusTheme, getUnitIcon } from '@/lib/enum/util';
-interface DataType {
+import { getPath } from '@/lib/pathmap';
+import { pathMap } from '@/lib/pathmap/map';
+
+interface HomeworkDateType {
   id: number;
   title: string;
   status: Status;
@@ -22,7 +28,7 @@ interface DataType {
   toDate: string;
 }
 
-const data: DataType[] = [
+export const homeworkDate: HomeworkDateType[] = [
   {
     id: 5,
     title: '리액트 성능 최적화',
@@ -40,7 +46,7 @@ const data: DataType[] = [
     toDate: '2025-01-01',
   },
   {
-    id: 3,
+    id: 2,
     title: '리액트 라우터 기초 및 개념 정리',
     status: Status.CONFIRMED,
     unit: Unit.DESIGNER,
@@ -49,8 +55,10 @@ const data: DataType[] = [
   },
 ];
 
-export default function ClassPage() {
+export default function HomeworkPage() {
   const handleClickAction = () => {};
+
+  const router = useRouter();
 
   return (
     <Table>
@@ -94,7 +102,11 @@ export default function ClassPage() {
         </Table.Head.Cell>
       </Table.Head>
       <Table.Body>
-        {data.map((item, index) => {
+        {homeworkDate.map((item, index) => {
+          const handleNavigate = () => {
+            router.push(getPath(pathMap.homework) + '/' + item.id);
+          };
+
           return (
             <Table.Body.Row key={index}>
               <Table.Body.Cell>{item.id}</Table.Body.Cell>
@@ -102,6 +114,8 @@ export default function ClassPage() {
                 <Typo.Petite
                   weight={Weight.MEDIUM}
                   nowrap
+                  onClick={handleNavigate}
+                  className={s.title}
                 >
                   {item.title}
                 </Typo.Petite>
@@ -136,7 +150,7 @@ export default function ClassPage() {
                     name={GlyphIcon.EDIT}
                     color={colorVars.content.default}
                     size={20}
-                    onClick={handleClickAction}
+                    onClick={handleNavigate}
                   />
                   <Icon
                     name={GlyphIcon.DELETE}

@@ -61,7 +61,7 @@ const data: DataType[] = [
   },
 ];
 
-export default function ClassPage() {
+export default function ClassBoardPage() {
   const handleClickAction = () => {};
 
   return (

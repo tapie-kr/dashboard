@@ -12,6 +12,7 @@ export const pathMap: PathMapType = {
   },
   homework: {
     index: '과제',
+    fallback: '수업 상세',
   },
   attendance: {
     index: '출석',
