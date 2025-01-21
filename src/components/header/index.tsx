@@ -1,6 +1,7 @@
 import * as s from './style.css';
 
 import {
+  Box,
   ButtonSize,
   GlyphIcon,
   HStack,
@@ -44,13 +45,14 @@ export default function Header(props: HeaderProps) {
         </HStack>
         {hasSearch && (
           <HStack spacing={spacingVars.mini}>
-            <Input.Text
-              className={s.searchInput}
-              value={searchValue}
-              onChange={handleSearchValue}
-              placeholder={`${title} 검색`}
-              size={InputSize.MEDIUM}
-            />
+            <Box className={s.searchInput}>
+              <Input.Text
+                value={searchValue}
+                onChange={handleSearchValue}
+                placeholder={`${title} 검색`}
+                size={InputSize.MEDIUM}
+              />
+            </Box>
             <IconButton
               icon={GlyphIcon.ARROW_FORWARD}
               size={ButtonSize.MEDIUM}
