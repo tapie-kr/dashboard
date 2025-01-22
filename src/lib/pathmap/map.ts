@@ -1,6 +1,6 @@
-import { type PathMapType } from './types';
+import { type PathNode } from './types';
 
-export const pathMap: PathMapType = {
+export const pathMap = {
   home: {
     index: '홈',
   },
@@ -60,4 +60,4 @@ export const pathMap: PathMapType = {
       index: '기술',
     },
   },
-} as const;
+} as const satisfies { [key: string]: PathNode };
