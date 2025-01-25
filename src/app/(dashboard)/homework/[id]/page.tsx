@@ -1,20 +1,13 @@
 'use client';
 
-import * as s from './page.css';
-
 import HomeworkCard from '@/components/card/homework';
 import PageTemplate from '@/components/page-template';
 
 import { Temporal } from '@js-temporal/polyfill';
 import {
-  Button,
-  ButtonSize,
-  ButtonVariant,
-  colorVars,
   Filter,
   GlyphIcon,
   Grid,
-  HStack,
   spacingVars,
   StackAlign,
   Typo,
