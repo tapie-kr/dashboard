@@ -5,7 +5,7 @@
       "name": "@tapie-kr/management-system",
       "dependencies": {
         "@js-temporal/polyfill": "^0.4.4",
-        "@tapie-kr/inspire-react": "^0.1.29",
+        "@tapie-kr/inspire-react": "^0.1.30",
         "@vanilla-extract/css": "^1.17.0",
         "classnames": "^2.5.1",
         "next": "15.1.4",
