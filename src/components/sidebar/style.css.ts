@@ -5,6 +5,8 @@ export const base = style({
   width: 250,
   padding: spacingVars.micro,
   borderRight: getShorthandedValue('1px', 'solid', colorVars.line.border),
+  background: colorVars.surface.default,
+  zIndex: 99999,
 });
 
 export const collapsed = style({
