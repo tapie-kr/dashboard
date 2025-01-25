@@ -18,6 +18,7 @@ import cn from 'classnames';
 import { type Unit } from '@/lib/enum';
 import { getUnitIcon } from '@/lib/enum/utils';
 import { type Member } from '@/lib/types';
+import { getMemberString } from '@/lib/types/utils';
 
 interface HomeworkCardProps {
   member: Member;
@@ -76,9 +77,7 @@ export default function HomeworkCard(props: HomeworkCardProps) {
             leadingIcon={getUnitIcon(unit)}
             size={BadgeSize.SMALL}
           />
-          <Typo.Petite weight={Weight.SEMIBOLD}>
-            {member.studentId} {member.name}
-          </Typo.Petite>
+          <Typo.Petite weight={Weight.SEMIBOLD}>{getMemberString(member)}</Typo.Petite>
         </VStack>
 
         <VStack

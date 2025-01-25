@@ -33,8 +33,14 @@ export default function MemberPage() {
           <MemberCard
             member={{ studentId: 10404, name: '권지원' }}
             executive={Executive.MANAGER}
-            unit={Unit.DESIGNER}
+            unit={Unit.DEVELOPER}
             generation={119}
+          />
+          <MemberCard
+            member={{ studentId: 10404, name: '권지원' }}
+            unit={Unit.DEVELOPER}
+            generation={119}
+            isGraduated
           />
         </HStack>
       </VStack>
