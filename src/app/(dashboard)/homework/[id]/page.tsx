@@ -22,7 +22,7 @@ import {
 } from '@tapie-kr/inspire-react';
 import { use } from 'react';
 import { Unit } from '@/lib/enum';
-import { getUnitIcon } from '@/lib/enum/util';
+import { getUnitFilterGroup } from '@/lib/enum/utils';
 import { homeworkData } from '../page';
 
 export default function HomeworkDetailPage({ params }: { params: Promise<{ id: number }> }) {
@@ -128,14 +128,7 @@ export default function HomeworkDetailPage({ params }: { params: Promise<{ id: n
                     },
                   ],
                 },
-                {
-                  label: '유닛',
-                  options: Object.values(Unit).map(unit => ({
-                    label: unit,
-                    icon: getUnitIcon(unit),
-                    value: unit,
-                  })),
-                },
+                getUnitFilterGroup(),
               ]}
             />
             <HStack

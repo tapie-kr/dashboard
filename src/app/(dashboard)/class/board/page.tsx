@@ -22,7 +22,14 @@ import {
 } from '@tapie-kr/inspire-react';
 import { type ChangeEvent, useState } from 'react';
 import { Status, Unit } from '@/lib/enum';
-import { getStatusIcon, getStatusTheme, getUnitIcon } from '@/lib/enum/util';
+import {
+  getStatusFilterGroup,
+  getStatusIcon,
+  getStatusTheme,
+  getUnitFilterGroup,
+  getUnitIcon,
+} from '@/lib/enum/utils';
+
 interface DataType {
   title: string;
   status: Status;
@@ -92,26 +99,7 @@ export default function ClassBoardPage() {
           align={StackAlign.START}
           fullWidth
         >
-          <Filter
-            filters={[
-              {
-                label: '상태',
-                options: Object.values(Status).map(status => ({
-                  label: status,
-                  icon: getStatusIcon(status),
-                  value: status,
-                })),
-              },
-              {
-                label: '유닛',
-                options: Object.values(Unit).map(unit => ({
-                  label: unit,
-                  icon: getUnitIcon(unit),
-                  value: unit,
-                })),
-              },
-            ]}
-          />
+          <Filter filters={[getStatusFilterGroup(), getUnitFilterGroup()]} />
           <Button.Default
             leadingIcon={GlyphIcon.ADD}
             size={ButtonSize.SMALL}

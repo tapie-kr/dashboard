@@ -1,16 +1,5 @@
-import { BadgeTheme, GlyphIcon } from '@tapie-kr/inspire-react';
-import { Status, Unit } from '.';
-
-export const getUnitIcon = (unit: Unit): GlyphIcon => {
-  const unitIcon: {
-    [key in Unit]: GlyphIcon;
-  } = {
-    [Unit.DEVELOPER]: GlyphIcon.CODE,
-    [Unit.DESIGNER]: GlyphIcon.BRUSH,
-  };
-
-  return unitIcon[unit];
-};
+import { BadgeTheme, type FilterGroup, GlyphIcon } from '@tapie-kr/inspire-react';
+import { Status } from '.';
 
 export const getStatusIcon = (status: Status): GlyphIcon => {
   const statusIcon: {
@@ -38,4 +27,15 @@ export const getStatusTheme = (status: Status): BadgeTheme => {
   };
 
   return statusTheme[status];
+};
+
+export const getStatusFilterGroup = (): FilterGroup => {
+  return {
+    label: '상태',
+    options: Object.values(Status).map(status => ({
+      label: status,
+      icon: getStatusIcon(status),
+      value: status,
+    })),
+  };
 };

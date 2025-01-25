@@ -23,7 +23,7 @@ import {
 import { useRouter } from 'next/navigation';
 import { type ChangeEvent, useState } from 'react';
 import { Status, Unit } from '@/lib/enum';
-import { getStatusIcon, getStatusTheme, getUnitIcon } from '@/lib/enum/util';
+import { getStatusIcon, getStatusTheme, getUnitFilterGroup, getUnitIcon } from '@/lib/enum/utils';
 import { getPath } from '@/lib/pathmap';
 import { pathMap } from '@/lib/pathmap/map';
 
@@ -99,14 +99,7 @@ export default function HomeworkPage() {
                   value: status,
                 })),
               },
-              {
-                label: '유닛',
-                options: Object.values(Unit).map(unit => ({
-                  label: unit,
-                  icon: getUnitIcon(unit),
-                  value: unit,
-                })),
-              },
+              getUnitFilterGroup(),
             ]}
           />
           <Button.Default

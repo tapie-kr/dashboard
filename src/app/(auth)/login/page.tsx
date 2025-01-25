@@ -37,7 +37,7 @@ export default function IndexPage() {
         </VStack>
         <Button.Default
           leadingIcon={BrandIcon.GOOGLE}
-          isFullWidth
+          fullWidth
         >
           Google로 TAPIE 로그인
         </Button.Default>

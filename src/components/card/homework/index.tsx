@@ -16,8 +16,8 @@ import {
 } from '@tapie-kr/inspire-react';
 import cn from 'classnames';
 import { type Unit } from '@/lib/enum';
-import { getUnitIcon } from '@/lib/enum/util';
-import { type Member } from '@/lib/types/member';
+import { getUnitIcon } from '@/lib/enum/utils';
+import { type Member } from '@/lib/types';
 
 interface HomeworkCardProps {
   member: Member;

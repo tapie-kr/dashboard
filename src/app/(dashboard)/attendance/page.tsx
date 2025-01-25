@@ -12,8 +12,7 @@ import {
   VStack,
 } from '@tapie-kr/inspire-react';
 import { AttendanceUnit } from '@/components/card/attendance/shared';
-import { Unit } from '@/lib/enum';
-import { getUnitIcon } from '@/lib/enum/util';
+import { getUnitFilterGroup } from '@/lib/enum/utils';
 
 const attendanceData = [
   { count: 32, unit: AttendanceUnit.MONTH },
@@ -50,18 +49,7 @@ export default function AttendancePage() {
           spacing={spacingVars.petite}
           align={StackAlign.START}
         >
-          <Filter
-            filters={[
-              {
-                label: '유닛',
-                options: Object.values(Unit).map(unit => ({
-                  label: unit,
-                  value: unit,
-                  icon: getUnitIcon(unit),
-                })),
-              },
-            ]}
-          />
+          <Filter filters={[getUnitFilterGroup()]} />
           <Box>
             <AttendanceCard
               member={{ studentId: 10417, name: '신유준' }}

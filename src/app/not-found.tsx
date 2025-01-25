@@ -38,7 +38,7 @@ export default function NotFoundPage() {
         </VStack>
         <Button.Default
           leadingIcon={GlyphIcon.ARROW_BACK}
-          isFullWidth
+          fullWidth
           onClick={handleClick}
         >
           뒤로 돌아가기
