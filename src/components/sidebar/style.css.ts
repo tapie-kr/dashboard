@@ -7,6 +7,10 @@ export const base = style({
   borderRight: getShorthandedValue('1px', 'solid', colorVars.line.border),
 });
 
+export const collapsed = style({
+  width: 'fit-content',
+});
+
 export const header = style({
   padding: spacingVars.micro,
 });
