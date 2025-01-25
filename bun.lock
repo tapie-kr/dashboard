@@ -5,7 +5,7 @@
       "name": "@tapie-kr/management-system",
       "dependencies": {
         "@js-temporal/polyfill": "^0.4.4",
-        "@tapie-kr/inspire-react": "^0.1.27",
+        "@tapie-kr/inspire-react": "^0.1.29",
         "@vanilla-extract/css": "^1.17.0",
         "classnames": "^2.5.1",
         "next": "15.1.4",
@@ -268,7 +268,7 @@
 
     "@swc/helpers": ["@swc/helpers@0.5.15", "", { "dependencies": { "tslib": "^2.8.0" } }, "sha512-JQ5TuMi45Owi4/BIMAJBoSQoOJu12oOk/gADqlcUL9JEdHB8vyjUSsxqeNXnmXHjYKMi2WcYtezGEEhqUI/E2g=="],
 
-    "@tapie-kr/inspire-react": ["@tapie-kr/inspire-react@0.1.29", "", { "dependencies": { "@cottons-kr/react-foundation": "^0.3.4", "classnames": "^2.5.1" }, "peerDependencies": { "motion": "^12.0.3", "react": "19.0.0", "react-dom": "19.0.0" } }, "sha512-UAPs9E+4HT2LsE53BBKs+mVfI2OZp+S/8dgUjZ29duOhHmmNyD2vqRoS2CKUt0Fx1muGdQWPlSN1p+PVrYXhRw=="],
+    "@tapie-kr/inspire-react": ["@tapie-kr/inspire-react@0.1.30", "", { "dependencies": { "@cottons-kr/react-foundation": "^0.3.4", "classnames": "^2.5.1" }, "peerDependencies": { "motion": "^12.0.3", "react": "19.0.0", "react-dom": "19.0.0" } }, "sha512-nybKmnYa0j/jl+gNzVmivN8p8RLcQbJz3bWzDhgCOvpQl88qNbO2m21/As7V6dADIrC8az+yRS2YkvGaqMtCfQ=="],
 
     "@types/eslint": ["@types/eslint@9.6.1", "", { "dependencies": { "@types/estree": "*", "@types/json-schema": "*" } }, "sha512-FXx2pKgId/WyYo2jXw63kk7/+TY7u7AziEJxJAnSFzHlqTAS3Ync6SvgYAN/k4/PQpnnVuzoMuVnByKK2qp0ag=="],
 
