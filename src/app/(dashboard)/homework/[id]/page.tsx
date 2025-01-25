@@ -28,10 +28,6 @@ import { homeworkData } from '../page';
 export default function HomeworkDetailPage({ params }: { params: Promise<{ id: number }> }) {
   const { id } = use(params);
 
-  useEffect(() => {
-    console.log(id);
-  }, [id]);
-
   const title = homeworkData[Number(id)].title;
 
   return (
