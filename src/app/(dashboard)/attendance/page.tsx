@@ -1,53 +1,82 @@
-import * as s from './page.css';
-
+import AttendanceCard from '@/components/card/attendance';
+import AttendanceStatCard from '@/components/card/attendance/stat';
 import PageTemplate from '@/components/page-template';
 
 import {
-  colorVars,
-  GlyphIcon,
+  Box,
+  Filter,
   HStack,
-  Icon,
   spacingVars,
   StackAlign,
   StackJustify,
-  Typo,
   VStack,
-  Weight,
 } from '@tapie-kr/inspire-react';
+import { AttendanceUnit } from '@/components/card/attendance/shared';
+import { Unit } from '@/lib/enum';
+import { getUnitIcon } from '@/lib/enum/util';
+
+const attendanceData = [
+  { count: 32, unit: AttendanceUnit.MONTH },
+  { count: 535, unit: AttendanceUnit.YEAR },
+];
 
 export default function AttendancePage() {
   return (
-    <PageTemplate title={'출석'}>
-      <HStack
-        spacing={spacingVars.base}
+    <PageTemplate
+      title={'출석'}
+      count={0}
+    >
+      <VStack
         fullWidth
-        justify={StackJustify.START}
+        spacing={spacingVars.jumbo}
+        align={StackAlign.START}
       >
-        {[32, 535].map((item, index) => {
-          return (
-            <HStack
-              spacing={spacingVars.petite}
-              className={s.card}
-              key={index}
-              justify={StackJustify.START}
-              align={StackAlign.START}
-            >
-              <VStack
-                spacing={spacingVars.optical}
-                align={StackAlign.START}
-                fullWidth
-              >
-                <Typo.Base weight={Weight.SEMIBOLD}>{item}명</Typo.Base>
-                <Typo.Tiny color={colorVars.content.default}>이번 달 결석 수</Typo.Tiny>
-              </VStack>
-              <Icon
-                name={index == 0 ? GlyphIcon.TODAY : GlyphIcon.CALENDAR_TODAY}
-                size={24}
+        <HStack
+          spacing={spacingVars.base}
+          fullWidth
+          justify={StackJustify.START}
+        >
+          {attendanceData.map((item, index) => {
+            return (
+              <AttendanceStatCard
+                key={index}
+                count={item.count}
+                unit={item.unit}
               />
-            </HStack>
-          );
-        })}
-      </HStack>
+            );
+          })}
+        </HStack>
+        <VStack
+          spacing={spacingVars.petite}
+          align={StackAlign.START}
+        >
+          <Filter
+            filters={[
+              {
+                label: '유닛',
+                options: Object.values(Unit).map(unit => ({
+                  label: unit,
+                  value: unit,
+                  icon: getUnitIcon(unit),
+                })),
+              },
+            ]}
+          />
+          <Box>
+            <AttendanceCard
+              member={{ studentId: 10417, name: '신유준' }}
+              day={23}
+              count={5}
+              isAbsent
+            />
+            <AttendanceCard
+              member={{ studentId: 10417, name: '신유준' }}
+              day={5}
+              count={7}
+            />
+          </Box>
+        </VStack>
+      </VStack>
     </PageTemplate>
   );
 }

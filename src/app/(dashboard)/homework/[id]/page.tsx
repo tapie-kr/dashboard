@@ -2,7 +2,7 @@
 
 import * as s from './page.css';
 
-import HomeworkCard from '@/components/homework-card';
+import HomeworkCard from '@/components/card/homework';
 import PageTemplate from '@/components/page-template';
 
 import { Temporal } from '@js-temporal/polyfill';
@@ -143,8 +143,7 @@ export default function HomeworkDetailPage({ params }: { params: Promise<{ id: n
               align={StackAlign.START}
             >
               <HomeworkCard
-                schoolId={10417}
-                name={'신유준'}
+                member={{ studentId: 10417, name: '신유준' }}
                 isSubmitted
                 unit={Unit.DESIGNER}
                 files={[
@@ -160,8 +159,7 @@ export default function HomeworkDetailPage({ params }: { params: Promise<{ id: n
                 })}
               />
               <HomeworkCard
-                schoolId={10417}
-                name={'신유준'}
+                member={{ studentId: 10417, name: '신유준' }}
                 unit={Unit.DEVELOPER}
                 isSubmitted={false}
                 files={[

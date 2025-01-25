@@ -17,10 +17,10 @@ import {
 import cn from 'classnames';
 import { type Unit } from '@/lib/enum';
 import { getUnitIcon } from '@/lib/enum/util';
+import { type Member } from '@/lib/types/member';
 
 interface HomeworkCardProps {
-  schoolId: number;
-  name: string;
+  member: Member;
   unit: Unit;
   isSubmitted: boolean;
   files: string[];
@@ -30,7 +30,7 @@ interface HomeworkCardProps {
 const imageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp', 'svg'];
 
 export default function HomeworkCard(props: HomeworkCardProps) {
-  const { schoolId, name, isSubmitted, unit, files, date } = props;
+  const { member, isSubmitted, unit, files, date } = props;
 
   const isImage = (file: string) => {
     const extension = file.split('.').pop()?.split('/')[0];
@@ -77,7 +77,7 @@ export default function HomeworkCard(props: HomeworkCardProps) {
             size={BadgeSize.SMALL}
           />
           <Typo.Petite weight={Weight.SEMIBOLD}>
-            {schoolId} {name}
+            {member.studentId} {member.name}
           </Typo.Petite>
         </VStack>
 
