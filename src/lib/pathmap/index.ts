@@ -130,3 +130,7 @@ export const getPathList = (path: string): { title: string; href: string }[] => 
 
   return result;
 };
+
+export const resolvePath = (pathNode: PathNode, segment: string | number | boolean): string => {
+  return getPath(pathNode) + '/' + segment;
+};
