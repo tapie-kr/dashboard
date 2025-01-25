@@ -1,6 +1,8 @@
+import * as s from './layout.css';
+
 import Sidebar from '@/components/sidebar';
 
-import { HStack } from '@tapie-kr/inspire-react';
+import { Box, HStack } from '@tapie-kr/inspire-react';
 
 export default function RootLayout(props: { children: React.ReactNode }) {
   return (
@@ -8,10 +10,16 @@ export default function RootLayout(props: { children: React.ReactNode }) {
       <HStack
         fullWidth
         fullHeight
+        className={s.layout}
       >
         <Sidebar />
-
-        {props.children}
+        <Box
+          className={s.content}
+          fullWidth
+          fullHeight
+        >
+          {props.children}
+        </Box>
       </HStack>
     </>
   );

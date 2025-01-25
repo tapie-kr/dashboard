@@ -13,6 +13,7 @@ import {
   colorVars,
   Filter,
   GlyphIcon,
+  Grid,
   HStack,
   spacingVars,
   StackAlign,
@@ -28,7 +29,7 @@ import { homeworkData } from '../page';
 export default function HomeworkDetailPage({ params }: { params: Promise<{ id: number }> }) {
   const { id } = use(params);
 
-  const title = homeworkData[Number(id)].title;
+  const title = homeworkData[Number(id) - 1].title;
 
   return (
     <PageTemplate
@@ -36,7 +37,7 @@ export default function HomeworkDetailPage({ params }: { params: Promise<{ id: n
       hasCount={false}
     >
       <VStack
-        spacing={spacingVars.medium}
+        spacing={spacingVars.jumbo}
         align={StackAlign.START}
         fullWidth
       >
@@ -105,7 +106,10 @@ export default function HomeworkDetailPage({ params }: { params: Promise<{ id: n
             </Button.Default>
           </HStack>
         </VStack>
-        <VStack spacing={spacingVars.moderate}>
+        <VStack
+          spacing={spacingVars.moderate}
+          align={StackAlign.START}
+        >
           <Typo.Moderate weight={Weight.SEMIBOLD}>제출 인원</Typo.Moderate>
           <VStack
             spacing={spacingVars.petite}
@@ -131,9 +135,9 @@ export default function HomeworkDetailPage({ params }: { params: Promise<{ id: n
                 getUnitFilterGroup(),
               ]}
             />
-            <HStack
-              spacing={spacingVars.petite}
-              align={StackAlign.START}
+            <Grid
+              gap={spacingVars.petite}
+              columnCount={3}
             >
               <HomeworkCard
                 member={{ studentId: 10417, name: '신유준' }}
@@ -151,23 +155,26 @@ export default function HomeworkDetailPage({ params }: { params: Promise<{ id: n
                   minute: 58,
                 })}
               />
-              <HomeworkCard
-                member={{ studentId: 10417, name: '신유준' }}
-                unit={Unit.DEVELOPER}
-                isSubmitted={false}
-                files={[
-                  'https://minio-s4008w0wsg40sg48o0wwscc8.apne2a.algorix.cloud/tapie-management-system/AppCleaner_3.6.8.zip',
-                  'https://minio-s4008w0wsg40sg48o0wwscc8.apne2a.algorix.cloud/tapie-management-system/2024학년도고등학교학사일정현황(탑재용).pdf',
-                ]}
-                date={Temporal.PlainDateTime.from({
-                  year: 2024,
-                  month: 12,
-                  day: 23,
-                  hour: 11,
-                  minute: 58,
-                })}
-              />
-            </HStack>
+              {Array.from({ length: 5 }).map((_, index) => (
+                <HomeworkCard
+                  key={index}
+                  member={{ studentId: 10417, name: '신유준' }}
+                  unit={Unit.DEVELOPER}
+                  isSubmitted={false}
+                  files={[
+                    'https://minio-s4008w0wsg40sg48o0wwscc8.apne2a.algorix.cloud/tapie-management-system/AppCleaner_3.6.8.zip',
+                    'https://minio-s4008w0wsg40sg48o0wwscc8.apne2a.algorix.cloud/tapie-management-system/2024학년도고등학교학사일정현황(탑재용).pdf',
+                  ]}
+                  date={Temporal.PlainDateTime.from({
+                    year: 2024,
+                    month: 12,
+                    day: 23,
+                    hour: 11,
+                    minute: 58,
+                  })}
+                />
+              ))}
+            </Grid>
           </VStack>
         </VStack>
       </VStack>

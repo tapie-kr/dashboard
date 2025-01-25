@@ -24,11 +24,10 @@ import { useRouter } from 'next/navigation';
 import { type ChangeEvent, useState } from 'react';
 import { Status, Unit } from '@/lib/enum';
 import { getStatusIcon, getStatusTheme, getUnitFilterGroup, getUnitIcon } from '@/lib/enum/utils';
-import { getPath } from '@/lib/pathmap';
+import { getPath, resolvePath } from '@/lib/pathmap';
 import { pathMap } from '@/lib/pathmap/map';
 
 interface HomeworkDateType {
-  id: number;
   title: string;
   status: Status;
   unit: Unit;
@@ -38,7 +37,6 @@ interface HomeworkDateType {
 
 export const homeworkData: HomeworkDateType[] = [
   {
-    id: 5,
     title: '리액트 성능 최적화',
     status: Status.IN_PROGRESS,
     unit: Unit.DEVELOPER,
@@ -46,7 +44,6 @@ export const homeworkData: HomeworkDateType[] = [
     toDate: '2025-01-01',
   },
   {
-    id: 3,
     title: '리액트 라우터 기초 및 개념 정리',
     status: Status.CONFIRMED,
     unit: Unit.DESIGNER,
@@ -54,7 +51,6 @@ export const homeworkData: HomeworkDateType[] = [
     toDate: '2025-01-01',
   },
   {
-    id: 2,
     title: '리액트 라우터 기초 및 개념 정리',
     status: Status.CONFIRMED,
     unit: Unit.DESIGNER,
@@ -115,7 +111,7 @@ export default function HomeworkPage() {
             {
               icon: GlyphIcon.EDIT,
               onClick: index => {
-                router.push(getPath(pathMap.homework) + `/${index}`);
+                router.push(resolvePath(pathMap.homework, index));
               },
             },
             {

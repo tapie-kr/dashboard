@@ -3,8 +3,8 @@ import AttendanceStatCard from '@/components/card/attendance/stat';
 import PageTemplate from '@/components/page-template';
 
 import {
-  Box,
   Filter,
+  Grid,
   HStack,
   spacingVars,
   StackAlign,
@@ -50,19 +50,25 @@ export default function AttendancePage() {
           align={StackAlign.START}
         >
           <Filter filters={[getUnitFilterGroup()]} />
-          <Box>
+          <Grid
+            columnCount={3}
+            gap={spacingVars.petite}
+          >
             <AttendanceCard
               member={{ studentId: 10417, name: '신유준' }}
               day={23}
               count={5}
-              isAbsent
             />
-            <AttendanceCard
-              member={{ studentId: 10417, name: '신유준' }}
-              day={5}
-              count={7}
-            />
-          </Box>
+            {Array.from({ length: 5 }).map((_, index) => (
+              <AttendanceCard
+                key={index}
+                member={{ studentId: 10417, name: '신유준' }}
+                day={23}
+                count={5}
+                isAbsent
+              />
+            ))}
+          </Grid>
         </VStack>
       </VStack>
     </PageTemplate>
