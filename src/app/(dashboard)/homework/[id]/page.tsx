@@ -20,7 +20,7 @@ import {
   VStack,
   Weight,
 } from '@tapie-kr/inspire-react';
-import { use, useEffect } from 'react';
+import { use } from 'react';
 import { Unit } from '@/lib/enum';
 import { getUnitIcon } from '@/lib/enum/util';
 import { homeworkData } from '../page';
