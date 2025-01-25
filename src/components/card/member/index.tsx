@@ -15,8 +15,11 @@ import {
   VStack,
   Weight,
 } from '@tapie-kr/inspire-react';
+import { useRouter } from 'next/navigation';
 import { type Executive, type Unit } from '@/lib/enum';
 import { getExecutiveIcon, getExecutiveTheme, getUnitIcon } from '@/lib/enum/utils';
+import { resolvePath } from '@/lib/pathmap';
+import { pathMap } from '@/lib/pathmap/map';
 import { type Member } from '@/lib/types';
 import { getMemberString } from '@/lib/types/utils';
 
@@ -31,7 +34,11 @@ interface MemberCardProps {
 export default function MemberCard(props: MemberCardProps) {
   const { member, executive, unit, generation, isGraduated = false } = props;
 
-  const handleClick = () => {};
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push(resolvePath(pathMap.member, 5));
+  };
 
   return (
     <HStack
