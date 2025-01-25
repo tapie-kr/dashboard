@@ -20,6 +20,7 @@ import {
   VStack,
   Weight,
 } from '@tapie-kr/inspire-react';
+import { type ChangeEvent, useState } from 'react';
 import { Status, Unit } from '@/lib/enum';
 import { getStatusIcon, getStatusTheme, getUnitIcon } from '@/lib/enum/util';
 type DataType = {
@@ -69,10 +70,19 @@ const data: DataType[] = [
 ];
 
 export default function ClassPage() {
+  const [searchValue, setSearchValue] = useState('');
+
+  const handleSearchValue = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.target.value);
+  };
+
   return (
     <PageTemplate
       title={'수업'}
       count={172}
+      hasSearch
+      searchValue={searchValue}
+      onChangeSearchValue={handleSearchValue}
     >
       <VStack
         fullWidth

@@ -6,16 +6,22 @@ import PageTemplate from '@/components/page-template';
 
 import {
   Badge,
+  Button,
+  ButtonSize,
   colorVars,
+  DataTable,
+  Filter,
   GlyphIcon,
   HStack,
-  Icon,
   spacingVars,
-  Table,
+  StackAlign,
+  StackJustify,
   Typo,
+  VStack,
   Weight,
 } from '@tapie-kr/inspire-react';
 import { useRouter } from 'next/navigation';
+import { type ChangeEvent, useState } from 'react';
 import { Status, Unit } from '@/lib/enum';
 import { getStatusIcon, getStatusTheme, getUnitIcon } from '@/lib/enum/util';
 import { getPath } from '@/lib/pathmap';
@@ -58,119 +64,139 @@ export const homeworkData: HomeworkDateType[] = [
 ];
 
 export default function HomeworkPage() {
-  const handleClickAction = () => {};
-
   const router = useRouter();
+
+  const [searchValue, setSearchValue] = useState('');
+
+  const handleSearchValue = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.target.value);
+  };
 
   return (
     <PageTemplate
       title={'과제'}
       count={172}
+      hasSearch
+      searchValue={searchValue}
+      onChangeSearchValue={handleSearchValue}
     >
-      <Table>
-        <Table.Head>
-          <Table.Head.Cell width={40 + 16}>#</Table.Head.Cell>
-          <Table.Head.Cell
-            isSortable
-            width={250 + 16}
+      <VStack
+        fullWidth
+        spacing={spacingVars.petite}
+      >
+        <HStack
+          justify={StackJustify.BETWEEN}
+          align={StackAlign.START}
+          fullWidth
+        >
+          <Filter
+            filters={[
+              {
+                label: '상태',
+                options: [Status.CONFIRMED, Status.CANCELED, Status.IN_PROGRESS].map(status => ({
+                  label: status,
+                  icon: getStatusIcon(status),
+                  value: status,
+                })),
+              },
+              {
+                label: '유닛',
+                options: Object.values(Unit).map(unit => ({
+                  label: unit,
+                  icon: getUnitIcon(unit),
+                  value: unit,
+                })),
+              },
+            ]}
+          />
+          <Button.Default
+            leadingIcon={GlyphIcon.ADD}
+            size={ButtonSize.SMALL}
           >
-            제목
-          </Table.Head.Cell>
-          <Table.Head.Cell
-            isSortable
-            width={120 + 16}
-          >
-            상태
-          </Table.Head.Cell>
-          <Table.Head.Cell
-            isSortable
-            width={120 + 16}
-          >
-            유닛
-          </Table.Head.Cell>
-          <Table.Head.Cell
-            isSortable
-            width={120 + 16}
-          >
-            시작일
-          </Table.Head.Cell>
-          <Table.Head.Cell
-            isSortable
-            width={100 + 16}
-          >
-            마감일
-          </Table.Head.Cell>
-          <Table.Head.Cell
-            isSortable
-            width={100 + 16}
-          >
-            액션
-          </Table.Head.Cell>
-        </Table.Head>
-        <Table.Body>
-          {homeworkData.map((item, index) => {
-            const handleNavigate = () => {
-              router.push(getPath(pathMap.homework) + '/' + item.id);
-            };
+            과제 등록
+          </Button.Default>
+        </HStack>
+        <DataTable
+          showIndex
+          actions={[
+            {
+              icon: GlyphIcon.EDIT,
+              onClick: index => {
+                router.push(getPath(pathMap.homework) + `/${index}`);
+              },
+            },
+            {
+              icon: GlyphIcon.DELETE,
+              onClick: () => {},
+            },
+          ]}
+          columns={[
+            {
+              key: 'title',
+              label: '제목',
+              width: 250,
+              isSortable: true,
+              cell: (title, index) => {
+                const handleNavigate = () => {
+                  router.push(getPath(pathMap.homework) + `/${index}`);
+                };
 
-            return (
-              <Table.Body.Row key={index}>
-                <Table.Body.Cell>{item.id}</Table.Body.Cell>
-                <Table.Body.Cell>
+                return (
                   <Typo.Petite
                     weight={Weight.MEDIUM}
-                    nowrap
-                    onClick={handleNavigate}
                     className={s.title}
+                    onClick={handleNavigate}
                   >
-                    {item.title}
+                    {title}
                   </Typo.Petite>
-                </Table.Body.Cell>
-                <Table.Body.Cell>
+                );
+              },
+            },
+            {
+              key: 'status',
+              label: '상태',
+              width: 120,
+              isSortable: true,
+              cell: status => {
+                return (
                   <Badge.Default
-                    label={item.status}
-                    leadingIcon={getStatusIcon(item.status)}
-                    theme={getStatusTheme(item.status)}
+                    label={status}
+                    leadingIcon={getStatusIcon(status)}
+                    theme={getStatusTheme(status)}
                   />
-                </Table.Body.Cell>
-
-                <Table.Body.Cell>
-                  <Badge.Default
-                    label={item.unit}
-                    leadingIcon={getUnitIcon(item.unit)}
-                  />
-                </Table.Body.Cell>
-                <Table.Body.Cell>
-                  <HStack spacing={spacingVars.micro}>
-                    <Typo.Tiny color={colorVars.content.default}>{item.fromDate}</Typo.Tiny>
-                  </HStack>
-                </Table.Body.Cell>
-                <Table.Body.Cell>
-                  <HStack spacing={spacingVars.micro}>
-                    <Typo.Tiny color={colorVars.content.default}>{item.toDate}</Typo.Tiny>
-                  </HStack>
-                </Table.Body.Cell>
-                <Table.Body.Cell>
-                  <HStack spacing={spacingVars.base}>
-                    <Icon
-                      name={GlyphIcon.EDIT}
-                      color={colorVars.content.default}
-                      size={20}
-                      onClick={handleNavigate}
-                    />
-                    <Icon
-                      name={GlyphIcon.DELETE}
-                      color={colorVars.content.default}
-                      size={20}
-                      onClick={handleClickAction}
-                    />
-                  </HStack>
-                </Table.Body.Cell>
-              </Table.Body.Row>
-            );
-          })}
-        </Table.Body>
-      </Table>
+                );
+              },
+            },
+            {
+              key: 'unit',
+              label: '유닛',
+              width: 100,
+              isSortable: true,
+              cell: unit => (
+                <Badge.Default
+                  label={unit}
+                  leadingIcon={getUnitIcon(unit)}
+                />
+              ),
+            },
+            {
+              key: 'fromDate',
+              label: '시작일',
+              width: 100,
+              isSortable: true,
+              cell: fromDate => <Typo.Tiny color={colorVars.content.default}>{fromDate}</Typo.Tiny>,
+            },
+            {
+              key: 'toDate',
+              label: '마감일',
+              width: 100,
+              isSortable: true,
+              cell: fromDate => <Typo.Tiny color={colorVars.content.default}>{fromDate}</Typo.Tiny>,
+            },
+          ]}
+          data={homeworkData}
+        />
+      </VStack>
     </PageTemplate>
   );
 }

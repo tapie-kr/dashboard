@@ -2,13 +2,16 @@
 
 import * as s from './page.css';
 
+import HomeworkCard from '@/components/homework-card';
 import PageTemplate from '@/components/page-template';
 
+import { Temporal } from '@js-temporal/polyfill';
 import {
   Button,
   ButtonSize,
   ButtonVariant,
   colorVars,
+  Filter,
   GlyphIcon,
   HStack,
   spacingVars,
@@ -18,6 +21,8 @@ import {
   Weight,
 } from '@tapie-kr/inspire-react';
 import { use, useEffect } from 'react';
+import { Unit } from '@/lib/enum';
+import { getUnitIcon } from '@/lib/enum/util';
 import { homeworkData } from '../page';
 
 export default function HomeworkDetailPage({ params }: { params: Promise<{ id: number }> }) {
@@ -27,7 +32,7 @@ export default function HomeworkDetailPage({ params }: { params: Promise<{ id: n
     console.log(id);
   }, [id]);
 
-  const title = homeworkData.find(data => data.id === Number(id))?.title;
+  const title = homeworkData[Number(id)].title;
 
   return (
     <PageTemplate
@@ -103,6 +108,80 @@ export default function HomeworkDetailPage({ params }: { params: Promise<{ id: n
               과제 닫기
             </Button.Default>
           </HStack>
+        </VStack>
+        <VStack spacing={spacingVars.moderate}>
+          <Typo.Moderate weight={Weight.SEMIBOLD}>제출 인원</Typo.Moderate>
+          <VStack
+            spacing={spacingVars.petite}
+            align={StackAlign.START}
+          >
+            <Filter
+              filters={[
+                {
+                  label: '상태',
+                  options: [
+                    {
+                      label: '제출 완료',
+                      icon: GlyphIcon.CHECK,
+                      value: '제출 완료',
+                    },
+                    {
+                      label: '취소',
+                      icon: GlyphIcon.BLOCK,
+                      value: '취소',
+                    },
+                  ],
+                },
+                {
+                  label: '유닛',
+                  options: Object.values(Unit).map(unit => ({
+                    label: unit,
+                    icon: getUnitIcon(unit),
+                    value: unit,
+                  })),
+                },
+              ]}
+            />
+            <HStack
+              spacing={spacingVars.petite}
+              align={StackAlign.START}
+            >
+              <HomeworkCard
+                schoolId={10417}
+                name={'신유준'}
+                isSubmitted
+                unit={Unit.DESIGNER}
+                files={[
+                  'https://minio-s4008w0wsg40sg48o0wwscc8.apne2a.algorix.cloud/tapie-management-system/AppCleaner_3.6.8.zip',
+                  'https://minio-s4008w0wsg40sg48o0wwscc8.apne2a.algorix.cloud/tapie-management-system/datepicker-context.png',
+                ]}
+                date={Temporal.PlainDateTime.from({
+                  year: 2024,
+                  month: 12,
+                  day: 23,
+                  hour: 11,
+                  minute: 58,
+                })}
+              />
+              <HomeworkCard
+                schoolId={10417}
+                name={'신유준'}
+                unit={Unit.DEVELOPER}
+                isSubmitted={false}
+                files={[
+                  'https://minio-s4008w0wsg40sg48o0wwscc8.apne2a.algorix.cloud/tapie-management-system/AppCleaner_3.6.8.zip',
+                  'https://minio-s4008w0wsg40sg48o0wwscc8.apne2a.algorix.cloud/tapie-management-system/2024학년도고등학교학사일정현황(탑재용).pdf',
+                ]}
+                date={Temporal.PlainDateTime.from({
+                  year: 2024,
+                  month: 12,
+                  day: 23,
+                  hour: 11,
+                  minute: 58,
+                })}
+              />
+            </HStack>
+          </VStack>
         </VStack>
       </VStack>
     </PageTemplate>
