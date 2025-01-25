@@ -2,6 +2,8 @@
 
 import * as s from './page.css';
 
+import PageTemplate from '@/components/page-template';
+
 import {
   Badge,
   colorVars,
@@ -65,99 +67,101 @@ export default function ClassBoardPage() {
   const handleClickAction = () => {};
 
   return (
-    <Table>
-      <Table.Head>
-        <Table.Head.Cell width={40 + 16}>#</Table.Head.Cell>
-        <Table.Head.Cell
-          isSortable
-          width={250 + 16}
-        >
-          제목
-        </Table.Head.Cell>
-        <Table.Head.Cell
-          isSortable
-          width={120 + 16}
-        >
-          상태
-        </Table.Head.Cell>
-        <Table.Head.Cell
-          isSortable
-          width={120 + 16}
-        >
-          진행자
-        </Table.Head.Cell>
-        <Table.Head.Cell
-          isSortable
-          width={120 + 16}
-        >
-          유닛
-        </Table.Head.Cell>
-        <Table.Head.Cell
-          isSortable
-          width={100 + 16}
-        >
-          수업일
-        </Table.Head.Cell>
-        <Table.Head.Cell
-          isSortable
-          width={100 + 16}
-        >
-          액션
-        </Table.Head.Cell>
-      </Table.Head>
-      <Table.Body>
-        {data.map((item, index) => (
-          <Table.Body.Row key={index}>
-            <Table.Body.Cell>{index + 1}</Table.Body.Cell>
-            <Table.Body.Cell>
-              <Typo.Petite
-                weight={Weight.MEDIUM}
-                nowrap
-              >
-                {item.title}
-              </Typo.Petite>
-            </Table.Body.Cell>
-            <Table.Body.Cell>
-              <Badge.Default
-                label={item.status}
-                leadingIcon={getStatusIcon(item.status)}
-                theme={getStatusTheme(item.status)}
-              />
-            </Table.Body.Cell>
-            <Table.Body.Cell>
-              <HStack spacing={spacingVars.micro}>
-                <div className={s.circle} />
-                <Typo.Tiny weight={Weight.MEDIUM}>{item.instructor}</Typo.Tiny>
-              </HStack>
-            </Table.Body.Cell>
-            <Table.Body.Cell>
-              <Badge.Default
-                label={item.unit}
-                leadingIcon={getUnitIcon(item.unit)}
-              />
-            </Table.Body.Cell>
-            <Table.Body.Cell>
-              <Typo.Tiny color={colorVars.content.default}>{item.date}</Typo.Tiny>
-            </Table.Body.Cell>
-            <Table.Body.Cell>
-              <HStack spacing={spacingVars.base}>
-                <Icon
-                  name={GlyphIcon.EDIT}
-                  color={colorVars.content.default}
-                  size={20}
-                  onClick={handleClickAction}
+    <PageTemplate title={'게시글'}>
+      <Table>
+        <Table.Head>
+          <Table.Head.Cell width={40 + 16}>#</Table.Head.Cell>
+          <Table.Head.Cell
+            isSortable
+            width={250 + 16}
+          >
+            제목
+          </Table.Head.Cell>
+          <Table.Head.Cell
+            isSortable
+            width={120 + 16}
+          >
+            상태
+          </Table.Head.Cell>
+          <Table.Head.Cell
+            isSortable
+            width={120 + 16}
+          >
+            진행자
+          </Table.Head.Cell>
+          <Table.Head.Cell
+            isSortable
+            width={120 + 16}
+          >
+            유닛
+          </Table.Head.Cell>
+          <Table.Head.Cell
+            isSortable
+            width={100 + 16}
+          >
+            수업일
+          </Table.Head.Cell>
+          <Table.Head.Cell
+            isSortable
+            width={100 + 16}
+          >
+            액션
+          </Table.Head.Cell>
+        </Table.Head>
+        <Table.Body>
+          {data.map((item, index) => (
+            <Table.Body.Row key={index}>
+              <Table.Body.Cell>{index + 1}</Table.Body.Cell>
+              <Table.Body.Cell>
+                <Typo.Petite
+                  weight={Weight.MEDIUM}
+                  nowrap
+                >
+                  {item.title}
+                </Typo.Petite>
+              </Table.Body.Cell>
+              <Table.Body.Cell>
+                <Badge.Default
+                  label={item.status}
+                  leadingIcon={getStatusIcon(item.status)}
+                  theme={getStatusTheme(item.status)}
                 />
-                <Icon
-                  name={GlyphIcon.DELETE}
-                  color={colorVars.content.default}
-                  size={20}
-                  onClick={handleClickAction}
+              </Table.Body.Cell>
+              <Table.Body.Cell>
+                <HStack spacing={spacingVars.micro}>
+                  <div className={s.circle} />
+                  <Typo.Tiny weight={Weight.MEDIUM}>{item.instructor}</Typo.Tiny>
+                </HStack>
+              </Table.Body.Cell>
+              <Table.Body.Cell>
+                <Badge.Default
+                  label={item.unit}
+                  leadingIcon={getUnitIcon(item.unit)}
                 />
-              </HStack>
-            </Table.Body.Cell>
-          </Table.Body.Row>
-        ))}
-      </Table.Body>
-    </Table>
+              </Table.Body.Cell>
+              <Table.Body.Cell>
+                <Typo.Tiny color={colorVars.content.default}>{item.date}</Typo.Tiny>
+              </Table.Body.Cell>
+              <Table.Body.Cell>
+                <HStack spacing={spacingVars.base}>
+                  <Icon
+                    name={GlyphIcon.EDIT}
+                    color={colorVars.content.default}
+                    size={20}
+                    onClick={handleClickAction}
+                  />
+                  <Icon
+                    name={GlyphIcon.DELETE}
+                    color={colorVars.content.default}
+                    size={20}
+                    onClick={handleClickAction}
+                  />
+                </HStack>
+              </Table.Body.Cell>
+            </Table.Body.Row>
+          ))}
+        </Table.Body>
+      </Table>
+    </PageTemplate>
   );
 }

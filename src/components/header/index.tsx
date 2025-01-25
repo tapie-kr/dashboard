@@ -17,17 +17,24 @@ import {
 import { type ChangeEventHandler } from 'react';
 import Breadcrumb from '../breadcrumb';
 
-interface HeaderProps {
+export interface HeaderProps {
   title: string;
   hasCount?: boolean;
   count?: number;
   hasSearch?: boolean;
   searchValue?: string;
-  handleSearchValue?: ChangeEventHandler<HTMLInputElement>;
+  onChangeSearchValue?: ChangeEventHandler<HTMLInputElement>;
 }
 
 export default function Header(props: HeaderProps) {
-  const { title, hasCount = true, count, hasSearch = true, searchValue, handleSearchValue } = props;
+  const {
+    title,
+    hasCount = true,
+    count,
+    hasSearch = true,
+    searchValue,
+    onChangeSearchValue: handleSearchValue,
+  } = props;
 
   return (
     <VStack
@@ -43,7 +50,7 @@ export default function Header(props: HeaderProps) {
           <Typo.Medium weight={Weight.BOLD}>{title}</Typo.Medium>
           {hasCount && <Typo.Moderate weight={Weight.SEMIBOLD}>{count}</Typo.Moderate>}
         </HStack>
-        {hasSearch && (
+        {hasSearch && handleSearchValue && (
           <HStack spacing={spacingVars.mini}>
             <Box className={s.searchInput}>
               <Input.Text
