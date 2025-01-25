@@ -20,7 +20,6 @@ export default function PageTemplate(props: PageTemplateProps) {
   return (
     <VStack
       fullWidth
-      fullHeight
       justify={StackJustify.START}
       className={s.base}
     >
