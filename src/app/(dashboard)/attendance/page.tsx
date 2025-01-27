@@ -12,7 +12,7 @@ import {
   VStack,
 } from '@tapie-kr/inspire-react';
 import { AttendanceUnit } from '@/components/card/attendance/shared';
-import { getUnitFilterGroup } from '@/lib/enum/utils';
+import { getContestFilterGroup } from '@/lib/enum/utils';
 
 const attendanceData = [
   { count: 32, unit: AttendanceUnit.MONTH },
@@ -49,7 +49,7 @@ export default function AttendancePage() {
           spacing={spacingVars.petite}
           align={StackAlign.START}
         >
-          <Filter filters={[getUnitFilterGroup()]} />
+          <Filter filters={[getContestFilterGroup()]} />
           <Grid
             columnCount={3}
             gap={spacingVars.petite}

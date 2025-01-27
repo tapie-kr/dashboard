@@ -16,7 +16,7 @@ import {
 } from '@tapie-kr/inspire-react';
 import { use } from 'react';
 import { Unit } from '@/lib/enum';
-import { getUnitFilterGroup } from '@/lib/enum/utils';
+import { getContestFilterGroup } from '@/lib/enum/utils';
 import HomeworkDetailContentSection from '@/sections/homework/detail/Content';
 import { homeworkData } from '../page';
 
@@ -62,7 +62,7 @@ export default function HomeworkDetailPage({ params }: { params: Promise<{ id: n
                     },
                   ],
                 },
-                getUnitFilterGroup(),
+                getContestFilterGroup(),
               ]}
             />
             <Grid

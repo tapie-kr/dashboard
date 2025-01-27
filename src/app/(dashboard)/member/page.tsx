@@ -6,7 +6,7 @@ import PageTemplate from '@/components/page-template';
 import { Filter, Grid, spacingVars, StackAlign, VStack } from '@tapie-kr/inspire-react';
 import { type ChangeEvent, useState } from 'react';
 import { Executive, Unit } from '@/lib/enum';
-import { getUnitFilterGroup } from '@/lib/enum/utils';
+import { getContestFilterGroup } from '@/lib/enum/utils';
 
 export default function MemberPage() {
   const [searchValue, setSearchValue] = useState('');
@@ -28,7 +28,7 @@ export default function MemberPage() {
         align={StackAlign.START}
         spacing={spacingVars.jumbo}
       >
-        <Filter filters={[getUnitFilterGroup()]} />
+        <Filter filters={[getContestFilterGroup()]} />
         <Grid
           columnCount={3}
           gap={spacingVars.petite}

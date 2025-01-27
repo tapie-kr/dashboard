@@ -1,7 +1,17 @@
+'use client';
+
 import PageTemplate from '@/components/page-template';
 
-import { HStack, spacingVars, StackAlign, StackJustify, VStack } from '@tapie-kr/inspire-react';
+import {
+  Filter,
+  HStack,
+  spacingVars,
+  StackAlign,
+  StackJustify,
+  VStack,
+} from '@tapie-kr/inspire-react';
 import { type ChangeEvent, useState } from 'react';
+import { getContestFilterGroup, getUnitFilterGroup } from '@/lib/enum/utils';
 
 export default function AchievementPage() {
   const [searchValue, setSearchValue] = useState('');
@@ -26,7 +36,9 @@ export default function AchievementPage() {
         <HStack
           fullWidth
           justify={StackJustify.BETWEEN}
-        ></HStack>
+        >
+          <Filter filters={[getContestFilterGroup(), getUnitFilterGroup()]} />
+        </HStack>
       </VStack>
     </PageTemplate>
   );

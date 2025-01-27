@@ -23,7 +23,12 @@ import {
 import { useRouter } from 'next/navigation';
 import { type ChangeEvent, useState } from 'react';
 import { Status, Unit } from '@/lib/enum';
-import { getStatusIcon, getStatusTheme, getUnitFilterGroup, getUnitIcon } from '@/lib/enum/utils';
+import {
+  getContestFilterGroup,
+  getStatusIcon,
+  getStatusTheme,
+  getUnitIcon,
+} from '@/lib/enum/utils';
 import { getPath, resolvePath } from '@/lib/pathmap';
 import { pathMap } from '@/lib/pathmap/map';
 
@@ -95,7 +100,7 @@ export default function HomeworkPage() {
                   value: status,
                 })),
               },
-              getUnitFilterGroup(),
+              getContestFilterGroup(),
             ]}
           />
           <Button.Default

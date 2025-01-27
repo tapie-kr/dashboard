@@ -5,7 +5,7 @@ import PageTemplate from '@/components/page-template';
 
 import { Filter, GlyphIcon, Grid, spacingVars, StackAlign, VStack } from '@tapie-kr/inspire-react';
 import { type ChangeEvent, useState } from 'react';
-import { getStatusFilterGroup, getUnitFilterGroup } from '@/lib/enum/utils';
+import { getContestFilterGroup, getStatusFilterGroup } from '@/lib/enum/utils';
 
 export default function PortfolioPage() {
   const [searchValue, setSearchValue] = useState('');
@@ -27,7 +27,7 @@ export default function PortfolioPage() {
         spacing={spacingVars.jumbo}
         align={StackAlign.START}
       >
-        <Filter filters={[getStatusFilterGroup(), getUnitFilterGroup()]} />
+        <Filter filters={[getStatusFilterGroup(), getContestFilterGroup()]} />
         <Grid
           columnCount={3}
           gap={spacingVars.petite}

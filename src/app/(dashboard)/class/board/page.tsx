@@ -23,10 +23,10 @@ import {
 import { type ChangeEvent, useState } from 'react';
 import { Status, Unit } from '@/lib/enum';
 import {
+  getContestFilterGroup,
   getStatusFilterGroup,
   getStatusIcon,
   getStatusTheme,
-  getUnitFilterGroup,
   getUnitIcon,
 } from '@/lib/enum/utils';
 
@@ -99,7 +99,7 @@ export default function ClassBoardPage() {
           align={StackAlign.START}
           fullWidth
         >
-          <Filter filters={[getStatusFilterGroup(), getUnitFilterGroup()]} />
+          <Filter filters={[getStatusFilterGroup(), getContestFilterGroup()]} />
           <Button.Default
             leadingIcon={GlyphIcon.ADD}
             size={ButtonSize.SMALL}
