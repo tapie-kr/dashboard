@@ -1,9 +1,9 @@
-import { BadgeTheme, type FilterGroup, GlyphIcon } from '@tapie-kr/inspire-react';
+import { BadgeTheme, type FilterGroup, GlyphIcon, type IconName } from '@tapie-kr/inspire-react';
 import { Status } from '.';
 
-export const getStatusIcon = (status: Status): GlyphIcon => {
+export const getStatusIcon = (status: Status): IconName => {
   const statusIcon: {
-    [key in Status]: GlyphIcon;
+    [key in Status]: IconName;
   } = {
     [Status.CONFIRMED]: GlyphIcon.CHECK,
     [Status.CANCELED]: GlyphIcon.BLOCK,

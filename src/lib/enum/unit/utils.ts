@@ -1,9 +1,9 @@
-import { type FilterGroup, GlyphIcon } from '@tapie-kr/inspire-react';
+import { type FilterGroup, GlyphIcon, type IconName } from '@tapie-kr/inspire-react';
 import { Unit } from '.';
 
-export const getUnitIcon = (unit: Unit): GlyphIcon => {
+export const getUnitIcon = (unit: Unit): IconName => {
   const unitIcon: {
-    [key in Unit]: GlyphIcon;
+    [key in Unit]: IconName;
   } = {
     [Unit.DEVELOPER]: GlyphIcon.CODE,
     [Unit.DESIGNER]: GlyphIcon.BRUSH,
