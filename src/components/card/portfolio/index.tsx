@@ -15,6 +15,9 @@ import {
   VStack,
   Weight,
 } from '@tapie-kr/inspire-react';
+import { useRouter } from 'next/navigation';
+import { resolvePath } from '@/lib/pathmap';
+import { pathMap } from '@/lib/pathmap/map';
 
 interface PortfolioCardProps {
   title: string;
@@ -26,11 +29,18 @@ interface PortfolioCardProps {
 export default function PortfolioCard(props: PortfolioCardProps) {
   const { title, tags, image, catchphrase } = props;
 
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push(resolvePath(pathMap.portfolio, 3));
+  };
+
   return (
     <VStack
       spacing={spacingVars.base}
       className={s.base}
       align={StackAlign.START}
+      onClick={handleClick}
     >
       <AspectRatio
         ratio={16 / 9}

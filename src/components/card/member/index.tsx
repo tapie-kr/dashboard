@@ -17,7 +17,7 @@ import {
 } from '@tapie-kr/inspire-react';
 import { useRouter } from 'next/navigation';
 import { type Executive, type Unit } from '@/lib/enum';
-import { getExecutiveIcon, getExecutiveTheme, getUnitIcon } from '@/lib/enum/utils';
+import { getContestIcon, getExecutiveTheme, getUnitIcon } from '@/lib/enum/utils';
 import { resolvePath } from '@/lib/pathmap';
 import { pathMap } from '@/lib/pathmap/map';
 import { type Member } from '@/lib/types';
@@ -63,7 +63,7 @@ export default function MemberCard(props: MemberCardProps) {
         <HStack spacing={spacingVars.tiny}>
           {executive && (
             <Badge.Default
-              leadingIcon={getExecutiveIcon()}
+              leadingIcon={getContestIcon()}
               theme={getExecutiveTheme()}
               label={executive}
               size={BadgeSize.SMALL}
