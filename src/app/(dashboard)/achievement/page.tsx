@@ -1,5 +1,6 @@
 'use client';
 
+import AchievementCard from '@/components/card/achievement';
 import PageTemplate from '@/components/page-template';
 
 import {
@@ -15,6 +16,7 @@ import {
   VStack,
 } from '@tapie-kr/inspire-react';
 import { type ChangeEvent, useState } from 'react';
+import { Contest } from '@/lib/enum';
 import { getContestFilterGroup, getUnitFilterGroup } from '@/lib/enum/utils';
 
 export default function AchievementPage() {
@@ -55,7 +57,17 @@ export default function AchievementPage() {
           gap={spacingVars.petite}
         >
           {Array.from({ length: 7 }).map((_, index) => (
-            <></>
+            <AchievementCard
+              key={index}
+              contestName={'24th 앱잼 생활'}
+              contestType={Contest.INTERNAL}
+              grade={{ grade: 1, gradeLabel: '최우수상' }}
+              year={2025}
+              members={[
+                { name: '한유찬', studentId: 10000 },
+                { name: '신유준', studentId: 10000 },
+              ]}
+            />
           ))}
         </Grid>
       </VStack>
