@@ -3,7 +3,11 @@
 import PageTemplate from '@/components/page-template';
 
 import {
+  Button,
+  ButtonSize,
   Filter,
+  GlyphIcon,
+  Grid,
   HStack,
   spacingVars,
   StackAlign,
@@ -36,9 +40,24 @@ export default function AchievementPage() {
         <HStack
           fullWidth
           justify={StackJustify.BETWEEN}
+          align={StackAlign.START}
         >
           <Filter filters={[getContestFilterGroup(), getUnitFilterGroup()]} />
+          <Button.Default
+            size={ButtonSize.SMALL}
+            leadingIcon={GlyphIcon.ADD}
+          >
+            수상실적 등록
+          </Button.Default>
         </HStack>
+        <Grid
+          columnCount={3}
+          gap={spacingVars.petite}
+        >
+          {Array.from({ length: 7 }).map((_, index) => (
+            <></>
+          ))}
+        </Grid>
       </VStack>
     </PageTemplate>
   );
