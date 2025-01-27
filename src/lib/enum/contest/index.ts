@@ -1,4 +1,4 @@
 export enum Contest {
-  INTERNAL = '내부대회',
+  INTERNAL = '교내대회',
   EXTERNAL = '외부대회',
 }
