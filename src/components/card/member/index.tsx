@@ -1,13 +1,14 @@
 import * as s from './style.css';
 
 import {
+  AspectRatio,
   Badge,
   BadgeSize,
-  Box,
   colorVars,
   GlyphIcon,
   HStack,
   Icon,
+  Image,
   spacingVars,
   StackAlign,
   StackJustify,
@@ -17,13 +18,14 @@ import {
 } from '@tapie-kr/inspire-react';
 import { useRouter } from 'next/navigation';
 import { type Executive, type Unit } from '@/lib/enum';
-import { getContestIcon, getExecutiveTheme, getUnitIcon } from '@/lib/enum/utils';
+import { getExecutiveIcon, getExecutiveTheme, getUnitIcon } from '@/lib/enum/utils';
 import { resolvePath } from '@/lib/pathmap';
 import { pathMap } from '@/lib/pathmap/map';
 import { type Member } from '@/lib/types';
 import { getMemberString } from '@/lib/types/utils';
 
 interface MemberCardProps {
+  profileImage: string;
   member: Member;
   executive?: Executive;
   unit: Unit;
@@ -32,7 +34,7 @@ interface MemberCardProps {
 }
 
 export default function MemberCard(props: MemberCardProps) {
-  const { member, executive, unit, generation, isGraduated = false } = props;
+  const { profileImage, member, executive, unit, generation, isGraduated = false } = props;
 
   const router = useRouter();
 
@@ -47,7 +49,17 @@ export default function MemberCard(props: MemberCardProps) {
       justify={StackJustify.START}
       onClick={handleClick}
     >
-      <Box className={s.circle} />
+      <AspectRatio
+        ratio={1 / 1}
+        width={60}
+      >
+        <Image
+          fullWidth
+          fullHeight
+          src={profileImage}
+          alt={member.name}
+        />
+      </AspectRatio>
       <VStack
         spacing={spacingVars.tiny}
         align={StackAlign.START}
@@ -63,7 +75,7 @@ export default function MemberCard(props: MemberCardProps) {
         <HStack spacing={spacingVars.tiny}>
           {executive && (
             <Badge.Default
-              leadingIcon={getContestIcon()}
+              leadingIcon={getExecutiveIcon()}
               theme={getExecutiveTheme()}
               label={executive}
               size={BadgeSize.SMALL}

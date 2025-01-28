@@ -2,12 +2,14 @@ import * as s from './style.css';
 
 import { type Temporal } from '@js-temporal/polyfill';
 import {
+  AspectRatio,
   Badge,
   BadgeSize,
   BadgeTheme,
   colorVars,
   GlyphIcon,
   HStack,
+  Image,
   spacingVars,
   StackAlign,
   Typo,
@@ -48,22 +50,33 @@ export default function HomeworkCard(props: HomeworkCardProps) {
       spacing={spacingVars.base}
       align={StackAlign.START}
     >
-      <HStack
+      <AspectRatio
+        ratio={16 / 9}
         fullWidth
-        className={cn(s.preview, !hasImage && s.previewNoImage)}
-        style={{
-          backgroundImage: `url(${firstImage})`,
-        }}
       >
-        {!hasImage && (
-          <Typo.Tiny
-            weight={Weight.MEDIUM}
-            color={colorVars.content.default}
+        {hasImage && firstImage ? (
+          <Image
+            fullWidth
+            fullHeight
+            src={firstImage}
+            alt={'Preview Image'}
+            className={s.preview}
+          />
+        ) : (
+          <HStack
+            fullWidth
+            fullHeight
+            className={cn(s.preview, s.previewNoImage)}
           >
-            미리보기 지원 안함
-          </Typo.Tiny>
+            <Typo.Tiny
+              weight={Weight.MEDIUM}
+              color={colorVars.content.default}
+            >
+              미리보기 지원 안함
+            </Typo.Tiny>
+          </HStack>
         )}
-      </HStack>
+      </AspectRatio>
       <VStack
         spacing={spacingVars.base}
         align={StackAlign.START}

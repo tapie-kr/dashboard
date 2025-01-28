@@ -1,11 +1,10 @@
-import * as s from './style.css';
-
 import {
+  AspectRatio,
   Badge,
-  Box,
   colorVars,
   GlyphIcon,
   HStack,
+  Image,
   spacingVars,
   StackAlign,
   Typo,
@@ -18,6 +17,7 @@ import { type Member } from '@/lib/types';
 import { getMemberString } from '@/lib/types/utils';
 
 interface MemberDetailSummarySectionProps {
+  profileImage: string;
   member: Member;
   unit: Unit;
   executive?: Executive;
@@ -27,12 +27,22 @@ interface MemberDetailSummarySectionProps {
 }
 
 export default function MemberDetailSummarySection(props: MemberDetailSummarySectionProps) {
-  const { member, unit, executive, generation, isGraduated = false, stats } = props;
+  const { profileImage, member, unit, executive, generation, isGraduated = false, stats } = props;
 
   return (
     <HStack spacing={spacingVars.giant}>
       <HStack spacing={spacingVars.moderate}>
-        <Box className={s.circle} />
+        <AspectRatio
+          ratio={1 / 1}
+          width={86}
+        >
+          <Image
+            fullWidth
+            fullHeight
+            src={profileImage}
+            alt={member.name}
+          />
+        </AspectRatio>
         <VStack
           spacing={spacingVars.micro}
           align={StackAlign.START}

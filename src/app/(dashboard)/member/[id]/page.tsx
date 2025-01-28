@@ -31,6 +31,9 @@ export default function MemberDetailPage({ params }: { params: Promise<{ id: num
         fullWidth
       >
         <MemberDetailSummarySection
+          profileImage={
+            'https://www.jwkwon0817.me/_next/image?url=%2Fassets%2Fprofile.png&w=256&q=75'
+          }
           member={member}
           unit={unit}
           executive={executive}

@@ -7,6 +7,7 @@ import {
   colorVars,
   GlyphIcon,
   HStack,
+  Segment,
   spacingVars,
   StackAlign,
   Typo,
@@ -70,7 +71,16 @@ export default function HomeworkDetailContentSection(props: HomeworkDetailConten
             >
               첨부파일 업로드
             </Button.Default>
-            {/* TODO SEGMENT */}
+            <Segment
+              leadingIcon={GlyphIcon.CODE}
+              label={'App.tsx'}
+              value={'App.tsx'}
+            />
+            <Segment
+              leadingIcon={GlyphIcon.FOLDER}
+              label={'assets'}
+              value={'assets'}
+            />
           </HStack>
         </VStack>
       </VStack>

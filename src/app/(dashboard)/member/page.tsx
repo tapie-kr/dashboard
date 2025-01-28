@@ -34,6 +34,9 @@ export default function MemberPage() {
           gap={spacingVars.petite}
         >
           <MemberCard
+            profileImage={
+              'https://www.jwkwon0817.me/_next/image?url=%2Fassets%2Fprofile.png&w=256&q=75'
+            }
             member={{ studentId: 10404, name: '권지원' }}
             executive={Executive.MANAGER}
             unit={Unit.DEVELOPER}
@@ -42,6 +45,9 @@ export default function MemberPage() {
           {Array.from({ length: 5 }).map((_, index) => (
             <MemberCard
               key={index}
+              profileImage={
+                'https://www.jwkwon0817.me/_next/image?url=%2Fassets%2Fprofile.png&w=256&q=75'
+              }
               member={{ studentId: 10404, name: '권지원' }}
               unit={Unit.DEVELOPER}
               generation={119}

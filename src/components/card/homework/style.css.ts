@@ -11,9 +11,6 @@ export const base = style({
 
 export const preview = style({
   borderRadius: radiusVars.subtle,
-  backgroundSize: 'cover',
-  backgroundPosition: 'center',
-  aspectRatio: '16 / 9',
 });
 
 export const previewNoImage = style({
