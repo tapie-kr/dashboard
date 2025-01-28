@@ -10,7 +10,7 @@ import {
   Weight,
 } from '@tapie-kr/inspire-react';
 
-export default function MemberDetailBasicInfo() {
+export default function MemberDetailBasicInfoSection() {
   return (
     <VStack
       spacing={spacingVars.base}
@@ -46,7 +46,10 @@ export default function MemberDetailBasicInfo() {
             label={'프로필 사진'}
             isEssential
           >
-            <Input.ImagePreview shape={ImagePreviewShape.CIRCLE} />
+            <Input.ImagePreview
+              shape={ImagePreviewShape.CIRCLE}
+              size={100}
+            />
           </FormField>
         </VStack>
         <VStack

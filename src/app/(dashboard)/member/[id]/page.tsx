@@ -5,7 +5,7 @@ import { use } from 'react';
 import { Executive, Unit } from '@/lib/enum';
 import { type Member } from '@/lib/types';
 import MemberDetailActionSection from '@/sections/member/detail/Action';
-import MemberDetailBasicInfo from '@/sections/member/detail/BasicInfo';
+import MemberDetailBasicInfoSection from '@/sections/member/detail/BasicInfo';
 import MemberDetailInfoSection from '@/sections/member/detail/Info';
 import { Skill } from '@/sections/member/detail/Info/shared';
 import MemberDetailSummarySection from '@/sections/member/detail/Summary';
@@ -37,7 +37,7 @@ export default function MemberDetailPage({ params }: { params: Promise<{ id: num
           generation={generation}
           stats={[46, 46, 46, 46]}
         />
-        <MemberDetailBasicInfo />
+        <MemberDetailBasicInfoSection />
         <MemberDetailActionSection />
         <MemberDetailInfoSection
           profileLink={[
