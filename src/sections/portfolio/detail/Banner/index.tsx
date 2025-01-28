@@ -1,4 +1,5 @@
 import {
+  AspectRatio,
   Box,
   colorVars,
   GlyphIcon,
@@ -25,12 +26,19 @@ export default function PortfolioDetailBannerSection(props: PortfolioDetailBanne
   return (
     <>
       <Box className={s.base}>
-        <Image
-          src={image}
-          alt={title}
+        <AspectRatio
+          ratio={694 / 250}
           fullWidth
           fullHeight
-        />
+        >
+          <Image
+            className={s.image}
+            src={image}
+            alt={title}
+            fullWidth
+            fullHeight
+          />
+        </AspectRatio>
         <HStack
           spacing={spacingVars.base}
           align={StackAlign.END}

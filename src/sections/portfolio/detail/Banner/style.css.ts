@@ -12,3 +12,7 @@ export const content = style({
   bottom: spacingVars.moderate,
   left: spacingVars.moderate,
 });
+
+export const image = style({
+  backdropFilter: 'blur(4px)',
+});

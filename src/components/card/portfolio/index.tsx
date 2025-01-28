@@ -4,7 +4,6 @@ import {
   AspectRatio,
   Badge,
   BadgeSize,
-  Box,
   colorVars,
   HStack,
   type IconName,
@@ -44,7 +43,8 @@ export default function PortfolioCard(props: PortfolioCardProps) {
     >
       <AspectRatio
         ratio={16 / 9}
-        style={{ width: '100%' }}
+        fullWidth
+        fullHeight
       >
         <Image
           src={image}

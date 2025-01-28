@@ -17,12 +17,3 @@ export const base = style([
     background: colorVars.surface.default,
   },
 ]);
-
-export const image = style({
-  aspectRatio: '16 / 9',
-  backgroundSize: 'cover',
-  backgroundPosition: 'center',
-  backgroundRepeat: 'no-repeat',
-  borderRadius: radiusVars.subtle,
-  // background: colorVars.surface.raised,
-});
