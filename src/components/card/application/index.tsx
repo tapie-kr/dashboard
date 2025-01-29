@@ -22,6 +22,7 @@ import { resolvePath } from '@/lib/pathmap';
 import { pathMap } from '@/lib/pathmap/map';
 import { type Member } from '@/lib/types';
 import { getMemberString } from '@/lib/types/utils';
+import { getDateString } from '@/lib/utils/date';
 
 interface ApplicationCardProps {
   member: Member;
@@ -40,9 +41,6 @@ export default function ApplicationCard(props: ApplicationCardProps) {
     router.push(resolvePath(pathMap.application, 3));
   };
 
-  const getPadStart = (value: number) => {
-    return String(value).padStart(2, '0');
-  };
   return (
     <VStack
       className={s.base}
@@ -65,7 +63,7 @@ export default function ApplicationCard(props: ApplicationCardProps) {
         />
         <Badge.Default
           size={BadgeSize.SMALL}
-          label={`${date.year}-${getPadStart(date.month)}-${getPadStart(date.day)} ${getPadStart(date.hour)}:${getPadStart(date.minute)} 제출`}
+          label={`${getDateString(date, true)} 제출`}
           leadingIcon={GlyphIcon.TODAY}
         />
         <Badge.Default

@@ -21,6 +21,7 @@ import { type Unit } from '@/lib/enum';
 import { getUnitIcon } from '@/lib/enum/utils';
 import { type Member } from '@/lib/types';
 import { getMemberString } from '@/lib/types/utils';
+import { getDateString } from '@/lib/utils/date';
 
 interface HomeworkCardProps {
   member: Member;
@@ -110,7 +111,7 @@ export default function HomeworkCard(props: HomeworkCardProps) {
             />
           </HStack>
           <Badge.Default
-            label={`${date.month}월 ${date.day}일 ${date.hour}:${date.minute} 제출`}
+            label={`${getDateString(date, false)} 제출`}
             leadingIcon={GlyphIcon.SCHEDULE}
           />
         </VStack>
