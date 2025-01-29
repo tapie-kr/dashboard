@@ -46,20 +46,20 @@ export default function PortfolioDetailBannerSection(props: PortfolioDetailBanne
         >
           <Typo.Medium
             weight={Weight.SEMIBOLD}
-            color={colorVars.content.inverted.emphasized}
+            color={colorVars.solid.translucent.white._95}
           >
             {title}
           </Typo.Medium>
           <HStack spacing={spacingVars.mini}>
             <Typo.Base
               weight={Weight.MEDIUM}
-              color={colorVars.content.inverted.default}
+              color={colorVars.solid.translucent.white._50}
             >
               {catchphrase}
             </Typo.Base>
             <Icon
               name={GlyphIcon.ARROW_FORWARD}
-              color={colorVars.content.inverted.default}
+              color={colorVars.solid.translucent.white._50}
               size={18}
             />
           </HStack>

@@ -80,7 +80,7 @@ function NoticeForm() {
       <HStack className={s.fileUpload}>
         <FormField label={'파일 업로드'}>
           <Input.File.Draggable
-            placeholder={'공지 내용 입력'}
+            placeholder={'사진 업로드'}
             leadingIcon={GlyphIcon.UPLOAD}
           />
         </FormField>
