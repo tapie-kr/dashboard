@@ -6,11 +6,13 @@ import { type Temporal } from '@js-temporal/polyfill';
 import {
   Badge,
   BadgeSize,
+  BadgeTheme,
   colorVars,
   GlyphIcon,
   HStack,
   spacingVars,
   StackAlign,
+  Theme,
   Typo,
   VStack,
   Weight,
@@ -69,6 +71,7 @@ export default function ApplicationCard(props: ApplicationCardProps) {
         <Badge.Default
           size={BadgeSize.SMALL}
           label={'포트폴리오'}
+          theme={hasPortfolio ? BadgeTheme.GREEN : BadgeTheme.RED}
           leadingIcon={hasPortfolio ? GlyphIcon.CHECK : GlyphIcon.CLOSE}
         />
       </HStack>
