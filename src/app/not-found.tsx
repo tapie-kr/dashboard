@@ -4,6 +4,9 @@ import * as s from './not-found.css';
 
 import {
   Button,
+  ButtonSize,
+  ButtonVariant,
+  colorVars,
   GlyphIcon,
   HStack,
   spacingVars,
@@ -28,17 +31,24 @@ export default function NotFoundPage() {
       fullWidth
       fullHeight
     >
-      <VStack spacing={spacingVars.moderate}>
-        <VStack spacing={spacingVars.micro}>
-          <TAPIESymbol
-            size={TAPIESymbolSize._32}
-            hasLabel
-          />
-          <Typo.Jumbo weight={Weight.MEDIUM}>404 Not Found</Typo.Jumbo>
+      <VStack spacing={spacingVars.medium}>
+        <TAPIESymbol
+          size={TAPIESymbolSize._24}
+          hasLabel
+        />
+        <VStack spacing={spacingVars.petite}>
+          <Typo.Medium weight={Weight.MEDIUM}>404 Not Found</Typo.Medium>
+          <Typo.Base
+            weight={Weight.MEDIUM}
+            color={colorVars.content.muted}
+          >
+            존재하지 않는 페이지입니다.
+          </Typo.Base>
         </VStack>
         <Button.Default
           leadingIcon={GlyphIcon.ARROW_BACK}
-          fullWidth
+          variant={ButtonVariant.SECONDARY}
+          size={ButtonSize.MEDIUM}
           onClick={handleClick}
         >
           뒤로 돌아가기
