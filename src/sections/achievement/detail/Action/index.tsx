@@ -11,7 +11,12 @@ import {
 export default function AchievementDetailActionSection() {
   return (
     <HStack spacing={spacingVars.petite}>
-      <Button.Default size={ButtonSize.SMALL}>변경사항 저장하기</Button.Default>
+      <Button.Default
+        size={ButtonSize.SMALL}
+        leadingIcon={GlyphIcon.ADD}
+      >
+        변경사항 저장하기
+      </Button.Default>
       <Button.Default
         variant={ButtonVariant.SECONDARY}
         size={ButtonSize.SMALL}
