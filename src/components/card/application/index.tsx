@@ -11,8 +11,6 @@ import {
   GlyphIcon,
   HStack,
   spacingVars,
-  StackAlign,
-  Theme,
   Typo,
   VStack,
   Weight,
