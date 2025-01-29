@@ -11,7 +11,12 @@ import {
 export default function ApplicationDetailActionSection() {
   return (
     <HStack spacing={spacingVars.petite}>
-      <Button.Default size={ButtonSize.SMALL}>합격 처리</Button.Default>
+      <Button.Default
+        size={ButtonSize.SMALL}
+        leadingIcon={GlyphIcon.ADD}
+      >
+        합격 처리
+      </Button.Default>
       <Button.Default
         variant={ButtonVariant.SECONDARY}
         size={ButtonSize.SMALL}
