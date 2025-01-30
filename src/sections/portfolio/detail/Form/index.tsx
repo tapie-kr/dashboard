@@ -29,7 +29,7 @@ export default function PortfolioDetailFormSection() {
         <Input.Paragraph
           maxLength={1000}
           placeholder={'설명 입력'}
-          height={143}
+          height={150}
         />
       </FormField>
     </VStack>
