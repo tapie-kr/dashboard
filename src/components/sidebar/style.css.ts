@@ -13,6 +13,10 @@ export const collapsed = style({
   width: 'fit-content',
 });
 
+export const logo = style({
+  cursor: 'pointer',
+});
+
 export const header = style({
   padding: spacingVars.micro,
 });

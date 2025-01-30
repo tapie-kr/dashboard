@@ -24,7 +24,10 @@ import {
   Weight,
 } from '@tapie-kr/inspire-react';
 import cn from 'classnames';
+import Link from 'next/link';
 import React, { useState } from 'react';
+import { getPath } from '@/lib/pathmap';
+import { pathMap } from '@/lib/pathmap/map';
 import SidebarContent from './content';
 
 export default function Sidebar() {
@@ -54,7 +57,9 @@ export default function Sidebar() {
           justify={StackJustify.BETWEEN}
           spacing={collapsed ? spacingVars.base : 0}
         >
-          <TAPIESymbol size={TAPIESymbolSize._24} />
+          <Link href={getPath(pathMap.home)}>
+            <TAPIESymbol size={TAPIESymbolSize._24} />
+          </Link>
           <Icon
             name={collapsed ? GlyphIcon.LEFT_PANEL_OPEN : GlyphIcon.LEFT_PANEL_CLOSE}
             size={20}
