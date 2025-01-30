@@ -1,3 +1,5 @@
+import * as s from './page.css'
+
 import {
   BrandIcon,
   Button,
@@ -19,8 +21,8 @@ export default function IndexPage() {
     >
       <VStack
         spacing={spacingVars.moderate}
-        fullWidth
-        fullHeight
+        className={s.container}
+        align={StackAlign.START}
       >
         <VStack
           spacing={spacingVars.tiny}
@@ -32,7 +34,7 @@ export default function IndexPage() {
           />
           <Typo.Medium weight={Weight.BOLD}>관리 시스템</Typo.Medium>
         </VStack>
-        <Button.Default leadingIcon={BrandIcon.GOOGLE}>Google로 TAPIE 로그인</Button.Default>
+        <Button.Default fullWidth leadingIcon={BrandIcon.GOOGLE}>Google로 TAPIE 로그인</Button.Default>
       </VStack>
     </HStack>
   );
