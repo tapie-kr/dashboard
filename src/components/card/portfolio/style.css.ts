@@ -17,3 +17,8 @@ export const base = style([
     background: colorVars.surface.default,
   },
 ]);
+
+export const image = style({
+  borderRadius: radiusVars.subtle,
+  overflow: 'hidden',
+});

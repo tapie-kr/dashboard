@@ -16,7 +16,6 @@ import {
   VStack,
   Weight,
 } from '@tapie-kr/inspire-react';
-import cn from 'classnames';
 import { type Unit } from '@/lib/enum';
 import { getUnitIcon } from '@/lib/enum/utils';
 import { type Member } from '@/lib/types';
@@ -54,6 +53,7 @@ export default function HomeworkCard(props: HomeworkCardProps) {
       <AspectRatio
         ratio={16 / 9}
         fullWidth
+        className={s.preview}
       >
         {hasImage && firstImage ? (
           <Image
@@ -61,13 +61,12 @@ export default function HomeworkCard(props: HomeworkCardProps) {
             fullHeight
             src={firstImage}
             alt={'Preview Image'}
-            className={s.preview}
           />
         ) : (
           <HStack
             fullWidth
             fullHeight
-            className={cn(s.preview, s.previewNoImage)}
+            className={s.previewNoImage}
           >
             <Typo.Tiny
               weight={Weight.MEDIUM}

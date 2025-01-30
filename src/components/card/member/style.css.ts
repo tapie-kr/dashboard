@@ -17,9 +17,7 @@ export const base = style([
   },
 ]);
 
-export const circle = style({
-  width: 60,
-  height: 60,
+export const image = style({
   borderRadius: radiusVars.full,
-  backgroundColor: colorVars.surface.raised,
+  overflow: 'hidden',
 });

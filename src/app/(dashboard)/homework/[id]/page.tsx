@@ -35,7 +35,24 @@ export default function HomeworkDetailPage({ params }: { params: Promise<{ id: n
         align={StackAlign.START}
         fullWidth
       >
-        <HomeworkDetailContentSection content={'안녕하세요\n저는 권지원입니다.'} />
+        <HomeworkDetailContentSection
+          content={`기본 앱 구현제공된 리액트 템플릿 프로젝트 또는 직접 구현한 간단한 애플리케이션을 사용하여 기본 동작을 확인합니다.애플리케이션은 간단한 CRUD 기능을 포함하고, 렌더링 및 상태 관리가 빈번하게 발생하도록 설계합니다.
+성능 분석애플리케이션 성능을 분석하기 위해 다음 도구 및 기법을 사용합니다.
+React Developer Tools (Profiler)
+Chrome DevTools의 Performance 탭
+console.time()과 같은 성능 측정 도구
+성능 저하 원인 파악분석 결과를 바탕으로 성능 저하의 원인을 탐구합니다.예를 들어, 불필요한 렌더링, 메모리 과다 사용, 이벤트 처리 성능 문제 등을 조사합니다.
+최적화 적용성능 저하를 개선하기 위해 다음과 같은 최적화 기법을 적용합니다.
+React.memo, useMemo, useCallback 사용
+리스트 렌더링에 Virtualization 적용 (react-window 등 사용)
+코드 분할(Code Splitting)과 동적 로딩
+상태 관리 도구의 적절한 활용 (Context API 최적화, Redux Toolkit 등)
+필요에 따라 추가적인 최적화 기법 사용
+결과 보고서 작성최적화 전후의 성능 데이터를 비교하여 결과를 정리합니다.
+성능 지표 변화 (렌더링 시간, 메모리 사용량 등)
+사용한 최적화 기법과 관련 코드 설명
+최적화로 인한 사용자 경험 변화 분석`}
+        />
         <VStack
           spacing={spacingVars.moderate}
           align={StackAlign.START}

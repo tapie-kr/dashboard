@@ -45,6 +45,7 @@ export default function PortfolioCard(props: PortfolioCardProps) {
         ratio={16 / 9}
         fullWidth
         fullHeight
+        className={s.image}
       >
         <Image
           src={image}

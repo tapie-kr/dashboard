@@ -52,6 +52,7 @@ export default function MemberCard(props: MemberCardProps) {
       <AspectRatio
         ratio={1 / 1}
         width={60}
+        className={s.image}
       >
         <Image
           fullWidth

@@ -26,6 +26,8 @@ interface MemberDetailSummarySectionProps {
   stats: [number, number, number, number];
 }
 
+import * as s from './style.css';
+
 export default function MemberDetailSummarySection(props: MemberDetailSummarySectionProps) {
   const { profileImage, member, unit, executive, generation, isGraduated = false, stats } = props;
 
@@ -35,6 +37,7 @@ export default function MemberDetailSummarySection(props: MemberDetailSummarySec
         <AspectRatio
           ratio={1 / 1}
           width={86}
+          className={s.image}
         >
           <Image
             fullWidth

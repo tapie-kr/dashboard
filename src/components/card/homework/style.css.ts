@@ -11,6 +11,7 @@ export const base = style({
 
 export const preview = style({
   borderRadius: radiusVars.subtle,
+  overflow: 'hidden',
 });
 
 export const previewNoImage = style({

@@ -30,6 +30,7 @@ export default function PortfolioDetailBannerSection(props: PortfolioDetailBanne
           ratio={694 / 250}
           fullWidth
           fullHeight
+          className={s.imageContainer}
         >
           <Image
             className={s.image}
@@ -38,32 +39,32 @@ export default function PortfolioDetailBannerSection(props: PortfolioDetailBanne
             fullWidth
             fullHeight
           />
-        </AspectRatio>
-        <HStack
-          spacing={spacingVars.base}
-          align={StackAlign.END}
-          className={s.content}
-        >
-          <Typo.Medium
-            weight={Weight.SEMIBOLD}
-            color={colorVars.solid.translucent.white._95}
+          <HStack
+            spacing={spacingVars.base}
+            align={StackAlign.END}
+            className={s.content}
           >
-            {title}
-          </Typo.Medium>
-          <HStack spacing={spacingVars.mini}>
-            <Typo.Base
-              weight={Weight.MEDIUM}
-              color={colorVars.solid.translucent.white._50}
+            <Typo.Medium
+              weight={Weight.SEMIBOLD}
+              color={colorVars.solid.translucent.white._95}
             >
-              {catchphrase}
-            </Typo.Base>
-            <Icon
-              name={GlyphIcon.ARROW_FORWARD}
-              color={colorVars.solid.translucent.white._50}
-              size={18}
-            />
+              {title}
+            </Typo.Medium>
+            <HStack spacing={spacingVars.mini}>
+              <Typo.Base
+                weight={Weight.MEDIUM}
+                color={colorVars.solid.translucent.white._50}
+              >
+                {catchphrase}
+              </Typo.Base>
+              <Icon
+                name={GlyphIcon.ARROW_FORWARD}
+                color={colorVars.solid.translucent.white._50}
+                size={18}
+              />
+            </HStack>
           </HStack>
-        </HStack>
+        </AspectRatio>
       </Box>
     </>
   );
