@@ -7,7 +7,8 @@ import {
   colorVars,
   GlyphIcon,
   HStack,
-  Segment,
+  Input,
+  InputSize,
   spacingVars,
   StackAlign,
   Typo,
@@ -30,6 +31,7 @@ export default function HomeworkDetailContentSection(props: HomeworkDetailConten
       <VStack
         spacing={spacingVars.base}
         className={s.detail}
+        align={StackAlign.START}
         fullWidth
       >
         <VStack
@@ -56,6 +58,7 @@ export default function HomeworkDetailContentSection(props: HomeworkDetailConten
           spacing={spacingVars.tiny}
           align={StackAlign.START}
           fullWidth
+          className={s.fileUpload}
         >
           <Typo.Tiny
             weight={Weight.MEDIUM}
@@ -63,25 +66,11 @@ export default function HomeworkDetailContentSection(props: HomeworkDetailConten
           >
             첨부 파일
           </Typo.Tiny>
-          <HStack spacing={spacingVars.tiny}>
-            <Button.Default
-              leadingIcon={GlyphIcon.UPLOAD}
-              size={ButtonSize.SMALL}
-              variant={ButtonVariant.SECONDARY}
-            >
-              첨부파일 업로드
-            </Button.Default>
-            <Segment
-              leadingIcon={GlyphIcon.CODE}
-              label={'App.tsx'}
-              value={'App.tsx'}
-            />
-            <Segment
-              leadingIcon={GlyphIcon.FOLDER}
-              label={'assets'}
-              value={'assets'}
-            />
-          </HStack>
+          <Input.File
+            size={InputSize.MEDIUM}
+            leadingIcon={GlyphIcon.UPLOAD}
+            placeholder={'과제 파일 업로드'}
+          />
         </VStack>
       </VStack>
       <HStack spacing={spacingVars.petite}>

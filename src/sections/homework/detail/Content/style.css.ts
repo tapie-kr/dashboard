@@ -7,3 +7,7 @@ export const detail = style({
   borderRadius: radiusVars.smooth,
   padding: spacingVars.base,
 });
+
+export const fileUpload = style({
+  width: 250,
+});
