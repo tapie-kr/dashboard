@@ -17,12 +17,8 @@ export const content = style({
 export const imageContainer = style({
   borderRadius: radiusVars.smooth,
   overflow: 'hidden',
-});
-
-export const image = style({
-  position: 'relative',
-  ':before': {
-    content: '',
+  '::before': {
+    content: '""',
     position: 'absolute',
     top: 0,
     left: 0,
@@ -30,7 +26,10 @@ export const image = style({
     zIndex: 1,
     width: '100%',
     height: '100%',
-    background: 'rgba(0, 0, 0, 0.5)',
-    backdropFilter: 'blur(10px)',
+    backdropFilter: 'blur(4px)',
   },
+});
+
+export const image = style({
+  position: 'relative',
 });
