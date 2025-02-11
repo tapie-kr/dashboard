@@ -13,7 +13,6 @@ import {
   Icon,
   IconButton,
   spacingVars,
-  Stack,
   StackAlign,
   StackDirection,
   StackJustify,
@@ -23,7 +22,7 @@ import {
   VStack,
   Weight,
 } from '@tapie-kr/inspire-react';
-import cn from 'classnames';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { getPath } from '@/lib/pathmap';
@@ -38,11 +37,10 @@ export default function Sidebar() {
   };
 
   return (
-    <VStack
-      fullWidth
-      fullHeight
-      className={cn(s.base, { [s.collapsed]: collapsed })}
-      spacing={spacingVars.base}
+    <motion.div
+      animate={{ width: collapsed ? 60 : 250 }}
+      transition={{ duration: 0.3 }}
+      className={s.base}
     >
       <VStack
         fullWidth
@@ -50,12 +48,15 @@ export default function Sidebar() {
         justify={StackJustify.START}
         spacing={spacingVars.moderate}
       >
-        <Stack
-          direction={collapsed ? StackDirection.COLUMN : StackDirection.ROW}
-          fullWidth
+        <motion.div
           className={s.header}
-          justify={StackJustify.BETWEEN}
-          spacing={collapsed ? spacingVars.base : 0}
+          animate={{
+            flexDirection: collapsed ? StackDirection.COLUMN : StackDirection.ROW,
+          }}
+          transition={{ delay: collapsed ? 0.2 : 0, duration: 0.3 }}
+          style={{
+            gap: collapsed ? spacingVars.base : 0,
+          }}
         >
           <Link href={getPath(pathMap.home)}>
             <TAPIESymbol size={TAPIESymbolSize._24} />
@@ -66,7 +67,7 @@ export default function Sidebar() {
             color={colorVars.content.default}
             onClick={handleTogglePanel}
           />
-        </Stack>
+        </motion.div>
         {!collapsed && <SidebarContent />}
       </VStack>
       <HStack
@@ -93,6 +94,6 @@ export default function Sidebar() {
           variant={ButtonVariant.SECONDARY}
         />
       </HStack>
-    </VStack>
+    </motion.div>
   );
 }

@@ -2,15 +2,19 @@ import { colorVars, getShorthandedValue, spacingVars } from '@tapie-kr/inspire-r
 import { style } from '@vanilla-extract/css';
 
 export const base = style({
-  width: 250,
   padding: spacingVars.micro,
   borderRight: getShorthandedValue('1px', 'solid', colorVars.line.border),
   background: colorVars.surface.default,
   zIndex: 99999,
-});
 
-export const collapsed = style({
-  width: 'fit-content',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+
+  height: '100%',
+
+  gap: spacingVars.base,
 });
 
 export const logo = style({
@@ -18,6 +22,10 @@ export const logo = style({
 });
 
 export const header = style({
+  width: '100%',
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
   padding: spacingVars.micro,
 });
 
