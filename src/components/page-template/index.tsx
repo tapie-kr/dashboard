@@ -1,7 +1,9 @@
+'use client';
+
 import * as s from './style.css';
 
 import { HStack, spacingVars, StackJustify, VStack } from '@tapie-kr/inspire-react';
-import * as motion from 'motion/react-client';
+import { motion } from 'framer-motion';
 import Header, { type HeaderProps } from '../header';
 
 interface PageTemplateProps extends HeaderProps {
@@ -29,7 +31,7 @@ export default function PageTemplate(props: PageTemplateProps) {
         y: 0,
       }}
       transition={{
-        duration: 0.3,
+        duration: 0.5,
       }}
     >
       <VStack

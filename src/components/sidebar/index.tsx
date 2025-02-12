@@ -22,7 +22,7 @@ import {
   VStack,
   Weight,
 } from '@tapie-kr/inspire-react';
-import { motion } from 'motion/react';
+import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { getPath } from '@/lib/pathmap';
@@ -39,6 +39,7 @@ export default function Sidebar() {
   return (
     <motion.div
       initial={{ width: 250 }}
+      layout
       animate={{ width: collapsed ? 60 : 250 }}
       transition={{ duration: 0.24 }}
       className={s.base}
@@ -69,26 +70,71 @@ export default function Sidebar() {
             onClick={handleTogglePanel}
           />
         </motion.div>
-        {!collapsed && <SidebarContent />}
+        <AnimatePresence>
+          {!collapsed && (
+            <motion.div
+              style={{
+                width: '100%',
+              }}
+              initial={{
+                opacity: 0,
+              }}
+              animate={{
+                opacity: 1,
+              }}
+              exit={{
+                opacity: 0,
+              }}
+              transition={{
+                duration: 0.2,
+              }}
+            >
+              <SidebarContent />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </VStack>
       <HStack
         fullWidth
         justify={StackJustify.BETWEEN}
         className={s.footer}
       >
-        {!collapsed && (
-          <HStack
-            className={s.info}
-            spacing={spacingVars.tiny}
-            align={StackAlign.CENTER}
-          >
-            <Typo.Base weight={Weight.MEDIUM}>관리자님</Typo.Base>
-            <Badge.Default
-              size={BadgeSize.SMALL}
-              label={'역할'}
-            />
-          </HStack>
-        )}
+        <AnimatePresence>
+          {!collapsed && (
+            <motion.div
+              initial={{
+                opacity: 0,
+                y: 20,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              exit={{
+                opacity: 0,
+                y: 20,
+              }}
+              transition={{
+                duration: 0.5,
+                type: 'spring',
+                stiffness: 500,
+                damping: 30,
+              }}
+            >
+              <HStack
+                className={s.info}
+                spacing={spacingVars.tiny}
+                align={StackAlign.CENTER}
+              >
+                <Typo.Base weight={Weight.MEDIUM}>관리자님</Typo.Base>
+                <Badge.Default
+                  size={BadgeSize.SMALL}
+                  label={'역할'}
+                />
+              </HStack>
+            </motion.div>
+          )}
+        </AnimatePresence>
         <IconButton
           icon={GlyphIcon.LOGOUT}
           size={ButtonSize.SMALL}
