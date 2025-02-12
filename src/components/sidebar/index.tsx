@@ -22,7 +22,7 @@ import {
   VStack,
   Weight,
 } from '@tapie-kr/inspire-react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { getPath } from '@/lib/pathmap';
@@ -38,8 +38,9 @@ export default function Sidebar() {
 
   return (
     <motion.div
+      initial={{ width: 250 }}
       animate={{ width: collapsed ? 60 : 250 }}
-      transition={{ duration: 0.3 }}
+      transition={{ duration: 0.24 }}
       className={s.base}
     >
       <VStack
