@@ -3,7 +3,7 @@
 import * as s from './style.css';
 
 import { HStack, spacingVars, StackJustify, VStack } from '@tapie-kr/inspire-react';
-import { motion } from 'framer-motion';
+import { AnimatedVStack } from '@/lib/animate';
 import Header, { type HeaderProps } from '../header';
 
 interface PageTemplateProps extends HeaderProps {
@@ -21,7 +21,7 @@ export default function PageTemplate(props: PageTemplateProps) {
   } = props;
 
   return (
-    <motion.div
+    <AnimatedVStack
       initial={{
         opacity: 0,
         y: 20,
@@ -33,33 +33,30 @@ export default function PageTemplate(props: PageTemplateProps) {
       transition={{
         duration: 0.5,
       }}
+      fullWidth
+      justify={StackJustify.START}
+      className={s.base}
     >
       <VStack
         fullWidth
-        justify={StackJustify.START}
-        className={s.base}
+        className={s.container}
+        spacing={spacingVars.jumbo}
       >
-        <VStack
+        <HStack
           fullWidth
-          className={s.container}
-          spacing={spacingVars.jumbo}
+          justify={StackJustify.START}
         >
-          <HStack
-            fullWidth
-            justify={StackJustify.START}
-          >
-            <Header
-              title={title}
-              count={count}
-              hasCount={hasCount}
-              hasSearch={hasSearch}
-              searchValue={searchValue}
-              onChangeSearchValue={handleSearchValue}
-            />
-          </HStack>
-          {props.children}
-        </VStack>
+          <Header
+            title={title}
+            count={count}
+            hasCount={hasCount}
+            hasSearch={hasSearch}
+            searchValue={searchValue}
+            onChangeSearchValue={handleSearchValue}
+          />
+        </HStack>
+        {props.children}
       </VStack>
-    </motion.div>
+    </AnimatedVStack>
   );
 }

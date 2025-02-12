@@ -1,11 +1,24 @@
-import { spacingVars, VStack } from '@tapie-kr/inspire-react';
+import { spacingVars } from '@tapie-kr/inspire-react';
+import { AnimatedVStack } from '@/lib/animate';
 import { pathMap } from '@/lib/pathmap/map';
 import SidebarItem from '../item';
 import SidebarItemGroup from '../item-group';
 
 export default function SidebarContent() {
   return (
-    <VStack
+    <AnimatedVStack
+      initial={{
+        opacity: 0,
+      }}
+      animate={{
+        opacity: 1,
+      }}
+      exit={{
+        opacity: 0,
+      }}
+      transition={{
+        duration: 0.2,
+      }}
       fullWidth
       spacing={spacingVars.base}
     >
@@ -26,6 +39,6 @@ export default function SidebarContent() {
         <SidebarItem href={pathMap.statistics} />
         <SidebarItem href={pathMap.metadata} />
       </SidebarItemGroup>
-    </VStack>
+    </AnimatedVStack>
   );
 }

@@ -25,6 +25,7 @@ import {
 import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';
 import React, { useState } from 'react';
+import { AnimatedHStack } from '@/lib/animate';
 import { getPath } from '@/lib/pathmap';
 import { pathMap } from '@/lib/pathmap/map';
 import SidebarContent from './content';
@@ -70,29 +71,7 @@ export default function Sidebar() {
             onClick={handleTogglePanel}
           />
         </motion.div>
-        <AnimatePresence>
-          {!collapsed && (
-            <motion.div
-              style={{
-                width: '100%',
-              }}
-              initial={{
-                opacity: 0,
-              }}
-              animate={{
-                opacity: 1,
-              }}
-              exit={{
-                opacity: 0,
-              }}
-              transition={{
-                duration: 0.2,
-              }}
-            >
-              <SidebarContent />
-            </motion.div>
-          )}
-        </AnimatePresence>
+        <AnimatePresence>{!collapsed && <SidebarContent />}</AnimatePresence>
       </VStack>
       <HStack
         fullWidth
@@ -101,7 +80,7 @@ export default function Sidebar() {
       >
         <AnimatePresence>
           {!collapsed && (
-            <motion.div
+            <AnimatedHStack
               initial={{
                 opacity: 0,
                 y: 20,
@@ -120,19 +99,16 @@ export default function Sidebar() {
                 stiffness: 500,
                 damping: 30,
               }}
+              className={s.info}
+              spacing={spacingVars.tiny}
+              align={StackAlign.CENTER}
             >
-              <HStack
-                className={s.info}
-                spacing={spacingVars.tiny}
-                align={StackAlign.CENTER}
-              >
-                <Typo.Base weight={Weight.MEDIUM}>관리자님</Typo.Base>
-                <Badge.Default
-                  size={BadgeSize.SMALL}
-                  label={'역할'}
-                />
-              </HStack>
-            </motion.div>
+              <Typo.Base weight={Weight.MEDIUM}>관리자님</Typo.Base>
+              <Badge.Default
+                size={BadgeSize.SMALL}
+                label={'역할'}
+              />
+            </AnimatedHStack>
           )}
         </AnimatePresence>
         <IconButton

@@ -13,7 +13,9 @@ import {
   Weight,
 } from '@tapie-kr/inspire-react';
 import cn from 'classnames';
+import { AnimatePresence } from 'framer-motion';
 import { usePathname, useRouter } from 'next/navigation';
+import { AnimatedVStack } from '@/lib/animate';
 import { getPath, getSubItems } from '@/lib/pathmap';
 import { type PathNode } from '@/lib/pathmap/types';
 import SidebarSubItem from '../sub-item';
@@ -63,25 +65,30 @@ export default function SidebarItem(props: SidebarItemProps) {
           </Typo.Petite>
         </HStack>
       </HStack>
-      {isActive && subItems.length > 0 && (
-        <VStack
-          fullWidth
-          className={s.subItems}
-          spacing={spacingVars.optical}
-        >
-          {subItems.map(subItem => {
-            const path = hrefPath + '/' + subItem.href;
+      <AnimatePresence>
+        {isActive && subItems.length > 0 && (
+          <AnimatedVStack
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 20 }}
+            fullWidth
+            className={s.subItems}
+            spacing={spacingVars.optical}
+          >
+            {subItems.map(subItem => {
+              const path = hrefPath + '/' + subItem.href;
 
-            return (
-              <SidebarSubItem
-                key={path}
-                title={subItem.title}
-                href={path}
-              />
-            );
-          })}
-        </VStack>
-      )}
+              return (
+                <SidebarSubItem
+                  key={path}
+                  title={subItem.title}
+                  href={path}
+                />
+              );
+            })}
+          </AnimatedVStack>
+        )}
+      </AnimatePresence>
     </VStack>
   );
 }
