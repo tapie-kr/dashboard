@@ -78,39 +78,30 @@ export default function Sidebar() {
         justify={StackJustify.BETWEEN}
         className={s.footer}
       >
-        <AnimatePresence>
-          {!collapsed && (
-            <AnimatedHStack
-              initial={{
-                opacity: 0,
-                y: 20,
-              }}
-              animate={{
-                opacity: 1,
-                y: 0,
-              }}
-              exit={{
-                opacity: 0,
-                y: 20,
-              }}
-              transition={{
-                duration: 0.5,
-                type: 'spring',
-                stiffness: 500,
-                damping: 30,
-              }}
-              className={s.info}
-              spacing={spacingVars.tiny}
-              align={StackAlign.CENTER}
-            >
-              <Typo.Base weight={Weight.MEDIUM}>관리자님</Typo.Base>
-              <Badge.Default
-                size={BadgeSize.SMALL}
-                label={'역할'}
-              />
-            </AnimatedHStack>
-          )}
-        </AnimatePresence>
+        {!collapsed && (
+          <AnimatedHStack
+            initial={{
+              opacity: 0,
+              y: 20,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            transition={{
+              duration: 0.24,
+            }}
+            className={s.info}
+            spacing={spacingVars.tiny}
+            align={StackAlign.CENTER}
+          >
+            <Typo.Base weight={Weight.MEDIUM}>관리자님</Typo.Base>
+            <Badge.Default
+              size={BadgeSize.SMALL}
+              label={'역할'}
+            />
+          </AnimatedHStack>
+        )}
         <IconButton
           icon={GlyphIcon.LOGOUT}
           size={ButtonSize.SMALL}
