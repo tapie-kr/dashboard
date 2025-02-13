@@ -39,7 +39,7 @@ export default function ApplicationCard(props: ApplicationCardProps) {
   const router = useRouter();
 
   const handleNavigate = () => {
-    router.push(resolvePath(pathMap.application, 3));
+    router.push(resolvePath(pathMap.application, 3, 4));
   };
 
   return (
