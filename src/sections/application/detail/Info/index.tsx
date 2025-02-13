@@ -20,6 +20,7 @@ import { getUnitIcon } from '@/lib/enum/utils';
 
 type PersonalInfo = {
   name: string;
+  studentId: number;
   googleEmail: string;
   phoneNumber: string;
 };
@@ -50,6 +51,7 @@ export default function ApplicationDetailInfoSection(props: ApplicationDetailInf
         title={'개인 정보'}
         content={[
           { label: '이름', value: personalInfo.name },
+          { label: '학번', value: personalInfo.studentId.toString() },
           { label: '구글 이메일', value: personalInfo.googleEmail },
           { label: '전화번호', value: personalInfo.phoneNumber },
         ]}

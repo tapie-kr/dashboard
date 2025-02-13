@@ -16,6 +16,7 @@ export default function ApplicationDetailResponsePage() {
         <ApplicationDetailInfoSection
           personalInfo={{
             name: '권지원',
+            studentId: 10404,
             googleEmail: '24sunrin064@sunrint.hs.kr',
             phoneNumber: '010-2310-4403',
           }}
