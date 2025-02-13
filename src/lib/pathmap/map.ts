@@ -40,7 +40,7 @@ export const pathMap = {
   application: {
     index: '신청폼',
     fallback: {
-      index: '신청폼 상세',
+      index: '신청폼 응답',
       fallback: {
         index: '신청폼 응답 상세',
       },
