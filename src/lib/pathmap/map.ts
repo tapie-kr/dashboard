@@ -12,26 +12,39 @@ export const pathMap = {
   },
   homework: {
     index: '과제',
-    fallback: '수업 상세',
+    fallback: {
+      index: '수업 상세',
+    },
   },
   attendance: {
     index: '출석',
   },
   member: {
     index: '부원',
-    fallback: '부원 상세',
+    fallback: {
+      index: '부원 상세',
+    },
   },
   portfolio: {
     index: '포트폴리오',
-    fallback: '포트폴리오 상세',
+    fallback: {
+      index: '포트폴리오 상세',
+    },
   },
   achievement: {
     index: '수상실적',
-    fallback: '수상실적 상세',
+    fallback: {
+      index: '수상실적 상세',
+    },
   },
   application: {
     index: '신청폼',
-    fallback: '상세',
+    fallback: {
+      index: '신청폼 상세',
+      fallback: {
+        index: '신청폼 응답 상세',
+      },
+    },
   },
   announcement: {
     index: '공지사항',

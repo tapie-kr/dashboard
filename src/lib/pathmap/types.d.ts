@@ -2,7 +2,7 @@ import { type pathMap } from './map';
 
 type BasePathNode = {
   index: string;
-  fallback?: string;
+  fallback?: BasePathNode;
 };
 
 type PathNode = {

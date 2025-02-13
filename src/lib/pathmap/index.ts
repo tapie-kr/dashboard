@@ -89,7 +89,6 @@ export const getPathList = (path: string): { title: string; href: string }[] => 
 
   const segments = path.split('/').filter(Boolean);
   const result: { title: string; href: string }[] = [];
-
   let currentNode: PathNode | undefined;
 
   segments.forEach((segment, index) => {
@@ -112,18 +111,28 @@ export const getPathList = (path: string): { title: string; href: string }[] => 
     if (!currentNode) return;
 
     const nextNode = currentNode[segment];
-
     if (isPathNode(nextNode)) {
       result.push({
         title: nextNode.index || segment,
         href: currentPath,
       });
       currentNode = nextNode;
-    } else if (index === segments.length - 1) {
-      result.push({
-        title: currentNode.fallback || segment,
-        href: currentPath,
-      });
+    } else {
+      let fallbackNode = currentNode;
+      let depth = 0;
+      let remainingSegments = segments.length - index;
+
+      while (fallbackNode?.fallback && remainingSegments > 0) {
+        const fallbackPath = '/' + segments.slice(0, index + depth + 1).join('/');
+        result.push({
+          title: fallbackNode.fallback.index || segments[index + depth],
+          href: fallbackPath,
+        });
+        fallbackNode = fallbackNode.fallback;
+        remainingSegments--;
+        depth++;
+      }
+
       currentNode = undefined;
     }
   });
@@ -131,6 +140,9 @@ export const getPathList = (path: string): { title: string; href: string }[] => 
   return result;
 };
 
-export const resolvePath = (pathNode: PathNode, segment: string | number | boolean): string => {
-  return getPath(pathNode) + '/' + segment;
+export const resolvePath = (
+  pathNode: PathNode,
+  ...segments: (string | number | boolean)[]
+): string => {
+  return getPath(pathNode) + '/' + segments.join('/');
 };
