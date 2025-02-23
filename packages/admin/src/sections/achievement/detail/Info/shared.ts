@@ -1,4 +1,4 @@
-import { type Member } from '@tapie-kr/dashboard-shared/lib/types';
+import { Member } from '@/lib/types';
 
 export interface AchievementDetailInfo {
   member: Member;
