@@ -10,6 +10,7 @@
     "prettier": "prettier --write . --log-level warn",
     "lint": "eslint . --fix",
     "admin": "pnpm --filter @tapie-kr/admin-dashboard",
+    "member": "pnpm --filter @tapie-kr/member-dashboard",
     "shared": "pnpm --filter @tapie-kr/dashboard-shared"
   },
   "devDependencies": {
