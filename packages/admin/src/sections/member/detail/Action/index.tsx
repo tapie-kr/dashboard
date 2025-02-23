@@ -18,8 +18,8 @@ export default function MemberDetailActionSection() {
     >
       <Button.Default leadingIcon={GlyphIcon.INBOX}>신청폼 조회</Button.Default>
       <HStack spacing={spacingVars.petite}>
-        <Footnote text={'2025-01-01 제출됨'} />
-        <Footnote text={'2025-01-01 수정됨'} />
+        <Footnote text='2025-01-01 제출됨' />
+        <Footnote text='2025-01-01 수정됨' />
       </HStack>
     </VStack>
   );

@@ -1,19 +1,23 @@
-import { colorVars, getShorthandedValue, radiusVars, spacingVars } from '@tapie-kr/inspire-react';
+import {
+  colorVars,
+  getShorthandedValue,
+  radiusVars,
+  spacingVars,
+} from '@tapie-kr/inspire-react';
+
 import { style } from '@vanilla-extract/css';
 
 export const base = style({
-  width: 250,
-  padding: spacingVars.base,
+  width:        250,
+  padding:      spacingVars.base,
   borderRadius: radiusVars.smooth,
-  border: getShorthandedValue('1px', 'solid', colorVars.line.border),
-  background: colorVars.surface.default,
+  border:       getShorthandedValue('1px', 'solid', colorVars.line.border),
+  background:   colorVars.surface.default,
 });
 
 export const preview = style({
   borderRadius: radiusVars.subtle,
-  overflow: 'hidden',
+  overflow:     'hidden',
 });
 
-export const previewNoImage = style({
-  background: colorVars.surface.raised,
-});
+export const previewNoImage = style({ background: colorVars.surface.raised });

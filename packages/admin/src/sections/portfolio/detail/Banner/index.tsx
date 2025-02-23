@@ -13,31 +13,35 @@ import {
 } from '@tapie-kr/inspire-react';
 
 interface PortfolioDetailBannerSectionProps {
-  title: string;
-  image: string;
+  title:       string;
+  image:       string;
   catchphrase: string;
 }
 
 import * as s from './style.css';
 
 export default function PortfolioDetailBannerSection(props: PortfolioDetailBannerSectionProps) {
-  const { title, image, catchphrase } = props;
+  const {
+    title,
+    image,
+    catchphrase,
+  } = props;
 
   return (
     <>
       <Box className={s.base}>
         <AspectRatio
-          ratio={694 / 250}
           fullWidth
           fullHeight
+          ratio={694 / 250}
           className={s.imageContainer}
         >
           <Image
+            fullWidth
+            fullHeight
             className={s.image}
             src={image}
             alt={title}
-            fullWidth
-            fullHeight
           />
           <HStack
             spacing={spacingVars.base}

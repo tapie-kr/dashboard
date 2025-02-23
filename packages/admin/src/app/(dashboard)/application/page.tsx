@@ -17,11 +17,11 @@ import {
 import Page from '@/components/page';
 
 import { Temporal } from '@js-temporal/polyfill';
+import { Status } from '@tapie-kr/dashboard-shared/lib/enum';
+import { getStatusFilterGroup, getStatusIcon, getStatusTheme } from '@tapie-kr/dashboard-shared/lib/enum/utils';
 import { getDatetimeString } from '@tapie-kr/dashboard-shared/lib/utils/date';
 import { useRouter } from 'next/navigation';
 import { type ChangeEvent, useState } from 'react';
-import { Status } from '@/lib/enum';
-import { getStatusFilterGroup, getStatusIcon, getStatusTheme } from '@/lib/enum/utils';
 import { path, pathMap } from '@/lib/pathmap';
 
 interface DataType {

@@ -11,9 +11,9 @@ import ApplicationCard from '@/components/card/application';
 import Page from '@/components/page';
 
 import { Temporal } from '@js-temporal/polyfill';
+import { Unit } from '@tapie-kr/dashboard-shared/lib/enum';
+import { getUnitFilterGroup } from '@tapie-kr/dashboard-shared/lib/enum/utils';
 import { type ChangeEvent, useState } from 'react';
-import { Unit } from '@/lib/enum';
-import { getUnitFilterGroup } from '@/lib/enum/utils';
 
 export default function ApplicationDetailPage() {
   const [searchValue, setSearchValue] = useState('');

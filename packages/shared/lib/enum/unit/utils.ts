@@ -1,4 +1,5 @@
 import { type FilterGroup, GlyphIcon, type IconName } from '@tapie-kr/inspire-react';
+
 import { Unit } from '.';
 
 export const getUnitIcon = (unit: Unit): IconName => {
@@ -6,7 +7,7 @@ export const getUnitIcon = (unit: Unit): IconName => {
     [key in Unit]: IconName;
   } = {
     [Unit.DEVELOPER]: GlyphIcon.CODE,
-    [Unit.DESIGNER]: GlyphIcon.BRUSH,
+    [Unit.DESIGNER]:  GlyphIcon.BRUSH,
   };
 
   return unitIcon[unit];
@@ -14,11 +15,11 @@ export const getUnitIcon = (unit: Unit): IconName => {
 
 export const getUnitFilterGroup = (): FilterGroup => {
   return {
-    label: '유닛',
+    label:   '유닛',
     options: Object.values(Unit).map(unit => ({
       label: unit,
       value: unit,
-      icon: getUnitIcon(unit),
+      icon:  getUnitIcon(unit),
     })),
   };
 };

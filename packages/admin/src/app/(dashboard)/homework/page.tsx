@@ -20,15 +20,15 @@ import {
 } from '@tapie-kr/inspire-react';
 import Page from '@/components/page';
 
-import { useRouter } from 'next/navigation';
-import { type ChangeEvent, useState } from 'react';
-import { Status, Unit } from '@/lib/enum';
+import { Status, Unit } from '@tapie-kr/dashboard-shared/lib/enum';
 import {
   getContestFilterGroup,
   getStatusIcon,
   getStatusTheme,
   getUnitIcon,
-} from '@/lib/enum/utils';
+} from '@tapie-kr/dashboard-shared/lib/enum/utils';
+import { useRouter } from 'next/navigation';
+import { type ChangeEvent, useState } from 'react';
 import { path, pathMap } from '@/lib/pathmap';
 
 interface HomeworkDateType {

@@ -15,33 +15,37 @@ import {
   Weight,
 } from '@tapie-kr/inspire-react';
 
+import { type Unit } from '@tapie-kr/dashboard-shared/lib/enum';
+import { getUnitIcon } from '@tapie-kr/dashboard-shared/lib/enum/utils';
 import { type JSX } from 'react';
-import { type Unit } from '../../../../lib/enum';
-import { getUnitIcon } from '../../../../lib/enum/utils';
 
 type PersonalInfo = {
-  name: string;
-  studentId: number;
+  name:        string;
+  studentId:   number;
   googleEmail: string;
   phoneNumber: string;
 };
 
 type ApplicationInfo = {
-  unit: Unit;
-  introduction: string;
-  motivation: string;
+  unit:               Unit;
+  introduction:       string;
+  motivation:         string;
   expectedActivities: string;
-  reasonToChoose: string;
+  reasonToChoose:     string;
 };
 
 interface ApplicationDetailInfoSectionProps {
-  personalInfo: PersonalInfo;
+  personalInfo:    PersonalInfo;
   applicationInfo: ApplicationInfo;
-  portfolio: string[];
+  portfolio:       string[];
 }
 
 export default function ApplicationDetailInfoSection(props: ApplicationDetailInfoSectionProps) {
-  const { personalInfo, applicationInfo, portfolio } = props;
+  const {
+    personalInfo,
+    applicationInfo,
+    portfolio,
+  } = props;
 
   return (
     <VStack
@@ -75,8 +79,8 @@ export default function ApplicationDetailInfoSection(props: ApplicationDetailInf
         spacing={spacingVars.moderate}
         content={[
           {
-            label: '유닛',
-            value: applicationInfo.unit,
+            label:  '유닛',
+            value:  applicationInfo.unit,
             render: () => (
               <Badge.Default
                 size={BadgeSize.SMALL}
@@ -130,19 +134,23 @@ export default function ApplicationDetailInfoSection(props: ApplicationDetailInf
 }
 
 type InfoGroupContent = {
-  label: string;
-  value: string;
+  label:   string;
+  value:   string;
   render?: () => JSX.Element;
 };
 
 interface InfoGroupProps {
-  title: string;
+  title:   string;
   content: InfoGroupContent[];
   spacing: string;
 }
 
 function InfoGroup(props: InfoGroupProps) {
-  const { title, content, spacing } = props;
+  const {
+    title,
+    content,
+    spacing,
+  } = props;
 
   return (
     <VStack
@@ -180,16 +188,16 @@ function InfoGroup(props: InfoGroupProps) {
               align={StackAlign.START}
               className={s.content}
             >
-              {item.render ? (
-                item.render()
-              ) : (
-                <Typo.Micro
-                  weight={Weight.MEDIUM}
-                  color={colorVars.content.muted}
-                >
-                  {item.value}
-                </Typo.Micro>
-              )}
+              {item.render
+                ?                 item.render()
+                : (
+                  <Typo.Micro
+                    weight={Weight.MEDIUM}
+                    color={colorVars.content.muted}
+                  >
+                    {item.value}
+                  </Typo.Micro>
+                )}
             </HStack>
           </HStack>
         ))}

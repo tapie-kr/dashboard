@@ -29,15 +29,15 @@ export default function HomeworkDetailContentSection(props: HomeworkDetailConten
       align={StackAlign.START}
     >
       <VStack
+        fullWidth
         spacing={spacingVars.base}
         className={s.detail}
         align={StackAlign.START}
-        fullWidth
       >
         <VStack
+          fullWidth
           spacing={spacingVars.tiny}
           align={StackAlign.START}
-          fullWidth
         >
           <Typo.Tiny
             weight={Weight.MEDIUM}
@@ -55,9 +55,9 @@ export default function HomeworkDetailContentSection(props: HomeworkDetailConten
           </Typo.Micro>
         </VStack>
         <VStack
+          fullWidth
           spacing={spacingVars.tiny}
           align={StackAlign.START}
-          fullWidth
           className={s.fileUpload}
         >
           <Typo.Tiny
@@ -69,7 +69,7 @@ export default function HomeworkDetailContentSection(props: HomeworkDetailConten
           <Input.File
             size={InputSize.MEDIUM}
             leadingIcon={GlyphIcon.UPLOAD}
-            placeholder={'과제 파일 업로드'}
+            placeholder='과제 파일 업로드'
           />
         </VStack>
       </VStack>

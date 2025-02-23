@@ -11,8 +11,8 @@ import AttendanceCard from '@/components/card/attendance';
 import AttendanceStatCard from '@/components/card/attendance/stat';
 import Page from '@/components/page';
 
+import { getContestFilterGroup } from '@tapie-kr/dashboard-shared/lib/enum/utils';
 import { AttendanceUnit } from '@/components/card/attendance/shared';
-import { getContestFilterGroup } from '@/lib/enum/utils';
 
 const attendanceData = [
   {

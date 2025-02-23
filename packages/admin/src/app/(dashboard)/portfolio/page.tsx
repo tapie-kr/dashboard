@@ -11,8 +11,8 @@ import {
 import PortfolioCard from '@/components/card/portfolio';
 import Page from '@/components/page';
 
+import { getContestFilterGroup, getStatusFilterGroup } from '@tapie-kr/dashboard-shared/lib/enum/utils';
 import { type ChangeEvent, useState } from 'react';
-import { getContestFilterGroup, getStatusFilterGroup } from '@/lib/enum/utils';
 
 export default function PortfolioPage() {
   const [searchValue, setSearchValue] = useState('');

@@ -14,9 +14,9 @@ import HomeworkCard from '@/components/card/homework';
 import Page from '@/components/page';
 
 import { Temporal } from '@js-temporal/polyfill';
+import { Unit } from '@tapie-kr/dashboard-shared/lib/enum';
+import { getContestFilterGroup } from '@tapie-kr/dashboard-shared/lib/enum/utils';
 import { use } from 'react';
-import { Unit } from '@/lib/enum';
-import { getContestFilterGroup } from '@/lib/enum/utils';
 import HomeworkDetailContentSection from '@/sections/homework/detail/Content';
 import { homeworkData } from '../page';
 

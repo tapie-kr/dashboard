@@ -12,25 +12,34 @@ import {
   Weight,
 } from '@tapie-kr/inspire-react';
 
-import { type Executive, type Unit } from '../../../../lib/enum';
-import { getExecutiveIcon, getExecutiveTheme } from '../../../../lib/enum/utils';
-import { type Member } from '../../../../lib/types';
-import { getMemberString } from '../../../../lib/types/utils';
+import { type Executive, type Unit } from '@tapie-kr/dashboard-shared/lib/enum';
+import { getExecutiveIcon, getExecutiveTheme } from '@tapie-kr/dashboard-shared/lib/enum/utils';
 
 interface MemberDetailSummarySectionProps {
   profileImage: string;
-  member: Member;
-  unit: Unit;
-  executive?: Executive;
-  generation: number;
+  member:       Member;
+  unit:         Unit;
+  executive?:   Executive;
+  generation:   number;
   isGraduated?: boolean;
-  stats: [number, number, number, number];
+  stats:        [number, number, number, number];
 }
 
 import * as s from './style.css';
 
+import { Member } from '@/lib/types';
+import { getMemberString } from '@/lib/types/utils';
+
 export default function MemberDetailSummarySection(props: MemberDetailSummarySectionProps) {
-  const { profileImage, member, unit, executive, generation, isGraduated = false, stats } = props;
+  const {
+    profileImage,
+    member,
+    unit,
+    executive,
+    generation,
+    isGraduated = false,
+    stats,
+  } = props;
 
   return (
     <HStack spacing={spacingVars.giant}>
@@ -76,15 +85,18 @@ export default function MemberDetailSummarySection(props: MemberDetailSummarySec
         </VStack>
       </HStack>
       <HStack spacing={spacingVars.moderate}>
-        {['프로필 조회수', '포트폴리오 개수', '수상실적 개수', '기술 스택 개수'].map(
-          (label, index) => (
-            <Stat
-              key={index}
-              label={label}
-              value={stats[index]}
-            />
-          ),
-        )}
+        {[
+          '프로필 조회수',
+          '포트폴리오 개수',
+          '수상실적 개수',
+          '기술 스택 개수',
+        ].map((label, index) => (
+          <Stat
+            key={index}
+            label={label}
+            value={stats[index]}
+          />
+        ))}
       </HStack>
     </HStack>
   );

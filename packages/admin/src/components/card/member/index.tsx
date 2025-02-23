@@ -17,9 +17,9 @@ import {
   Weight,
 } from '@tapie-kr/inspire-react';
 
+import { type Executive, type Unit } from '@tapie-kr/dashboard-shared/lib/enum';
+import { getExecutiveIcon, getExecutiveTheme, getUnitIcon } from '@tapie-kr/dashboard-shared/lib/enum/utils';
 import { useRouter } from 'next/navigation';
-import { type Executive, type Unit } from '@/lib/enum';
-import { getExecutiveIcon, getExecutiveTheme, getUnitIcon } from '@/lib/enum/utils';
 import { path, pathMap } from '@/lib/pathmap';
 import { type Member } from '@/lib/types';
 import { getMemberString } from '@/lib/types/utils';

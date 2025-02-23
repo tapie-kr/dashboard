@@ -15,6 +15,7 @@ import {
   VStack,
   Weight,
 } from '@tapie-kr/inspire-react';
+
 import {
   getSkillIcon,
   type MemberInfoAwards,
@@ -26,52 +27,61 @@ import {
 
 interface MemberDetailInfoSectionProps {
   profileLink: MemberInfoProfileLink[];
-  awards: MemberInfoAwards[];
-  portfolio: MemberInfoPortfolio[];
-  skill: MemberInfoSkill[];
-  history: MemberInfoHistory[];
+  awards:      MemberInfoAwards[];
+  portfolio:   MemberInfoPortfolio[];
+  skill:       MemberInfoSkill[];
+  history:     MemberInfoHistory[];
 }
 
 export default function MemberDetailInfoSection(props: MemberDetailInfoSectionProps) {
-  const { profileLink, awards, portfolio, skill, history } = props;
+  const {
+    profileLink,
+    awards,
+    portfolio,
+    skill,
+    history,
+  } = props;
 
   return (
     <VStack spacing={spacingVars.jumbo}>
       <InfoItem
-        title={'프로필 링크'}
-        buttonText={'링크 추가'}
+        title='프로필 링크'
+        buttonText='링크 추가'
       >
         <DataTable
           showIndex
+          data={profileLink}
           actions={[
             {
-              icon: GlyphIcon.EDIT,
-              onClick: () => {},
+              icon:    GlyphIcon.EDIT,
+              onClick: () => {
+              },
             },
             {
-              icon: GlyphIcon.DELETE,
-              onClick: () => {},
+              icon:    GlyphIcon.DELETE,
+              onClick: () => {
+              },
             },
           ]}
           columns={[
             {
-              key: 'label',
-              label: '라벨',
-              width: 150,
+              key:        'label',
+              label:      '라벨',
+              width:      150,
               isSortable: true,
             },
             {
-              key: 'link',
-              label: '링크',
-              width: 300,
+              key:        'link',
+              label:      '링크',
+              width:      300,
               isSortable: true,
             },
             {
-              key: 'icon',
-              label: '아이콘',
-              width: 180,
+              key:        'icon',
+              label:      '아이콘',
+              width:      180,
               isSortable: true,
-              cell: (icon, _, data) => (
+              cell:       (icon, _, data) => (
                 <Badge.Default
                   leadingIcon={icon}
                   label={data.label}
@@ -79,148 +89,154 @@ export default function MemberDetailInfoSection(props: MemberDetailInfoSectionPr
               ),
             },
           ]}
-          data={profileLink}
         />
       </InfoItem>
       <InfoItem
-        title={'수상실적'}
-        buttonText={'수상실적 추가'}
+        title='수상실적'
+        buttonText='수상실적 추가'
       >
         <DataTable
           showIndex
-          actions={[
-            {
-              icon: GlyphIcon.EDIT,
-              onClick: () => {},
-            },
-            {
-              icon: GlyphIcon.DELETE,
-              onClick: () => {},
-            },
-          ]}
-          columns={[
-            {
-              key: 'contestName',
-              label: '대회 이름',
-              width: 250,
-              isSortable: true,
-            },
-            {
-              key: 'gradeLabel',
-              label: '등급 이름',
-              width: 130,
-              isSortable: true,
-            },
-            {
-              key: 'grade',
-              label: '등급',
-              width: 100,
-              isSortable: true,
-            },
-            {
-              key: 'memberCount',
-              label: '참여 인원',
-              width: 100,
-              isSortable: true,
-              cell: memberCount => `${memberCount}명`,
-            },
-          ]}
           data={awards}
-        />
-      </InfoItem>
-      <InfoItem
-        title={'포트폴리오'}
-        buttonText={'포트폴리오 추가'}
-      >
-        <DataTable
-          showIndex
           actions={[
             {
-              icon: GlyphIcon.EDIT,
-              onClick: () => {},
+              icon:    GlyphIcon.EDIT,
+              onClick: () => {
+              },
             },
             {
-              icon: GlyphIcon.DELETE,
-              onClick: () => {},
+              icon:    GlyphIcon.DELETE,
+              onClick: () => {
+              },
             },
           ]}
           columns={[
             {
-              key: 'title',
-              label: '이름',
-              width: 150,
+              key:        'contestName',
+              label:      '대회 이름',
+              width:      250,
               isSortable: true,
             },
             {
-              key: 'tags',
-              label: '태그',
-              width: 270,
+              key:        'gradeLabel',
+              label:      '등급 이름',
+              width:      130,
               isSortable: true,
-              cell: tags => (
+            },
+            {
+              key:        'grade',
+              label:      '등급',
+              width:      100,
+              isSortable: true,
+            },
+            {
+              key:        'memberCount',
+              label:      '참여 인원',
+              width:      100,
+              isSortable: true,
+              cell:       memberCount => `${memberCount}명`,
+            },
+          ]}
+        />
+      </InfoItem>
+      <InfoItem
+        title='포트폴리오'
+        buttonText='포트폴리오 추가'
+      >
+        <DataTable
+          showIndex
+          data={portfolio}
+          actions={[
+            {
+              icon:    GlyphIcon.EDIT,
+              onClick: () => {
+              },
+            },
+            {
+              icon:    GlyphIcon.DELETE,
+              onClick: () => {
+              },
+            },
+          ]}
+          columns={[
+            {
+              key:        'title',
+              label:      '이름',
+              width:      150,
+              isSortable: true,
+            },
+            {
+              key:        'tags',
+              label:      '태그',
+              width:      270,
+              isSortable: true,
+              cell:       tags => (
                 <HStack spacing={spacingVars.tiny}>
                   {tags.map((tag, index) => (
                     <Badge.Default
+                      key={index}
                       size={BadgeSize.SMALL}
                       label={tag.name}
                       leadingIcon={tag.icon}
-                      key={index}
                     />
                   ))}
                 </HStack>
               ),
             },
             {
-              key: 'memberCount',
-              label: '참여 인원',
-              width: 100,
+              key:        'memberCount',
+              label:      '참여 인원',
+              width:      100,
               isSortable: true,
-              cell: viewCount => `${viewCount}명`,
+              cell:       viewCount => `${viewCount}명`,
             },
             {
-              key: 'viewCount',
-              label: '조회수',
-              width: 100,
+              key:        'viewCount',
+              label:      '조회수',
+              width:      100,
               isSortable: true,
             },
             {
-              key: 'downloadCount',
-              label: '다운로드 횟수',
-              width: 100,
+              key:        'downloadCount',
+              label:      '다운로드 횟수',
+              width:      100,
               isSortable: true,
             },
           ]}
-          data={portfolio}
         />
       </InfoItem>
       <InfoItem
-        title={'기술'}
-        buttonText={'기술 추가'}
+        title='기술'
+        buttonText='기술 추가'
       >
         <DataTable
           showIndex
+          data={skill}
           actions={[
             {
-              icon: GlyphIcon.EDIT,
-              onClick: () => {},
+              icon:    GlyphIcon.EDIT,
+              onClick: () => {
+              },
             },
             {
-              icon: GlyphIcon.DELETE,
-              onClick: () => {},
+              icon:    GlyphIcon.DELETE,
+              onClick: () => {
+              },
             },
           ]}
           columns={[
             {
-              key: 'name',
-              label: '이름',
-              width: 200,
+              key:        'name',
+              label:      '이름',
+              width:      200,
               isSortable: true,
             },
             {
-              key: 'type',
-              label: '종류',
-              width: 180,
+              key:        'type',
+              label:      '종류',
+              width:      180,
               isSortable: true,
-              cell: type => (
+              cell:       type => (
                 <Badge.Default
                   leadingIcon={getSkillIcon(type)}
                   label={type}
@@ -228,11 +244,11 @@ export default function MemberDetailInfoSection(props: MemberDetailInfoSectionPr
               ),
             },
             {
-              key: 'icon',
-              label: '아이콘',
-              width: 100,
+              key:        'icon',
+              label:      '아이콘',
+              width:      100,
               isSortable: true,
-              cell: (icon, _, data) => (
+              cell:       (icon, _, data) => (
                 <Badge.Default
                   leadingIcon={icon}
                   label={data.name}
@@ -240,54 +256,54 @@ export default function MemberDetailInfoSection(props: MemberDetailInfoSectionPr
               ),
             },
           ]}
-          data={skill}
         />
       </InfoItem>
       <InfoItem
-        title={'연혁'}
-        buttonText={'연혁 추가'}
+        title='연혁'
+        buttonText='연혁 추가'
       >
         <DataTable
           showIndex
+          data={history}
           actions={[
             {
-              icon: GlyphIcon.EDIT,
-              onClick: () => {},
+              icon:    GlyphIcon.EDIT,
+              onClick: () => {
+              },
             },
             {
-              icon: GlyphIcon.DELETE,
-              onClick: () => {},
+              icon:    GlyphIcon.DELETE,
+              onClick: () => {
+              },
             },
           ]}
           columns={[
             {
-              key: 'label',
-              label: '라벨',
-              width: 300,
+              key:        'label',
+              label:      '라벨',
+              width:      300,
               isSortable: true,
             },
             {
-              key: 'link',
-              label: '링크',
-              width: 200,
+              key:        'link',
+              label:      '링크',
+              width:      200,
               isSortable: true,
             },
             {
-              key: 'isImportant',
-              label: '중요',
-              width: 180,
+              key:        'isImportant',
+              label:      '중요',
+              width:      180,
               isSortable: true,
-              cell: isImportant =>
-                isImportant && (
-                  <Badge.Default
-                    leadingIcon={GlyphIcon.ASTERISK}
-                    theme={BadgeTheme.RED}
-                    label={'중요'}
-                  />
-                ),
+              cell:       isImportant => isImportant && (
+                <Badge.Default
+                  leadingIcon={GlyphIcon.ASTERISK}
+                  theme={BadgeTheme.RED}
+                  label='중요'
+                />
+              ),
             },
           ]}
-          data={history}
         />
       </InfoItem>
     </VStack>
@@ -295,19 +311,23 @@ export default function MemberDetailInfoSection(props: MemberDetailInfoSectionPr
 }
 
 interface InfoItemProps {
-  title: string;
+  title:      string;
   buttonText: string;
-  children: React.ReactNode;
+  children:   React.ReactNode;
 }
 
 function InfoItem(props: InfoItemProps) {
-  const { title, buttonText, children } = props;
+  const {
+    title,
+    buttonText,
+    children,
+  } = props;
 
   return (
     <VStack spacing={spacingVars.mini}>
       <HStack
-        justify={StackJustify.BETWEEN}
         fullWidth
+        justify={StackJustify.BETWEEN}
       >
         <Typo.Moderate weight={Weight.SEMIBOLD}>{title}</Typo.Moderate>
         <Button.Default

@@ -12,9 +12,9 @@ import {
   Weight,
 } from '@tapie-kr/inspire-react';
 
+import { type Contest } from '@tapie-kr/dashboard-shared/lib/enum';
+import { getContestIcon } from '@tapie-kr/dashboard-shared/lib/enum/utils';
 import { useRouter } from 'next/navigation';
-import { type Contest } from '@/lib/enum';
-import { getContestIcon } from '@/lib/enum/utils';
 import { path, pathMap } from '@/lib/pathmap';
 import { type Garde, type Member } from '@/lib/types';
 import { getGradeIcon, getGradeTheme } from '@/lib/types/utils';

@@ -1,7 +1,7 @@
 import { spacingVars, StackAlign, VStack } from '@tapie-kr/inspire-react';
 import Page from '@/components/page';
 
-import { Unit } from '@/lib/enum';
+import { Unit } from '@tapie-kr/dashboard-shared/lib/enum';
 import ApplicationDetailActionSection from '@/sections/application/detail/Action';
 import ApplicationDetailInfoSection from '@/sections/application/detail/Info';
 

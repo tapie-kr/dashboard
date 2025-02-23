@@ -7,8 +7,8 @@ import {
 } from '@tapie-kr/inspire-react';
 import Page from '@/components/page';
 
+import { Executive, Unit } from '@tapie-kr/dashboard-shared/lib/enum';
 import { use } from 'react';
-import { Executive, Unit } from '@/lib/enum';
 import { type Member } from '@/lib/types';
 import MemberDetailActionSection from '@/sections/member/detail/Action';
 import MemberDetailBasicInfoSection from '@/sections/member/detail/BasicInfo';

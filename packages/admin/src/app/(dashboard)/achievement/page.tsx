@@ -15,9 +15,9 @@ import {
 import AchievementCard from '@/components/card/achievement';
 import Page from '@/components/page';
 
+import { Contest } from '@tapie-kr/dashboard-shared/lib/enum';
+import { getContestFilterGroup, getUnitFilterGroup } from '@tapie-kr/dashboard-shared/lib/enum/utils';
 import { type ChangeEvent, useState } from 'react';
-import { Contest } from '@/lib/enum';
-import { getContestFilterGroup, getUnitFilterGroup } from '@/lib/enum/utils';
 
 export default function AchievementPage() {
   const [searchValue, setSearchValue] = useState('');

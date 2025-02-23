@@ -10,9 +10,9 @@ import {
 import MemberCard from '@/components/card/member';
 import Page from '@/components/page';
 
+import { Executive, Unit } from '@tapie-kr/dashboard-shared/lib/enum';
+import { getContestFilterGroup } from '@tapie-kr/dashboard-shared/lib/enum/utils';
 import { type ChangeEvent, useState } from 'react';
-import { Executive, Unit } from '@/lib/enum';
-import { getContestFilterGroup } from '@/lib/enum/utils';
 
 export default function MemberPage() {
   const [searchValue, setSearchValue] = useState('');

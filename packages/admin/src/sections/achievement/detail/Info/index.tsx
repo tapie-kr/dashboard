@@ -18,6 +18,7 @@ import {
   VStack,
   Weight,
 } from '@tapie-kr/inspire-react';
+
 import { type AchievementDetailInfo } from './shared';
 
 interface AchievementDetailInfoSectionProps {
@@ -35,14 +36,14 @@ export default function AchievementDetailInfoSection(props: AchievementDetailInf
 
   return (
     <VStack
-      spacing={spacingVars.mini}
       fullWidth
+      spacing={spacingVars.mini}
       align={StackAlign.START}
     >
       <HStack spacing={spacingVars.micro}>
         <Box className={s.input}>
           <Input.Text
-            placeholder={'참여 부원을 입력하세요'}
+            placeholder='참여 부원을 입력하세요'
             size={InputSize.MEDIUM}
           />
         </Box>
@@ -53,23 +54,26 @@ export default function AchievementDetailInfoSection(props: AchievementDetailInf
       </HStack>
       <DataTable
         showIndex
+        data={info}
         actions={[
           {
-            icon: GlyphIcon.EDIT,
-            onClick: () => {},
+            icon:    GlyphIcon.EDIT,
+            onClick: () => {
+            },
           },
           {
-            icon: GlyphIcon.DELETE,
-            onClick: () => {},
+            icon:    GlyphIcon.DELETE,
+            onClick: () => {
+            },
           },
         ]}
         columns={[
           {
-            key: 'member',
-            label: '참여 부원',
-            width: 500,
+            key:        'member',
+            label:      '참여 부원',
+            width:      500,
             isSortable: true,
-            cell: member => (
+            cell:       member => (
               <HStack spacing={spacingVars.micro}>
                 <Typo.Petite weight={Weight.MEDIUM}>{member.name}</Typo.Petite>
                 <Typo.Petite
@@ -82,7 +86,6 @@ export default function AchievementDetailInfoSection(props: AchievementDetailInf
             ),
           },
         ]}
-        data={info}
       />
     </VStack>
   );
