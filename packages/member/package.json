@@ -4,7 +4,7 @@
   "scripts": {
     "start": "next start",
     "build": "next build",
-    "dev": "next dev -p 6678"
+    "dev": "next dev -p 7000"
   },
   "author": {
     "name": "Jeewon Kwon",

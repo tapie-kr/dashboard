@@ -1,7 +1,8 @@
 import { Badge, BadgeSize, GlyphIcon } from '@tapie-kr/inspire-react';
 
 import { type Temporal } from '@js-temporal/polyfill';
-import { getDateString } from '@/lib/utils/date';
+
+import { getDatetimeString } from '~/lib/utils/date';
 
 interface DateBadgeProps {
   date:  Temporal.PlainDateTime;
@@ -14,7 +15,7 @@ export default function DateBadge(props: DateBadgeProps) {
   return (
     <Badge.Default
       size={size}
-      label={getDateString(date, false)}
+      label={getDatetimeString(date, false)}
       leadingIcon={GlyphIcon.TODAY}
     />
   );

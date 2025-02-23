@@ -12,12 +12,12 @@ import {
 import HomeworkCard from '@/components/molecules/card/homework';
 
 import { Temporal } from '@js-temporal/polyfill';
-import { Status } from '@/lib/enum';
+import { HomeworkStatus } from '@tapie-kr/dashboard-shared/lib/enum';
 
 const data = [
   {
     title:  'Expo 당근 모작하기',
-    status: Status.DEADLINE_IMMINENT,
+    status: HomeworkStatus.DEADLINE_IMMINENT,
     date:   Temporal.PlainDateTime.from({
       year:   2025,
       month:  3,
@@ -30,7 +30,7 @@ const data = [
   },
   {
     title:  '리액트 성능 최적화',
-    status: Status.IN_PROGRESS,
+    status: HomeworkStatus.IN_PROGRESS,
     date:   Temporal.PlainDateTime.from({
       year:   2025,
       month:  3,
@@ -43,7 +43,7 @@ const data = [
   },
   {
     title:  '리액트 라우터 기초 및 개념 정리',
-    status: Status.CONFIRMED,
+    status: HomeworkStatus.CONFIRMED,
     date:   Temporal.PlainDateTime.from({
       year:   2025,
       month:  3,

@@ -11,16 +11,16 @@ import {
   VStack,
   Weight,
 } from '@tapie-kr/inspire-react';
-import DateBadge from '@/components/atoms/badge/date';
-import StatusBadge from '@/components/atoms/badge/status';
 
 import { type Temporal } from '@js-temporal/polyfill';
-import { type Status } from '@/lib/enum';
+import DateBadge from '@tapie-kr/dashboard-shared/components/atoms/badge/date';
+import HomeworkStatusBadge from '@tapie-kr/dashboard-shared/components/atoms/badge/status/homework';
+import { HomeworkStatus } from '@tapie-kr/dashboard-shared/lib/enum';
 
 interface HomeworkCardProps {
   title:   string;
   date:    Temporal.PlainDateTime;
-  status:  Status;
+  status:  HomeworkStatus;
   onClick: () => void;
 }
 
@@ -41,7 +41,7 @@ export default function HomeworkCard(props: HomeworkCardProps) {
     >
       <Typo.Petite weight={Weight.MEDIUM}>{title}</Typo.Petite>
       <HStack spacing={spacingVars.tiny}>
-        <StatusBadge
+        <HomeworkStatusBadge
           status={status}
           size={BadgeSize.SMALL}
         />

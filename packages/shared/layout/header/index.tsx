@@ -15,10 +15,10 @@ import {
   Weight,
 } from '@tapie-kr/inspire-react';
 
-import { PathMap } from '~/lib/pathmap';
 import { type ChangeEventHandler } from 'react';
 
 import Breadcrumb from '~/layout/breadcrumb';
+import { PathMap } from '~/lib/pathmap';
 
 export interface HeaderProps {
   title:                string;

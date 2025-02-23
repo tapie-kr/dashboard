@@ -1,3 +1,5 @@
+'use client';
+
 import PageTemplate, { PageTemplateProps } from '@tapie-kr/dashboard-shared/layout/page-template';
 import { pathMap } from '@/lib/pathmap';
 

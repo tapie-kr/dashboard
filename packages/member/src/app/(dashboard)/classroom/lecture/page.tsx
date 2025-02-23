@@ -9,15 +9,15 @@ import {
   StackJustify,
   Typo,
 } from '@tapie-kr/inspire-react';
-import StatusBadge from '@/components/atoms/badge/status';
 import Profile from '@/components/atoms/profile';
 import HomeworkCardGroup from '@/components/organisms/card-group/homework';
 import Page from '@/components/page';
 
 import { Temporal } from '@js-temporal/polyfill';
+import StatusBadge from '@tapie-kr/dashboard-shared/components/atoms/badge/status';
+import { Status } from '@tapie-kr/dashboard-shared/lib/enum';
+import { getPaddingZero } from '@tapie-kr/dashboard-shared/lib/utils/date';
 import { type ChangeEvent, useState } from 'react';
-import { Status } from '@/lib/enum';
-import { getPaddingZero } from '@/lib/utils/date';
 
 const data = [
   {
