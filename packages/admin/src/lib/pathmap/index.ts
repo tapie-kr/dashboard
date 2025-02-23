@@ -2,8 +2,8 @@ import { PathMap } from '@tapie-kr/dashboard-shared/lib/pathmap';
 import { PathNode } from '@tapie-kr/dashboard-shared/lib/pathmap/types';
 
 export const path = {
-  home:  { index: '홈' },
-  class: {
+  home:    { index: '홈' },
+  lecture: {
     index: '수업',
     board: { index: '게시판' },
   },
@@ -53,7 +53,7 @@ export const sidebarMap = [
   {
     title:    '수업',
     children: [
-      path.class,
+      path.lecture,
       path.homework,
       path.attendance,
     ],
