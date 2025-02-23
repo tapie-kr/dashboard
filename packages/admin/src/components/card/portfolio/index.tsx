@@ -16,26 +16,30 @@ import {
 } from '@tapie-kr/inspire-react';
 
 import { useRouter } from 'next/navigation';
-import { resolvePath } from '../../../lib/pathmap';
-import { pathMap } from '../../../lib/pathmap/map';
+import { path, pathMap } from '@/lib/pathmap';
 
 interface PortfolioCardProps {
   title: string;
   tags: {
-    name: string;
+    name:  string;
     icon?: IconName;
   }[];
-  image: string;
+  image:       string;
   catchphrase: string;
 }
 
 export default function PortfolioCard(props: PortfolioCardProps) {
-  const { title, tags, image, catchphrase } = props;
+  const {
+    title,
+    tags,
+    image,
+    catchphrase,
+  } = props;
 
   const router = useRouter();
 
   const handleClick = () => {
-    router.push(resolvePath(pathMap.portfolio, 3));
+    router.push(pathMap.resolvePath(path.portfolio, 3));
   };
 
   return (

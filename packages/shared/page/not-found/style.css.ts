@@ -5,6 +5,7 @@ import { style } from '@vanilla-extract/css';
 export const base = style({
   background: colorVars.surface.default,
   position:   'relative',
+  height:     '100vh',
 });
 
 export const footer = style({

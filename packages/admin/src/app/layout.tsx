@@ -26,7 +26,9 @@ export default function RootLayout(props: {
         </head>
         <body className={s.body}>
           <ThemeProvider>
-            <InspireProvider>{props.children}</InspireProvider>
+            <InspireProvider>
+              {props.children}
+            </InspireProvider>
           </ThemeProvider>
         </body>
       </html>
