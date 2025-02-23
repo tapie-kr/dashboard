@@ -1,0 +1,38 @@
+{
+  "name": "@tapie-kr/admin-dashboard",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "next start",
+    "build": "next build",
+    "dev": "next dev -p 6678"
+  },
+  "author": {
+    "name": "Jeewon Kwon",
+    "email": "jeewon.kwon.0817@gmail.com",
+    "url": "https://github.com/jwkwon0817"
+  },
+  "contributors": [],
+  "license": "MIT",
+  "homepage": "https://admin.tapie.kr/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tapie-kr/dashboard.git"
+  },
+  "dependencies": {
+    "@js-temporal/polyfill": "^0.4.4",
+    "@tapie-kr/inspire-react": "^0.1.37",
+    "@vanilla-extract/css": "^1.17.0",
+    "@tapie-kr/dashboard-shared": "workspace:*",
+    "classnames": "^2.5.1",
+    "framer-motion": "^12.4.2",
+    "next": "^15.1.6",
+    "next-themes": "^0.4.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.16",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3"
+  }
+}
