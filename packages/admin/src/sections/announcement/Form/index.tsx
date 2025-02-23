@@ -17,8 +17,8 @@ import {
 } from '@tapie-kr/inspire-react';
 
 import { useState } from 'react';
-import { Announcement } from '../../../lib/enum';
-import { getAnnouncementIcon } from '../../../lib/enum/utils';
+import { Announcement } from '@/lib/enum';
+import { getAnnouncementIcon } from '@/lib/enum/utils';
 
 export default function AnnouncementFormSection() {
   const [currentType, setCurrentType] = useState<Announcement>(Announcement.NOTICE);

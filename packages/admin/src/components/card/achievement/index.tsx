@@ -13,23 +13,28 @@ import {
 } from '@tapie-kr/inspire-react';
 
 import { useRouter } from 'next/navigation';
-import { type Contest } from '../../../lib/enum';
-import { getContestIcon } from '../../../lib/enum/utils';
-import { resolvePath } from '../../../lib/pathmap';
-import { pathMap } from '../../../lib/pathmap/map';
-import { type Garde, type Member } from '../../../lib/types';
-import { getGradeIcon, getGradeTheme } from '../../../lib/types/utils';
+import { type Contest } from '@/lib/enum';
+import { getContestIcon } from '@/lib/enum/utils';
+import { path, pathMap } from '@/lib/pathmap';
+import { type Garde, type Member } from '@/lib/types';
+import { getGradeIcon, getGradeTheme } from '@/lib/types/utils';
 
 interface AchievementCardProps {
   contestName: string;
-  members: Member[];
-  grade: Garde;
-  year: number;
+  members:     Member[];
+  grade:       Garde;
+  year:        number;
   contestType: Contest;
 }
 
 export default function AchievementCard(props: AchievementCardProps) {
-  const { contestName, members, grade, year, contestType } = props;
+  const {
+    contestName,
+    members,
+    grade,
+    year,
+    contestType,
+  } = props;
 
   const router = useRouter();
 
@@ -45,7 +50,7 @@ export default function AchievementCard(props: AchievementCardProps) {
   };
 
   const handleClick = () => {
-    router.push(resolvePath(pathMap.achievement, 1));
+    router.push(pathMap.resolvePath(path.achievement, 1));
   };
 
   return (

@@ -14,17 +14,22 @@ import {
 } from '@tapie-kr/inspire-react';
 
 import { type Temporal } from '@js-temporal/polyfill';
-import { getDateString } from '../../../lib/utils/date';
+import { getDatetimeString } from '@tapie-kr/dashboard-shared/lib/utils/date';
 
 interface AnnouncementCardProps {
-  content: string;
-  isSent: boolean;
+  content:  string;
+  isSent:   boolean;
   isNotice: boolean;
-  date: Temporal.PlainDateTime;
+  date:     Temporal.PlainDateTime;
 }
 
 export default function AnnouncementCard(props: AnnouncementCardProps) {
-  const { content, isSent, isNotice, date } = props;
+  const {
+    content,
+    isSent,
+    isNotice,
+    date,
+  } = props;
 
   return (
     <VStack
@@ -52,7 +57,7 @@ export default function AnnouncementCard(props: AnnouncementCardProps) {
         )}
         <Badge.Default
           size={BadgeSize.SMALL}
-          label={getDateString(date, true)}
+          label={getDatetimeString(date, true)}
           leadingIcon={GlyphIcon.TODAY}
         />
       </HStack>

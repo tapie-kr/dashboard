@@ -18,29 +18,35 @@ import {
 } from '@tapie-kr/inspire-react';
 
 import { useRouter } from 'next/navigation';
-import { type Executive, type Unit } from '../../../lib/enum';
-import { getExecutiveIcon, getExecutiveTheme, getUnitIcon } from '../../../lib/enum/utils';
-import { resolvePath } from '../../../lib/pathmap';
-import { pathMap } from '../../../lib/pathmap/map';
-import { type Member } from '../../../lib/types';
-import { getMemberString } from '../../../lib/types/utils';
+import { type Executive, type Unit } from '@/lib/enum';
+import { getExecutiveIcon, getExecutiveTheme, getUnitIcon } from '@/lib/enum/utils';
+import { path, pathMap } from '@/lib/pathmap';
+import { type Member } from '@/lib/types';
+import { getMemberString } from '@/lib/types/utils';
 
 interface MemberCardProps {
   profileImage: string;
-  member: Member;
-  executive?: Executive;
-  unit: Unit;
-  generation: number;
+  member:       Member;
+  executive?:   Executive;
+  unit:         Unit;
+  generation:   number;
   isGraduated?: boolean;
 }
 
 export default function MemberCard(props: MemberCardProps) {
-  const { profileImage, member, executive, unit, generation, isGraduated = false } = props;
+  const {
+    profileImage,
+    member,
+    executive,
+    unit,
+    generation,
+    isGraduated = false,
+  } = props;
 
   const router = useRouter();
 
   const handleClick = () => {
-    router.push(resolvePath(pathMap.member, 5));
+    router.push(pathMap.resolvePath(path.member, 5));
   };
 
   return (

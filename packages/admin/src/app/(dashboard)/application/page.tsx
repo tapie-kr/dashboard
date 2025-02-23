@@ -17,12 +17,12 @@ import {
 import Page from '@/components/page';
 
 import { Temporal } from '@js-temporal/polyfill';
+import { getDatetimeString } from '@tapie-kr/dashboard-shared/lib/utils/date';
 import { useRouter } from 'next/navigation';
 import { type ChangeEvent, useState } from 'react';
 import { Status } from '@/lib/enum';
 import { getStatusFilterGroup, getStatusIcon, getStatusTheme } from '@/lib/enum/utils';
 import { path, pathMap } from '@/lib/pathmap';
-import { getDateString } from '@/lib/utils/date';
 
 interface DataType {
   name:   string;
@@ -135,14 +135,14 @@ export default function ApplicationPage() {
               label:      '시작일',
               width:      150,
               isSortable: true,
-              cell:       from => <Typo.Tiny color={colorVars.content.default}>{getDateString(from, true)}</Typo.Tiny>,
+              cell:       from => <Typo.Tiny color={colorVars.content.default}>{getDatetimeString(from, true)}</Typo.Tiny>,
             },
             {
               key:        'to',
               label:      '종료일',
               width:      150,
               isSortable: true,
-              cell:       to => <Typo.Tiny color={colorVars.content.default}>{getDateString(to, true)}</Typo.Tiny>,
+              cell:       to => <Typo.Tiny color={colorVars.content.default}>{getDatetimeString(to, true)}</Typo.Tiny>,
             },
           ]}
         />

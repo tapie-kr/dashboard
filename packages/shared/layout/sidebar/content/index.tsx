@@ -40,7 +40,7 @@ export default function SidebarContent(props: SidebarContentProps) {
             {item.children.map((child, childIndex) => (
               <SidebarItem
                 key={childIndex}
-                map={pathMap}
+                pathMap={pathMap}
                 href={child}
               />
             ))}
@@ -49,7 +49,7 @@ export default function SidebarContent(props: SidebarContentProps) {
         :     (
           <SidebarItem
             key={index}
-            map={pathMap}
+            pathMap={pathMap}
             href={item as PathNode}
           />
         ))}

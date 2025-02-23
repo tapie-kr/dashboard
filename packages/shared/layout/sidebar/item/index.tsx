@@ -23,17 +23,17 @@ import {  PathMap } from '~/lib/pathmap';
 import { type PathNode } from '~/lib/pathmap/types';
 
 interface SidebarItemProps {
-  map:  PathMap;
-  href: PathNode;
+  pathMap: PathMap;
+  href:    PathNode;
 }
 
 export default function SidebarItem(props: SidebarItemProps) {
-  const { map, href } = props;
+  const { pathMap, href } = props;
   const title = href.index;
-  const subItems = map.getSubItems(href);
+  const subItems = pathMap.getSubItems(href);
   const currentPath = usePathname();
   const router = useRouter();
-  const hrefPath = map.getPath(href);
+  const hrefPath = pathMap.getPath(href);
 
   const handleClick = () => {
     router.push(hrefPath);

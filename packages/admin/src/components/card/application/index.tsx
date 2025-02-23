@@ -17,30 +17,35 @@ import {
 } from '@tapie-kr/inspire-react';
 
 import { type Temporal } from '@js-temporal/polyfill';
+import { getDatetimeString } from '@tapie-kr/dashboard-shared/lib/utils/date';
 import { useRouter } from 'next/navigation';
-import { type Unit } from '../../../lib/enum';
-import { getUnitIcon } from '../../../lib/enum/utils';
-import { resolvePath } from '../../../lib/pathmap';
-import { pathMap } from '../../../lib/pathmap/map';
-import { type Member } from '../../../lib/types';
-import { getMemberString } from '../../../lib/types/utils';
-import { getDateString } from '../../../lib/utils/date';
+import { type Unit } from '@/lib/enum';
+import { getUnitIcon } from '@/lib/enum/utils';
+import { path, pathMap } from '@/lib/pathmap';
+import { type Member } from '@/lib/types';
+import { getMemberString } from '@/lib/types/utils';
 
 interface ApplicationCardProps {
-  member: Member;
-  content: string;
-  unit: Unit;
-  date: Temporal.PlainDateTime;
+  member:        Member;
+  content:       string;
+  unit:          Unit;
+  date:          Temporal.PlainDateTime;
   hasPortfolio?: boolean;
 }
 
 export default function ApplicationCard(props: ApplicationCardProps) {
-  const { member, content, unit, date, hasPortfolio = true } = props;
+  const {
+    member,
+    content,
+    unit,
+    date,
+    hasPortfolio = true,
+  } = props;
 
   const router = useRouter();
 
   const handleNavigate = () => {
-    router.push(resolvePath(pathMap.application, 3, 4));
+    router.push(pathMap.resolvePath(path.application, 3, 4));
   };
 
   return (
@@ -65,7 +70,7 @@ export default function ApplicationCard(props: ApplicationCardProps) {
         />
         <Badge.Default
           size={BadgeSize.SMALL}
-          label={`${getDateString(date, true)} 제출`}
+          label={`${getDatetimeString(date, true)} 제출`}
           leadingIcon={GlyphIcon.TODAY}
         />
         <Badge.Default
