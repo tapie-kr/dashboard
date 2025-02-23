@@ -19,14 +19,6 @@ export const base = style({
 });
 
 export const logo = style({ cursor: 'pointer' });
-
-export const header = style({
-  width:          '100%',
-  display:        'flex',
-  justifyContent: 'space-between',
-  alignItems:     'center',
-  padding:        spacingVars.micro,
-});
-
+export const header = style({ padding: spacingVars.micro });
 export const footer = style({ padding: spacingVars.micro });
 export const info = style({ padding: getShorthandedValue(0, spacingVars.mini) });

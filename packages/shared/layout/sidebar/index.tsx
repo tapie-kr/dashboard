@@ -23,12 +23,12 @@ import {
   Weight,
 } from '@tapie-kr/inspire-react';
 
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import SidebarContent, { SidebarItemType } from './content';
 
-import { AnimatedHStack } from '~/lib/animate';
+import { AnimatedHStack, AnimatedStack, AnimatedVStack } from '~/lib/animate';
 import { PathMap } from '~/lib/pathmap';
 import { PathNode } from '~/lib/pathmap/types';
 
@@ -49,12 +49,14 @@ export default function Sidebar(props: SidebarProps) {
   };
 
   return (
-    <motion.div
+    <AnimatedVStack
       layout
+      fullWidth
       initial={{ width: 250 }}
       animate={{ width: collapsed ? 60 : 250 }}
       transition={{ duration: 0.24 }}
       className={s.base}
+      justify={StackJustify.BETWEEN}
     >
       <VStack
         fullWidth
@@ -62,10 +64,12 @@ export default function Sidebar(props: SidebarProps) {
         justify={StackJustify.START}
         spacing={spacingVars.moderate}
       >
-        <motion.div
+        <AnimatedStack
+          fullWidth
           className={s.header}
           animate={{ flexDirection: collapsed ? StackDirection.COLUMN : StackDirection.ROW }}
           style={{ gap: collapsed ? spacingVars.base : 0 }}
+          justify={StackJustify.BETWEEN}
           transition={{
             delay:    collapsed ? 0.2 : 0,
             duration: 0.3,
@@ -80,7 +84,7 @@ export default function Sidebar(props: SidebarProps) {
             color={colorVars.content.default}
             onClick={handleTogglePanel}
           />
-        </motion.div>
+        </AnimatedStack>
         <AnimatePresence>{!collapsed && (
           <SidebarContent
             pathMap={map}
@@ -109,7 +113,7 @@ export default function Sidebar(props: SidebarProps) {
               y:       0,
             }}
           >
-            <Typo.Base weight={Weight.MEDIUM}>관리자님</Typo.Base>
+            <Typo.Giant weight={Weight.MEDIUM}>관리자님</Typo.Giant>
             <Badge.Default
               size={BadgeSize.SMALL}
               label='역할'
@@ -122,6 +126,6 @@ export default function Sidebar(props: SidebarProps) {
           variant={ButtonVariant.SECONDARY}
         />
       </HStack>
-    </motion.div>
+    </AnimatedVStack>
   );
 }

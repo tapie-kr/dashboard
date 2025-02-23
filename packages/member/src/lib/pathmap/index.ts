@@ -4,7 +4,7 @@ import { PathNode } from '@tapie-kr/dashboard-shared/lib/pathmap/types';
 export const path = {
   home:      { index: '홈' },
   classroom: {
-    index:    '강의실',
+    index:    '수업',
     lecture:  { index: '수업' },
     homework: { index: '과제' },
     board:    { index: '게시물' },

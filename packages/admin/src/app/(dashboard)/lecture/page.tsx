@@ -76,7 +76,7 @@ const data: DataType[] = [
   },
 ];
 
-export default function ClassPage() {
+export default function LecturePage() {
   const [searchValue, setSearchValue] = useState('');
 
   const handleSearchValue = (e: ChangeEvent<HTMLInputElement>) => {
