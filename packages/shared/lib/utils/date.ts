@@ -6,7 +6,8 @@ export const getPaddingZero = (num: number): string => {
 
 export function toTemporalDateTime(isoString: string) {
   const timeZone = Temporal.TimeZone.from('Asia/Seoul');
-  const instant = Temporal.Instant.from(isoString);
+  const isoStringStr = String(isoString);
+  const instant = Temporal.Instant.from(isoStringStr.endsWith('Z') ? isoStringStr : isoStringStr + 'Z');
 
   return instant.toZonedDateTimeISO(timeZone).toPlainDateTime();
 }
