@@ -29,7 +29,6 @@ export default function ClassroomPage() {
         {Array.from({ length: 9 }).map((_, index) => (
           <ClassroomCard
             key={index}
-            image='https://avatars.githubusercontent.com/u/72495729?v=4'
             title='방학 프로젝트'
             content='AnA랑 같이하는 방학 프로젝트의 강의실입니다~ 다같이 여기서 코딩해요~'
           />

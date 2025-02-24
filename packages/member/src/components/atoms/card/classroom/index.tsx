@@ -3,10 +3,8 @@
 import * as s from './style.css';
 
 import {
-  AspectRatio,
   colorVars,
   HStack,
-  Image,
   spacingVars,
   StackAlign,
   Typo,
@@ -18,18 +16,12 @@ import { useRouter } from 'next/navigation';
 import { path, pathMap } from '@/lib/pathmap';
 
 interface ClassroomCardProps {
-  image:   string;
   title:   string;
   content: string;
 }
 
 export default function ClassroomCard(props: ClassroomCardProps) {
-  const {
-    image,
-    title,
-    content,
-  } = props;
-
+  const { title, content } = props;
   const router = useRouter();
 
   const handleClick = () => {
@@ -42,16 +34,6 @@ export default function ClassroomCard(props: ClassroomCardProps) {
       className={s.base}
       onClick={handleClick}
     >
-      <AspectRatio
-        ratio={1 / 1}
-        width={40}
-        className={s.image}
-      >
-        <Image
-          src={image}
-          alt={title}
-        />
-      </AspectRatio>
       <VStack
         spacing={spacingVars.mini}
         align={StackAlign.START}
