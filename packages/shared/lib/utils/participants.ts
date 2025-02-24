@@ -12,6 +12,6 @@ export function formatParticipants(participants: string[]): string {
       return `${participants[0]}, ${participants[1]}`;
 
     default:
-      return `${participants[0]}, ${participants[1]} 외 ${count - 1}명`;
+      return `${participants[0]}, ${participants[1]} 외 ${count - 2}명`;
   }
 }
