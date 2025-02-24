@@ -3,6 +3,8 @@
 import {
   Filter,
   Grid,
+  radiusVars,
+  Skeleton,
   spacingVars,
   StackAlign,
   VStack,
@@ -81,6 +83,14 @@ export default function ApplicationDetailPage({ params }: {
                 hour:   6,
                 minute: 17,
               })}
+            />
+          ))}
+          {Array.from({ length: 5 }).map((_, index) => (
+            <Skeleton
+              key={index}
+              width={300}
+              height={120}
+              borderRadius={radiusVars.smooth}
             />
           ))}
         </Grid>
