@@ -11,12 +11,37 @@ import ApplicationCard from '@/components/card/application';
 import Page from '@/components/page';
 
 import { Temporal } from '@js-temporal/polyfill';
+import { usePrivateFormResponseList } from '@tapie-kr/api-client';
 import { Unit } from '@tapie-kr/dashboard-shared/lib/enum';
 import { getUnitFilterGroup } from '@tapie-kr/dashboard-shared/lib/enum/utils';
-import { type ChangeEvent, useState } from 'react';
+import {
+  type ChangeEvent,
+  use,
+  useEffect,
+  useState,
+} from 'react';
 
-export default function ApplicationDetailPage() {
+export default function ApplicationDetailPage({ params }: {
+  params: Promise<{
+    id: number;
+  }>;
+}) {
   const [searchValue, setSearchValue] = useState('');
+  const { id } = use(params);
+
+  const {
+    data,
+    fetch,
+    error,
+  } = usePrivateFormResponseList(id);
+
+  useEffect(() => {
+    fetch();
+  }, []);
+
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
 
   const handleSearchValue = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
