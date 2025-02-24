@@ -11,9 +11,9 @@ import {
   Weight,
 } from '@tapie-kr/inspire-react';
 
+import { formatParticipants } from '@tapie-kr/dashboard-shared/lib/utils/participants';
 import { useRouter } from 'next/navigation';
 import { path, pathMap } from '@/lib/pathmap';
-import { formatParticipants } from '@tapie-kr/dashboard-shared/lib/utils/participants';
 
 interface PortfolioCardProps {
   title:       string;
