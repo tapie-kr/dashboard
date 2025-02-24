@@ -1,7 +1,17 @@
 export function formatParticipants(participants: string[]): string {
-  if (participants.length === 0) return '';
+  const count = participants.length;
 
-  if (participants.length === 1) return participants[0];
+  switch (count) {
+    case 0:
+      return '';
 
-  return `${participants[0]} 외 ${participants.length - 1}명`;
+    case 1:
+      return participants[0];
+
+    case 2:
+      return `${participants[0]}, ${participants[1]}`;
+
+    default:
+      return `${participants[0]}, ${participants[1]} 외 ${count - 1}명`;
+  }
 }
