@@ -75,7 +75,7 @@ export default function ApplicationPage() {
     >
       <VStack
         fullWidth
-        spacing={spacingVars.jumbo}
+        spacing={spacingVars.petite}
         align={StackAlign.START}
       >
         <HStack

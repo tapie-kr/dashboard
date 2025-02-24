@@ -32,7 +32,7 @@ export default function ApplicationDetailPage() {
     >
       <VStack
         fullWidth
-        spacing={spacingVars.jumbo}
+        spacing={spacingVars.base}
         align={StackAlign.START}
       >
         <Filter filters={[getUnitFilterGroup()]} />

@@ -3,10 +3,12 @@ import * as s from './style.css';
 import {
   Badge,
   BadgeSize,
+  Button,
+  ButtonSize,
+  ButtonVariant,
   colorVars,
   GlyphIcon,
   HStack,
-  Segment,
   spacingVars,
   StackAlign,
   StackJustify,
@@ -120,12 +122,14 @@ export default function ApplicationDetailInfoSection(props: ApplicationDetailInf
         </Typo.Tiny>
         <HStack spacing={spacingVars.tiny}>
           {portfolio.map((item, index) => (
-            <Segment
+            <Button.Default
               key={index}
-              label={item}
-              value={item}
-              leadingIcon={GlyphIcon.FOLDER}
-            />
+              size={ButtonSize.MEDIUM}
+              variant={ButtonVariant.SECONDARY}
+              leadingIcon={GlyphIcon.DOWNLOAD}
+            >
+              {item}
+            </Button.Default>
           ))}
         </HStack>
       </VStack>
@@ -155,7 +159,7 @@ function InfoGroup(props: InfoGroupProps) {
   return (
     <VStack
       fullWidth
-      spacing={spacingVars.tiny}
+      spacing={spacingVars.micro}
       align={StackAlign.START}
     >
       <Typo.Tiny

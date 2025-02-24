@@ -10,7 +10,7 @@ export default function ApplicationDetailResponsePage() {
     <Page title='신청폼 상세'>
       <VStack
         fullWidth
-        spacing={spacingVars.medium}
+        spacing={spacingVars.moderate}
         align={StackAlign.START}
       >
         <ApplicationDetailInfoSection

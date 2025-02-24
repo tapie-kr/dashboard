@@ -12,14 +12,14 @@ export default function ApplicationDetailActionSection() {
   return (
     <HStack spacing={spacingVars.petite}>
       <Button.Default
-        size={ButtonSize.SMALL}
-        leadingIcon={GlyphIcon.ADD}
+        size={ButtonSize.MEDIUM}
+        leadingIcon={GlyphIcon.CHECK}
       >
         합격 처리
       </Button.Default>
       <Button.Default
         variant={ButtonVariant.SECONDARY}
-        size={ButtonSize.SMALL}
+        size={ButtonSize.MEDIUM}
         theme={Theme.RED}
         leadingIcon={GlyphIcon.DELETE}
       >
