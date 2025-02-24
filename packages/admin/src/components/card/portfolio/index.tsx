@@ -14,12 +14,13 @@ import {
 import { formatParticipants } from '@tapie-kr/dashboard-shared/lib/utils/participants';
 import { useRouter } from 'next/navigation';
 import { path, pathMap } from '@/lib/pathmap';
+import { Member } from '@/lib/types';
 
 interface PortfolioCardProps {
   title:       string;
   image:       string;
   catchphrase: string;
-  participant: string[];
+  members:     Member[];
 }
 
 export default function PortfolioCard(props: PortfolioCardProps) {
@@ -27,7 +28,7 @@ export default function PortfolioCard(props: PortfolioCardProps) {
     title,
     image,
     catchphrase,
-    participant,
+    members,
   } = props;
 
   const router = useRouter();
@@ -35,6 +36,8 @@ export default function PortfolioCard(props: PortfolioCardProps) {
   const handleClick = () => {
     router.push(pathMap.resolvePath(path.portfolio, 3));
   };
+
+  console.log(formatParticipants(members.map((member: Member) => member.name)));
 
   return (
     <VStack
@@ -63,7 +66,7 @@ export default function PortfolioCard(props: PortfolioCardProps) {
         <Typo.Mini
           weight={Weight.SEMIBOLD}
           color={colorVars.content.default}
-        >{formatParticipants(participant)}
+        >{formatParticipants(members.map((member: Member) => member.name))}
         </Typo.Mini>
         <Typo.Base weight={Weight.SEMIBOLD}>{title}</Typo.Base>
         <Typo.Tiny color={colorVars.content.default}>{catchphrase}</Typo.Tiny>

@@ -16,7 +16,7 @@ import AchievementCard from '@/components/card/achievement';
 import Page from '@/components/page';
 
 import { Contest } from '@tapie-kr/dashboard-shared/lib/enum';
-import { getContestFilterGroup, getUnitFilterGroup } from '@tapie-kr/dashboard-shared/lib/enum/utils';
+import { getContestFilterGroup } from '@tapie-kr/dashboard-shared/lib/enum/utils';
 import { type ChangeEvent, useState } from 'react';
 
 export default function AchievementPage() {
@@ -36,7 +36,7 @@ export default function AchievementPage() {
     >
       <VStack
         fullWidth
-        spacing={spacingVars.jumbo}
+        spacing={spacingVars.moderate}
         align={StackAlign.START}
       >
         <HStack
@@ -44,7 +44,7 @@ export default function AchievementPage() {
           justify={StackJustify.BETWEEN}
           align={StackAlign.START}
         >
-          <Filter filters={[getContestFilterGroup(), getUnitFilterGroup()]} />
+          <Filter filters={[getContestFilterGroup()]} />
           <Button.Default
             size={ButtonSize.SMALL}
             leadingIcon={GlyphIcon.ADD}

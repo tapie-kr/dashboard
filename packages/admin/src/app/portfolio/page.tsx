@@ -44,10 +44,19 @@ export default function PortfolioPage() {
               title='선린투데이'
               image='https://tapie.kr/thumbnails/sunrin_today.webp'
               catchphrase='선린투데이는 선린인터넷고등학교 학생들을 위한 정보 제공 플랫폼입니다.'
-              participant={[
-                '한유찬',
-                '좌호빈',
-                '신유준',
+              members={[
+                {
+                  name:      '한유찬',
+                  studentId: 10000,
+                },
+                {
+                  name:      '신유준',
+                  studentId: 10000,
+                },
+                {
+                  name:      '좌호빈',
+                  studentId: 10000,
+                },
               ]}
             />
           ))}
