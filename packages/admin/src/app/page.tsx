@@ -18,11 +18,10 @@ export default function IndexPage() {
     <HStack
       fullWidth
       fullHeight
-      className={s.base}
     >
       <VStack
-        className={s.container}
         spacing={spacingVars.moderate}
+        className={s.container}
         align={StackAlign.START}
       >
         <VStack
@@ -33,7 +32,7 @@ export default function IndexPage() {
             hasLabel
             size={TAPIESymbolSize._16}
           />
-          <Typo.Medium weight={Weight.MEDIUM}>관리 시스템</Typo.Medium>
+          <Typo.Medium weight={Weight.BOLD}>관리 시스템</Typo.Medium>
         </VStack>
         <Button.Default
           fullWidth
@@ -52,6 +51,7 @@ export default function IndexPage() {
           기록을 활용할 수 있습니다.
         </Typo.Mini>
       </VStack>
+
     </HStack>
   );
 }

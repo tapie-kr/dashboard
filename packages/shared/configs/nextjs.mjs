@@ -33,6 +33,18 @@ export function withTAPIEDashboardConfig(config = {}) {
     },
 
     typescript: { ignoreBuildErrors: true },
+
+    env: {
+      NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL || 'https://tapie-api-dev.vport.dev', API_HOSTNAME: 'http://localhost:6678', API_VERSION: '/api/v1',
+    },
+
+    rewrites() {
+      return [
+        {
+          source: '/api/:path*', destination: `${this.env.NEXT_PUBLIC_API_URL}/:path*`,
+        },
+      ];
+    },
   };
 
   return withVanillaExtract(nextConfig);

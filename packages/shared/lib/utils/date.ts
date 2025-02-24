@@ -1,21 +1,39 @@
-import { type Temporal } from '@js-temporal/polyfill';
+import { Temporal } from '@js-temporal/polyfill';
 
 export const getPaddingZero = (num: number): string => {
   return String(num).padStart(2, '0');
 };
 
-export const getDatetimeString = (date: Temporal.PlainDateTime, containYear: boolean) => {
+export function toTemporalDateTime(isoString: string) {
+  const timeZone = Temporal.TimeZone.from('Asia/Seoul');
+  const instant = Temporal.Instant.from(isoString);
+
+  return instant.toZonedDateTimeISO(timeZone).toPlainDateTime();
+}
+
+export function toTemporalDate(isoString: string) {
+  const timeZone = Temporal.TimeZone.from('Asia/Seoul');
+  const instant = Temporal.Instant.from(isoString);
+
+  return instant.toZonedDateTimeISO(timeZone).toPlainDate();
+}
+
+export const getDatetimeString = (date: string, containYear: boolean) => {
+  const dateObject = toTemporalDateTime(date);
+
   if (containYear) {
-    return `${date.year}-${getPaddingZero(date.month)}-${getPaddingZero(date.day)} ${getPaddingZero(date.hour)}:${getPaddingZero(date.minute)}`;
+    return `${dateObject.year}-${getPaddingZero(dateObject.month)}-${getPaddingZero(dateObject.day)} ${getPaddingZero(dateObject.hour)}:${getPaddingZero(dateObject.minute)}`;
   } else {
-    return `${getPaddingZero(date.month)}월 ${getPaddingZero(date.day)}일 ${getPaddingZero(date.hour)}:${getPaddingZero(date.minute)}`;
+    return `${getPaddingZero(dateObject.month)}월 ${getPaddingZero(dateObject.day)}일 ${getPaddingZero(dateObject.hour)}:${getPaddingZero(dateObject.minute)}`;
   }
 };
 
-export const getDateString = (date: Temporal.PlainDate, containYear: boolean) => {
+export const getDateString = (date: string, containYear: boolean) => {
+  const dateObject = toTemporalDate(date);
+
   if (containYear) {
-    return `${date.year}-${getPaddingZero(date.month)}-${getPaddingZero(date.day)}`;
+    return `${dateObject.year}-${getPaddingZero(dateObject.month)}-${getPaddingZero(dateObject.day)}`;
   } else {
-    return `${getPaddingZero(date.month)}월 ${getPaddingZero(date.day)}일`;
+    return `${getPaddingZero(dateObject.month)}월 ${getPaddingZero(dateObject.day)}일`;
   }
 };
