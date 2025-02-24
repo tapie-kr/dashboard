@@ -73,8 +73,13 @@ export default function HomeworkCardGroup() {
           {count}개
         </Typo.Base>
       </HStack>
-      {data.map(item => {
-        return <HomeworkCard {...item} />;
+      {data.map((item, idx) => {
+        return (
+          <HomeworkCard
+            key={idx}
+            {...item}
+          />
+        );
       })}
     </VStack>
   );
