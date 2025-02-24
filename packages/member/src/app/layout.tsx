@@ -2,6 +2,7 @@ import * as s from './layout.css';
 
 import { InspireProvider } from '@tapie-kr/inspire-react/provider';
 
+import { TapieApiProvider } from '@tapie-kr/api-client';
 import Favicon from '@tapie-kr/dashboard-shared/assets/favicon.png';
 import { type Metadata } from 'next';
 import { ThemeProvider } from 'next-themes';
@@ -26,7 +27,9 @@ export default function RootLayout(props: {
         </head>
         <body className={s.body}>
           <ThemeProvider>
-            <InspireProvider>{props.children}</InspireProvider>
+            <TapieApiProvider>
+              <InspireProvider>{props.children}</InspireProvider>
+            </TapieApiProvider>
           </ThemeProvider>
         </body>
       </html>
