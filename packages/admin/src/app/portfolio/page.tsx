@@ -11,7 +11,7 @@ import {
 import PortfolioCard from '@/components/card/portfolio';
 import Page from '@/components/page';
 
-import { getContestFilterGroup, getStatusFilterGroup } from '@tapie-kr/dashboard-shared/lib/enum/utils';
+import { getUnitFilterGroup } from '@tapie-kr/dashboard-shared/lib/enum/utils';
 import { type ChangeEvent, useState } from 'react';
 
 export default function PortfolioPage() {
@@ -31,10 +31,10 @@ export default function PortfolioPage() {
     >
       <VStack
         fullWidth
-        spacing={spacingVars.jumbo}
+        spacing={spacingVars.moderate}
         align={StackAlign.START}
       >
-        <Filter filters={[getStatusFilterGroup(), getContestFilterGroup()]} />
+        <Filter filters={[getUnitFilterGroup()]} />
         <Grid
           columnCount={3}
           gap={spacingVars.petite}
