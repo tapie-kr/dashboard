@@ -35,15 +35,12 @@ export default function ApplicationDetailPage({ params }: {
     data,
     fetch,
     error,
+    isPending,
   } = usePrivateFormResponseList(id);
 
   useEffect(() => {
     fetch();
   }, []);
-
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
 
   const handleSearchValue = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
@@ -67,11 +64,11 @@ export default function ApplicationDetailPage({ params }: {
           columnCount={3}
           gap={spacingVars.petite}
         >
-          {Array.from({ length: 6 }).map((_, index) => (
+          {data && data.data.map((item, idx) => (
             <ApplicationCard
-              key={index}
+              key={idx}
               unit={Unit.DEVELOPER}
-              content='안녕하세요'
+              content='asd'
               member={{
                 studentId: 10404,
                 name:      '권지원',
@@ -85,7 +82,7 @@ export default function ApplicationDetailPage({ params }: {
               })}
             />
           ))}
-          {Array.from({ length: 5 }).map((_, index) => (
+          {isPending && Array.from({ length: 5 }).map((_, index) => (
             <Skeleton
               key={index}
               width={300}
