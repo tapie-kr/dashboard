@@ -3,6 +3,7 @@ import * as s from './style.css';
 import {
   Box,
   ButtonSize,
+  colorVars,
   GlyphIcon,
   HStack,
   IconButton,
@@ -53,7 +54,13 @@ export default function Header(props: HeaderProps) {
       >
         <HStack spacing={spacingVars.micro}>
           <Typo.Medium weight={Weight.BOLD}>{title}</Typo.Medium>
-          {hasCount && <Typo.Moderate weight={Weight.SEMIBOLD}>{count}</Typo.Moderate>}
+          {hasCount && (
+            <Typo.Moderate
+              color={colorVars.content.default}
+              weight={Weight.SEMIBOLD}
+            >{count}
+            </Typo.Moderate>
+          )}
         </HStack>
         {hasSearch && handleSearchValue && (
           <HStack spacing={spacingVars.mini}>
