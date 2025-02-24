@@ -45,7 +45,12 @@ export default function Sidebar(props: SidebarProps) {
   const { pathMap, sidebarMap } = props;
   const map = new PathMap(pathMap);
   const [collapsed, setCollapsed] = useState(false);
-  const { fetch, data } = useMe();
+
+  const {
+    fetch,
+    data,
+    error,
+  } = useMe();
 
   const handleTogglePanel = () => {
     setCollapsed(!collapsed);
@@ -53,15 +58,17 @@ export default function Sidebar(props: SidebarProps) {
 
   useEffect(() => {
     const fetchMe = async () => {
-      const response = await fetch();
-
-      if (response.error && 'status' in response.error && response.error.status === 401) {
-        location.href = 'http://localhost:9876';
-      }
+      await fetch();
     };
 
     fetchMe();
   }, []);
+
+  useEffect(() => {
+    if (error && 'status' in error && error.status === 401) {
+      location.href = 'http://localhost:9876';
+    }
+  }, [error]);
 
   return (
     <>{
