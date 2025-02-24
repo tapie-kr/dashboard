@@ -2,11 +2,7 @@ import * as s from './style.css';
 
 import {
   AspectRatio,
-  Badge,
-  BadgeSize,
   colorVars,
-  HStack,
-  type IconName,
   Image,
   spacingVars,
   StackAlign,
@@ -17,23 +13,21 @@ import {
 
 import { useRouter } from 'next/navigation';
 import { path, pathMap } from '@/lib/pathmap';
+import { formatParticipants } from '@tapie-kr/dashboard-shared/lib/utils/participants';
 
 interface PortfolioCardProps {
-  title: string;
-  tags: {
-    name:  string;
-    icon?: IconName;
-  }[];
+  title:       string;
   image:       string;
   catchphrase: string;
+  participant: string[];
 }
 
 export default function PortfolioCard(props: PortfolioCardProps) {
   const {
     title,
-    tags,
     image,
     catchphrase,
+    participant,
   } = props;
 
   const router = useRouter();
@@ -66,19 +60,14 @@ export default function PortfolioCard(props: PortfolioCardProps) {
         spacing={spacingVars.optical}
         align={StackAlign.START}
       >
-        <Typo.Petite weight={Weight.SEMIBOLD}>{title}</Typo.Petite>
+        <Typo.Mini
+          weight={Weight.SEMIBOLD}
+          color={colorVars.content.default}
+        >{formatParticipants(participant)}
+        </Typo.Mini>
+        <Typo.Base weight={Weight.SEMIBOLD}>{title}</Typo.Base>
         <Typo.Tiny color={colorVars.content.default}>{catchphrase}</Typo.Tiny>
       </VStack>
-      <HStack spacing={spacingVars.tiny}>
-        {tags.map((tag, index) => (
-          <Badge.Default
-            key={index}
-            leadingIcon={tag.icon}
-            label={tag.name}
-            size={BadgeSize.SMALL}
-          />
-        ))}
-      </HStack>
     </VStack>
   );
 }

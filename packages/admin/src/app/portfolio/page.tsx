@@ -2,7 +2,6 @@
 
 import {
   Filter,
-  GlyphIcon,
   Grid,
   spacingVars,
   StackAlign,
@@ -45,15 +44,7 @@ export default function PortfolioPage() {
               title='선린투데이'
               image='https://tapie.kr/thumbnails/sunrin_today.webp'
               catchphrase='선린투데이는 선린인터넷고등학교 학생들을 위한 정보 제공 플랫폼입니다.'
-              tags={[
-                {
-                  name: 'Badge',
-                  icon: GlyphIcon.DEFAULT,
-                },
-                { name: 'Badge' },
-                { name: 'Badge' },
-                { name: 'Badge' },
-              ]}
+              participant={['10416 한유찬', '10418 좌호빈']}
             />
           ))}
         </Grid>
