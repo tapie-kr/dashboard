@@ -23,7 +23,7 @@ import {
 import MutateDialog from '@/components/dialog/mutate';
 import Page from '@/components/page';
 
-import { usePrivateCreateForm } from '@tapie-kr/api-client';
+import { usePrivateCreateForm, usePrivateFormList } from '@tapie-kr/api-client';
 import { getStatusFilterGroup } from '@tapie-kr/dashboard-shared/lib/enum/utils';
 import { getDatetimeString } from '@tapie-kr/dashboard-shared/lib/utils/date';
 import { useRouter } from 'next/navigation';
@@ -32,7 +32,7 @@ import { path, pathMap } from '@/lib/pathmap';
 
 export default function ApplicationPage() {
   const [searchValue, setSearchValue] = useState('');
-  const { fetch, data } = useAdminFormList();
+  const { fetch, data } = usePrivateFormList();
 
   const {
     mutate,
