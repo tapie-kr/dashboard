@@ -23,7 +23,7 @@ import {
 import MutateDialog from '@/components/dialog/mutate';
 import Page from '@/components/page';
 
-import { useAdminCreateForm, useAdminFormList } from '@tapie-kr/api-client';
+import { usePrivateCreateForm } from '@tapie-kr/api-client';
 import { getStatusFilterGroup } from '@tapie-kr/dashboard-shared/lib/enum/utils';
 import { getDatetimeString } from '@tapie-kr/dashboard-shared/lib/utils/date';
 import { useRouter } from 'next/navigation';
@@ -35,10 +35,10 @@ export default function ApplicationPage() {
   const { fetch, data } = useAdminFormList();
 
   const {
-    mutateAsync,
+    mutate,
     isPending,
     isSuccess,
-  } = useAdminCreateForm();
+  } = usePrivateCreateForm();
 
   const toggler = useToggle();
   const [_isModalOpen, toggle] = toggler;
@@ -160,7 +160,7 @@ export default function ApplicationPage() {
         isPending={isPending}
         isSuccess={isSuccess}
         onClick={async () => {
-          await mutateAsync({
+          await mutate({
             name:     title,
             startsAt: fromDate,
             endsAt:   toDate,
