@@ -25,6 +25,7 @@ interface AchievementCardProps {
   grade:       Garde;
   year:        number;
   contestType: Contest;
+  uuid:        string;
 }
 
 export default function AchievementCard(props: AchievementCardProps) {
@@ -34,6 +35,7 @@ export default function AchievementCard(props: AchievementCardProps) {
     grade,
     year,
     contestType,
+    uuid,
   } = props;
 
   const router = useRouter();
@@ -50,7 +52,7 @@ export default function AchievementCard(props: AchievementCardProps) {
   };
 
   const handleClick = () => {
-    router.push(pathMap.resolvePath(path.achievement, 1));
+    router.push(pathMap.resolvePath(path.achievement, uuid));
   };
 
   return (
