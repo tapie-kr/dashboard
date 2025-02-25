@@ -1,11 +1,11 @@
-import { MemberUnit } from '@tapie-kr/api-client';
+import { MemberUnitType } from '@tapie-kr/api-client';
 
-export function UnitEnumToKorean(unit: MemberUnit): string {
+export function UnitEnumToKorean(unit: MemberUnitType): string {
   switch (unit) {
-    case MemberUnit.DEVELOPER:
+    case MemberUnitType.DEVELOPER:
       return '개발자';
 
-    case MemberUnit.DESIGNER:
+    case MemberUnitType.DESIGNER:
       return '디자이너';
 
     default:
