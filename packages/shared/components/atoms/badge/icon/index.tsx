@@ -5,6 +5,8 @@ import {
   BrandIcon,
 } from '@tapie-kr/inspire-react';
 
+import { BrandIconEnumToName } from './utils';
+
 interface UnitBadgeProps {
   icon:   BrandIcon;
   theme?: BadgeTheme;
@@ -20,7 +22,7 @@ export default function IconBadge(props: UnitBadgeProps) {
 
   return (
     <Badge.Default
-      label={icon}
+      label={BrandIconEnumToName(icon)}
       theme={theme}
       size={size}
       leadingIcon={icon}

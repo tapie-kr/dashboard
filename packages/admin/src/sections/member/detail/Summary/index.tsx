@@ -17,9 +17,9 @@ interface MemberDetailSummarySectionProps extends MemberType {
 
 import * as s from './style.css';
 
-import GenerationBadge from '@/components/badge/generation';
-import IconBadge from '@/components/badge/icon';
-import RoleBadge from '@/components/badge/role';
+import GenerationBadge from '@tapie-kr/dashboard-shared/components/atoms/badge/generation';
+import IconBadge from '@tapie-kr/dashboard-shared/components/atoms/badge/icon';
+import RoleBadge from '@tapie-kr/dashboard-shared/components/atoms/badge/role';
 
 import { MemberType } from '@tapie-kr/api-client';
 
