@@ -1,13 +1,13 @@
 import { type FilterGroup, GlyphIcon, type IconName } from '@tapie-kr/inspire-react';
 
-import { Unit } from '.';
+import { MemberUnitType } from '@tapie-kr/api-client';
 
-export const getUnitIcon = (unit: Unit): IconName => {
+export const getUnitIcon = (unit: MemberUnitType): IconName => {
   const unitIcon: {
-    [key in Unit]: IconName;
+    [key in MemberUnitType]: IconName;
   } = {
-    [Unit.DEVELOPER]: GlyphIcon.CODE,
-    [Unit.DESIGNER]:  GlyphIcon.BRUSH,
+    [MemberUnitType.DEVELOPER]: GlyphIcon.CODE,
+    [MemberUnitType.DESIGNER]:  GlyphIcon.BRUSH,
   };
 
   return unitIcon[unit];
@@ -16,7 +16,7 @@ export const getUnitIcon = (unit: Unit): IconName => {
 export const getUnitFilterGroup = (): FilterGroup => {
   return {
     label:   '유닛',
-    options: Object.values(Unit).map(unit => ({
+    options: Object.values(MemberUnitType).map(unit => ({
       label: unit,
       value: unit,
       icon:  getUnitIcon(unit),

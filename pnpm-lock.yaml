@@ -27,14 +27,14 @@ importers:
         specifier: ^0.4.4
         version: 0.4.4
       '@tapie-kr/api-client':
-        specifier: ^0.0.8
-        version: 0.0.8(@tanstack/react-query-devtools@5.66.9(@tanstack/react-query@5.66.9(react@19.0.0))(react@19.0.0))(@tanstack/react-query@5.66.9(react@19.0.0))(axios@1.7.9)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(zod@3.24.2)
+        specifier: ^0.0.9
+        version: 0.0.9(@tanstack/react-query-devtools@5.66.9(@tanstack/react-query@5.66.9(react@19.0.0))(react@19.0.0))(@tanstack/react-query@5.66.9(react@19.0.0))(axios@1.7.9)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(zod@3.24.2)
       '@tapie-kr/dashboard-shared':
         specifier: workspace:*
         version: link:../shared
       '@tapie-kr/inspire-react':
-        specifier: 0.2.0-beta.3
-        version: 0.2.0-beta.3(framer-motion@12.4.7(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(jotai@2.12.1(@types/react@19.0.10)(react@19.0.0))(next@15.1.7(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        specifier: 0.2.0
+        version: 0.2.0(framer-motion@12.4.7(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(jotai@2.12.1(@types/react@19.0.10)(react@19.0.0))(next@15.1.7(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@vanilla-extract/css':
         specifier: ^1.17.0
         version: 1.17.1
@@ -125,11 +125,11 @@ importers:
         specifier: ^0.4.4
         version: 0.4.4
       '@tapie-kr/api-client':
-        specifier: ^0.0.8
-        version: 0.0.8(@tanstack/react-query-devtools@5.66.9(@tanstack/react-query@5.66.9(react@19.0.0))(react@19.0.0))(@tanstack/react-query@5.66.9(react@19.0.0))(axios@1.7.9)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(zod@3.24.2)
+        specifier: ^0.0.9
+        version: 0.0.9(@tanstack/react-query-devtools@5.66.9(@tanstack/react-query@5.66.9(react@19.0.0))(react@19.0.0))(@tanstack/react-query@5.66.9(react@19.0.0))(axios@1.7.9)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(zod@3.24.2)
       '@tapie-kr/inspire-react':
-        specifier: 0.2.0-beta.3
-        version: 0.2.0-beta.3(framer-motion@11.18.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(jotai@2.12.1(@types/react@19.0.10)(react@19.0.0))(next@15.1.7(@babel/core@7.26.9)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        specifier: 0.2.0
+        version: 0.2.0(framer-motion@11.18.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(jotai@2.12.1(@types/react@19.0.10)(react@19.0.0))(next@15.1.7(@babel/core@7.26.9)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@vanilla-extract/css':
         specifier: ^1.17.0
         version: 1.17.1
@@ -704,8 +704,8 @@ packages:
       react-dom: ^19.0.0
       zod: ^3.24.2
 
-  '@tapie-kr/api-client@0.0.8':
-    resolution: {integrity: sha512-XGHhZNGUjT2pf5kECRu53iDves/opUblfdni1GewlHfds1JsuxQSc4pvlUvV9+lChfwr0aVE0B/7sPDEkU6q5w==}
+  '@tapie-kr/api-client@0.0.9':
+    resolution: {integrity: sha512-xenDIG7D66G/497CqT9RKWG0uS5l85FI56EsIdHtM1sPKejbcdSySKD2pNpeF4ZmtkuYx+oKslD1M99Q2LzwmQ==}
     peerDependencies:
       '@tanstack/react-query': ^5.66.0
       '@tanstack/react-query-devtools': ^5.66.0
@@ -734,8 +734,8 @@ packages:
       react: 19.0.0
       react-dom: 19.0.0
 
-  '@tapie-kr/inspire-react@0.2.0-beta.3':
-    resolution: {integrity: sha512-hUCgnQ9B8bChpevkn8/XD1ZQCDUojY6vYJGwmKQZhhWrgsGgLQ9MzZAfQpLyL5eK1jkR2pK1pmfdXun7bZgGxA==}
+  '@tapie-kr/inspire-react@0.2.0':
+    resolution: {integrity: sha512-6kUpgsWnEH/Ht4LR0KTdXE92UHaHJWv4mCE1LnsGhOSELV7t2YMR02T1h1hvdAChKGG7HjawlXtKsbRoWN4UGQ==}
     engines: {node: '>=22.0.0'}
     peerDependencies:
       framer-motion: ^12.0.3
@@ -2757,7 +2757,7 @@ snapshots:
       rimraf: 6.0.1
       zod: 3.24.2
 
-  '@tapie-kr/api-client@0.0.8(@tanstack/react-query-devtools@5.66.9(@tanstack/react-query@5.66.9(react@19.0.0))(react@19.0.0))(@tanstack/react-query@5.66.9(react@19.0.0))(axios@1.7.9)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(zod@3.24.2)':
+  '@tapie-kr/api-client@0.0.9(@tanstack/react-query-devtools@5.66.9(@tanstack/react-query@5.66.9(react@19.0.0))(react@19.0.0))(@tanstack/react-query@5.66.9(react@19.0.0))(axios@1.7.9)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(zod@3.24.2)':
     dependencies:
       '@tanstack/react-query': 5.66.9(react@19.0.0)
       '@tanstack/react-query-devtools': 5.66.9(@tanstack/react-query@5.66.9(react@19.0.0))(react@19.0.0)
@@ -2805,7 +2805,7 @@ snapshots:
     transitivePeerDependencies:
       - next
 
-  '@tapie-kr/inspire-react@0.2.0-beta.3(framer-motion@11.18.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(jotai@2.12.1(@types/react@19.0.10)(react@19.0.0))(next@15.1.7(@babel/core@7.26.9)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+  '@tapie-kr/inspire-react@0.2.0(framer-motion@11.18.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(jotai@2.12.1(@types/react@19.0.10)(react@19.0.0))(next@15.1.7(@babel/core@7.26.9)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
     dependencies:
       '@cottons-kr/react-foundation': 0.3.9(next@15.1.7(@babel/core@7.26.9)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       classnames: 2.5.1
@@ -2816,7 +2816,7 @@ snapshots:
     transitivePeerDependencies:
       - next
 
-  '@tapie-kr/inspire-react@0.2.0-beta.3(framer-motion@12.4.7(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(jotai@2.12.1(@types/react@19.0.10)(react@19.0.0))(next@15.1.7(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+  '@tapie-kr/inspire-react@0.2.0(framer-motion@12.4.7(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(jotai@2.12.1(@types/react@19.0.10)(react@19.0.0))(next@15.1.7(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
     dependencies:
       '@cottons-kr/react-foundation': 0.3.9(next@15.1.7(@babel/core@7.26.9)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       classnames: 2.5.1

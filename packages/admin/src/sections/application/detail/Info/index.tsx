@@ -17,7 +17,7 @@ import {
   Weight,
 } from '@tapie-kr/inspire-react';
 
-import { type Unit } from '@tapie-kr/dashboard-shared/lib/enum';
+import { MemberUnitType } from '@tapie-kr/api-client';
 import { getUnitIcon } from '@tapie-kr/dashboard-shared/lib/enum/utils';
 import { type JSX } from 'react';
 
@@ -29,7 +29,7 @@ type PersonalInfo = {
 };
 
 type ApplicationInfo = {
-  unit:               Unit;
+  unit:               MemberUnitType;
   introduction:       string;
   motivation:         string;
   expectedActivities: string;
@@ -39,7 +39,7 @@ type ApplicationInfo = {
 interface ApplicationDetailInfoSectionProps {
   personalInfo:    PersonalInfo;
   applicationInfo: ApplicationInfo;
-  portfolio:       string[];
+  portfolio:       string | null;
 }
 
 export default function ApplicationDetailInfoSection(props: ApplicationDetailInfoSectionProps) {
@@ -109,30 +109,31 @@ export default function ApplicationDetailInfoSection(props: ApplicationDetailInf
           },
         ]}
       />
-      <VStack
-        fullWidth
-        spacing={spacingVars.tiny}
-        align={StackAlign.START}
-      >
-        <Typo.Tiny
-          weight={Weight.MEDIUM}
-          color={colorVars.content.muted}
+      {portfolio !== null && (
+        <VStack
+          fullWidth
+          spacing={spacingVars.tiny}
+          align={StackAlign.START}
         >
-          포트폴리오
-        </Typo.Tiny>
-        <HStack spacing={spacingVars.tiny}>
-          {portfolio.map((item, index) => (
+          <Typo.Tiny
+            weight={Weight.MEDIUM}
+            color={colorVars.content.muted}
+          >
+            포트폴리오
+          </Typo.Tiny>
+          <HStack spacing={spacingVars.tiny}>
+
             <Button.Default
-              key={index}
               size={ButtonSize.MEDIUM}
               variant={ButtonVariant.SECONDARY}
               leadingIcon={GlyphIcon.DOWNLOAD}
             >
-              {item}
+              {portfolio}
             </Button.Default>
-          ))}
-        </HStack>
-      </VStack>
+
+          </HStack>
+        </VStack>
+      )}
     </VStack>
   );
 }

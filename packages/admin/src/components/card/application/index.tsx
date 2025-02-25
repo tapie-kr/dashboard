@@ -17,24 +17,29 @@ import {
 } from '@tapie-kr/inspire-react';
 
 import { type Temporal } from '@js-temporal/polyfill';
-import { type Unit } from '@tapie-kr/dashboard-shared/lib/enum';
+import { MemberUnitType } from '@tapie-kr/api-client';
 import { getUnitIcon } from '@tapie-kr/dashboard-shared/lib/enum/utils';
 import { getDatetimeString } from '@tapie-kr/dashboard-shared/lib/utils/date';
 import { useRouter } from 'next/navigation';
+import { use } from 'react';
 import { path, pathMap } from '@/lib/pathmap';
 import { type Member } from '@/lib/types';
 import { getMemberString } from '@/lib/types/utils';
 
 interface ApplicationCardProps {
+  uuid:          string;
+  formId:        number;
   member:        Member;
   content:       string;
-  unit:          Unit;
+  unit:          MemberUnitType;
   date:          Temporal.PlainDateTime;
   hasPortfolio?: boolean;
 }
 
 export default function ApplicationCard(props: ApplicationCardProps) {
   const {
+    uuid,
+    formId,
     member,
     content,
     unit,
@@ -45,7 +50,7 @@ export default function ApplicationCard(props: ApplicationCardProps) {
   const router = useRouter();
 
   const handleNavigate = () => {
-    router.push(pathMap.resolvePath(path.application, 3, 4));
+    router.push(pathMap.resolvePath(path.application, formId, uuid));
   };
 
   return (

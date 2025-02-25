@@ -37,8 +37,6 @@ export default function PortfolioCard(props: PortfolioCardProps) {
     router.push(pathMap.resolvePath(path.portfolio, 3));
   };
 
-  console.log(formatParticipants(members.map((member: Member) => member.name)));
-
   return (
     <VStack
       spacing={spacingVars.base}

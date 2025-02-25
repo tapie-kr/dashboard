@@ -12,10 +12,9 @@ import {
 import ApplicationCard from '@/components/card/application';
 import Page from '@/components/page';
 
-import { Temporal } from '@js-temporal/polyfill';
 import { usePrivateFormResponseList } from '@tapie-kr/api-client';
-import { Unit } from '@tapie-kr/dashboard-shared/lib/enum';
 import { getUnitFilterGroup } from '@tapie-kr/dashboard-shared/lib/enum/utils';
+import { toTemporalDateTime } from '@tapie-kr/dashboard-shared/lib/utils/date';
 import {
   type ChangeEvent,
   use,
@@ -34,7 +33,6 @@ export default function ApplicationDetailPage({ params }: {
   const {
     data,
     fetch,
-    error,
     isPending,
   } = usePrivateFormResponseList(id);
 
@@ -64,32 +62,31 @@ export default function ApplicationDetailPage({ params }: {
           columnCount={3}
           gap={spacingVars.petite}
         >
-          {data && data.data.map((item, idx) => (
-            <ApplicationCard
-              key={idx}
-              unit={Unit.DEVELOPER}
-              content='asd'
-              member={{
-                studentId: 10404,
-                name:      '권지원',
-              }}
-              date={Temporal.PlainDateTime.from({
-                year:   2025,
-                month:  3,
-                day:    27,
-                hour:   6,
-                minute: 17,
-              })}
-            />
-          ))}
-          {isPending && Array.from({ length: 5 }).map((_, index) => (
-            <Skeleton
-              key={index}
-              width={300}
-              height={120}
-              borderRadius={radiusVars.smooth}
-            />
-          ))}
+          {data && Array.isArray(data.data)
+            ? data.data.map((item, idx) => (
+              <ApplicationCard
+                key={idx}
+                uuid={item.uuid}
+                formId={id}
+                unit={item.unit}
+                content={item.introduction}
+                date={toTemporalDateTime(item.createdAt)}
+                member={{
+                  studentId: item.studentId,
+                  name:      item.name,
+                }}
+              />
+            ))
+            : (
+              isPending && Array.from({ length: 5 }).map((_, index) => (
+                <Skeleton
+                  key={index}
+                  width={300}
+                  height={120}
+                  borderRadius={radiusVars.smooth}
+                />
+              ))
+            )}
         </Grid>
       </VStack>
     </Page>
