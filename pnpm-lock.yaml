@@ -27,8 +27,8 @@ importers:
         specifier: ^0.4.4
         version: 0.4.4
       '@tapie-kr/api-client':
-        specifier: ^0.0.16
-        version: 0.0.16(@tanstack/react-query-devtools@5.66.9(@tanstack/react-query@5.66.9(react@19.0.0))(react@19.0.0))(@tanstack/react-query@5.66.9(react@19.0.0))(axios@1.7.9)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(zod@3.24.2)
+        specifier: ^0.0.23
+        version: 0.0.23(axios@1.7.9)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(zod@3.24.2)
       '@tapie-kr/dashboard-shared':
         specifier: workspace:*
         version: link:../shared
@@ -125,8 +125,8 @@ importers:
         specifier: ^0.4.4
         version: 0.4.4
       '@tapie-kr/api-client':
-        specifier: ^0.0.16
-        version: 0.0.16(@tanstack/react-query-devtools@5.66.9(@tanstack/react-query@5.66.9(react@19.0.0))(react@19.0.0))(@tanstack/react-query@5.66.9(react@19.0.0))(axios@1.7.9)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(zod@3.24.2)
+        specifier: ^0.0.23
+        version: 0.0.23(axios@1.7.9)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(zod@3.24.2)
       '@tapie-kr/inspire-react':
         specifier: 0.2.10
         version: 0.2.10(framer-motion@11.18.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(jotai@2.12.1(@types/react@19.0.10)(react@19.0.0))(next@15.1.7(@babel/core@7.26.9)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -694,11 +694,9 @@ packages:
     peerDependencies:
       react: ^18 || ^19
 
-  '@tapie-kr/api-client@0.0.16':
-    resolution: {integrity: sha512-HitL7++D2OxDUvSvpJ8OEXeGgJyv7y4ItAEJaiOubugxRclw3PrJaCrqoG4MQbaK2v/YJkRW3P/pumWuE9ZTSA==}
+  '@tapie-kr/api-client@0.0.23':
+    resolution: {integrity: sha512-t+WM1sF15Rps7UuBNHCkeSmiDIrbm7Y4rGKGlbjrq7DcO1CBeqyWKKf8gdnjo3tScmf1YzU6z2Y4bJG+fw4LkQ==}
     peerDependencies:
-      '@tanstack/react-query': ^5.66.0
-      '@tanstack/react-query-devtools': ^5.66.0
       axios: ^1.7.9
       react: ^19.0.0
       react-dom: ^19.0.0
@@ -2747,10 +2745,8 @@ snapshots:
       '@tanstack/query-core': 5.66.4
       react: 19.0.0
 
-  '@tapie-kr/api-client@0.0.16(@tanstack/react-query-devtools@5.66.9(@tanstack/react-query@5.66.9(react@19.0.0))(react@19.0.0))(@tanstack/react-query@5.66.9(react@19.0.0))(axios@1.7.9)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(zod@3.24.2)':
+  '@tapie-kr/api-client@0.0.23(axios@1.7.9)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(zod@3.24.2)':
     dependencies:
-      '@tanstack/react-query': 5.66.9(react@19.0.0)
-      '@tanstack/react-query-devtools': 5.66.9(@tanstack/react-query@5.66.9(react@19.0.0))(react@19.0.0)
       axios: 1.7.9
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)

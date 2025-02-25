@@ -1,6 +1,5 @@
 import {
   AspectRatio,
-  BrandIcon,
   colorVars,
   HStack,
   Image,
@@ -12,16 +11,14 @@ import {
 } from '@tapie-kr/inspire-react';
 
 interface MemberDetailSummarySectionProps extends MemberType {
-  stats: [number, number, number, number];
 }
 
 import * as s from './style.css';
 
-import GenerationBadge from '@tapie-kr/dashboard-shared/components/atoms/badge/generation';
-import IconBadge from '@tapie-kr/dashboard-shared/components/atoms/badge/icon';
-import RoleBadge from '@tapie-kr/dashboard-shared/components/atoms/badge/role';
-
 import { MemberType } from '@tapie-kr/api-client';
+import GenerationBadge from '@tapie-kr/dashboard-shared/components/atoms/badge/generation';
+import RoleBadge from '@tapie-kr/dashboard-shared/components/atoms/badge/role';
+import { UnitEnumToKorean } from '@tapie-kr/dashboard-shared/lib/utils/enum';
 
 export default function MemberDetailSummarySection(props: MemberDetailSummarySectionProps) {
   const {
@@ -31,7 +28,8 @@ export default function MemberDetailSummarySection(props: MemberDetailSummarySec
     role,
     generation,
     profileUri,
-    stats,
+    awards,
+    skills,
   } = props;
 
   return (
@@ -59,32 +57,32 @@ export default function MemberDetailSummarySection(props: MemberDetailSummarySec
               weight={Weight.MEDIUM}
               color={colorVars.content.default}
             >
-              {unit}
+              {UnitEnumToKorean(unit)}
             </Typo.Base>
           </HStack>
           <HStack spacing={spacingVars.micro}>
-            <IconBadge
-              icon={BrandIcon.BEHANCE}
-              label='Behance'
-            />
             <RoleBadge role={role} />
-            <GenerationBadge generation={`${generation}기${false ? ' (졸업)' : ''}`} />
+            <GenerationBadge generation={generation} />
           </HStack>
         </VStack>
       </HStack>
       <HStack spacing={spacingVars.moderate}>
-        {[
-          '프로필 조회수',
-          '포트폴리오 개수',
-          '수상실적 개수',
-          '기술 스택 개수',
-        ].map((label, index) => (
-          <Stat
-            key={index}
-            label={label}
-            value={stats[index]}
-          />
-        ))}
+        <Stat
+          label='프로필 조회수'
+          value={46}
+        />
+        <Stat
+          label='포트폴리오 개수'
+          value={46}
+        />
+        <Stat
+          label='수상실적 개수'
+          value={awards.length}
+        />
+        <Stat
+          label='기술 스택 개수'
+          value={skills.length}
+        />
       </HStack>
     </HStack>
   );

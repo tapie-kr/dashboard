@@ -11,10 +11,21 @@ import {
   Weight,
 } from '@tapie-kr/inspire-react';
 
+import { MemberType } from '@tapie-kr/api-client';
 import { MemberRole, MemberUnit } from '@tapie-kr/api-client/enum';
 import { RoleEnumToKorean, UnitEnumToKorean } from '@tapie-kr/dashboard-shared/lib/utils/enum';
 
-export default function MemberDetailBasicInfoSection() {
+export default function MemberDetailBasicInfoSection(props: MemberType) {
+  const {
+    name,
+    studentID,
+    username,
+    profileUri,
+    generation,
+    unit,
+    role,
+  } = props;
+
   return (
     <VStack
       fullWidth
@@ -38,20 +49,30 @@ export default function MemberDetailBasicInfoSection() {
             isEssential
             label='이름'
           >
-            <Input.Text placeholder='이름 입력' />
+            <Input.Text
+              disabled
+              placeholder='이름 입력'
+              value={name}
+            />
           </FormField>
           <FormField
             isEssential
             label='학번'
           >
-            <Input.Text placeholder='학번 입력' />
+            <Input.Text
+              placeholder='학번 입력'
+              value={studentID}
+            />
           </FormField>
           <FormField
             isEssential
             label='유저네임'
             description='해당 유저네임으로 TAPIE 이메일이 생성됩니다.'
           >
-            <Input.Text placeholder='유저네임 입력' />
+            <Input.Text
+              placeholder='유저네임 입력'
+              value={username}
+            />
           </FormField>
           <FormField
             isEssential
@@ -61,13 +82,10 @@ export default function MemberDetailBasicInfoSection() {
             <Input.ImagePreview
               shape={ImagePreviewShape.CIRCLE}
               size={100}
+              preview={profileUri}
             />
           </FormField>
         </VStack>
-        <Input.ImagePreview
-          shape={ImagePreviewShape.CIRCLE}
-          size={100}
-        />
         <VStack
           fullWidth
           spacing={spacingVars.moderate}
@@ -76,7 +94,10 @@ export default function MemberDetailBasicInfoSection() {
             isEssential
             label='기수'
           >
-            <Input.Text placeholder='기수 입력' />
+            <Input.Text
+              placeholder='기수 입력'
+              value={String(generation)}
+            />
           </FormField>
           <FormField
             isEssential
@@ -84,6 +105,7 @@ export default function MemberDetailBasicInfoSection() {
           >
             <Select
               placeholder='유닛 선택'
+              value={unit}
               options={Object.values(MemberUnit).map(unit => ({
                 label: UnitEnumToKorean(unit),
                 value: unit,
@@ -97,6 +119,7 @@ export default function MemberDetailBasicInfoSection() {
           >
             <Select
               placeholder='역할 선택'
+              value={role}
               options={Object.values(MemberRole).map(unit => ({
                 label: RoleEnumToKorean(unit),
                 value: unit,
