@@ -13,10 +13,10 @@ import Page from '@/components/page';
 
 import { use, useEffect } from 'react';
 import { PortfolioStackCategory } from '@/lib/types/portfolio/stack';
+import PortfolioDetailAwardSection from '@/sections/portfolio/detail/Award';
 import PortfolioDetailBannerSection from '@/sections/portfolio/detail/Banner';
 import PortfolioDetailFormSection from '@/sections/portfolio/detail/Form';
 import { PortfolioDetailTable } from '@/sections/portfolio/detail/table';
-import PortfolioDetailAwardSection from '@/sections/portfolio/detail/Award';
 
 export default function PortfolioDetailPage({ params }: {
   params: Promise<{
