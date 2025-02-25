@@ -1,7 +1,9 @@
 import { Badge, BadgeSize, BadgeTheme } from '@tapie-kr/inspire-react';
 
-import { MemberUnit } from '@tapie-kr/api-client';
-import { UnitEnumToKorean } from '@tapie-kr/dashboard-shared/lib/utils/enum';
+import { MemberUnit } from '@tapie-kr/api-client/enum';
+
+import { getUnitIcon } from '~/lib/enum/utils';
+import { UnitEnumToKorean } from '~/lib/utils/enum';
 
 interface UnitBadgeProps {
   unit:   MemberUnit;
@@ -19,6 +21,7 @@ export default function UnitBadge(props: UnitBadgeProps) {
   return (
     <Badge.Default
       label={UnitEnumToKorean(unit)}
+      leadingIcon={getUnitIcon(unit)}
       theme={theme}
       size={size}
     />

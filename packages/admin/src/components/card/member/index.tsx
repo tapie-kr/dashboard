@@ -2,7 +2,6 @@ import * as s from './style.css';
 
 import {
   AspectRatio,
-  Badge,
   BadgeSize,
   colorVars,
   GlyphIcon,
@@ -18,12 +17,9 @@ import {
 } from '@tapie-kr/inspire-react';
 
 import { MemberType } from '@tapie-kr/api-client';
-import {
-  getRoleIcon,
-  getRoleTheme,
-  getUnitIcon,
-  isExecutive,
-} from '@tapie-kr/dashboard-shared/lib/enum/utils';
+import GenerationBadge from '@tapie-kr/dashboard-shared/components/atoms/badge/generation';
+import RoleBadge from '@tapie-kr/dashboard-shared/components/atoms/badge/role';
+import UnitBadge from '@tapie-kr/dashboard-shared/components/atoms/badge/unit';
 import { useRouter } from 'next/navigation';
 import { path, pathMap } from '@/lib/pathmap';
 
@@ -79,22 +75,16 @@ export default function MemberCard(props: MemberCardProps) {
           />
         </HStack>
         <HStack spacing={spacingVars.tiny}>
-          {isExecutive(role) && (
-            <Badge.Default
-              leadingIcon={getRoleIcon()}
-              theme={getRoleTheme()}
-              label={role}
-              size={BadgeSize.SMALL}
-            />
-          )}
-          <Badge.Default
-            leadingIcon={getUnitIcon(unit)}
-            label={unit}
+          <RoleBadge
+            role={role}
             size={BadgeSize.SMALL}
           />
-          <Badge.Default
-            leadingIcon={GlyphIcon.SCHOOL}
-            label={`${generation}기${false ? ' (졸업)' : ''}`}
+          <UnitBadge
+            unit={unit}
+            size={BadgeSize.SMALL}
+          />
+          <GenerationBadge
+            generation={generation}
             size={BadgeSize.SMALL}
           />
         </HStack>

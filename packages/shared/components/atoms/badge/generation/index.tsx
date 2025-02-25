@@ -6,7 +6,7 @@ import {
 } from '@tapie-kr/inspire-react';
 
 interface UnitBadgeProps {
-  generation: string;
+  generation: number;
   theme?:     BadgeTheme;
   size?:      BadgeSize;
 }
@@ -20,7 +20,7 @@ export default function GenerationBadge(props: UnitBadgeProps) {
 
   return (
     <Badge.Default
-      label={generation}
+      label={`${generation}기`}
       theme={theme}
       size={size}
       leadingIcon={GlyphIcon.SCHOOL}

@@ -6,8 +6,9 @@ import {
 } from '@tapie-kr/inspire-react';
 
 import { MemberRole } from '@tapie-kr/api-client/enum';
-import { isExecutive } from '@tapie-kr/dashboard-shared/lib/enum/utils';
-import { RoleEnumToKorean } from '@tapie-kr/dashboard-shared/lib/utils/enum';
+
+import { isExecutive } from '~/lib/enum/utils';
+import { RoleEnumToKorean } from '~/lib/utils/enum';
 
 interface UnitBadgeProps {
   role:  MemberRole;
