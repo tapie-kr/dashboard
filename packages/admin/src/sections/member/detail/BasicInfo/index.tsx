@@ -77,9 +77,7 @@ export default function MemberDetailBasicInfoSection() {
             isEssential
             label='유닛'
           >
-            <Input.Text placeholder='유닛 입력' />
             <Select
-              style={{ width: '100%' }}
               leadingIcon={GlyphIcon.ADD}
             >
               {
