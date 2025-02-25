@@ -1,12 +1,22 @@
 'use client';
 
-import { spacingVars, StackAlign, VStack } from '@tapie-kr/inspire-react';
+import {
+  BrandIcon,
+  Button,
+  GlyphIcon,
+  Icon,
+  spacingVars,
+  StackAlign,
+  VStack,
+} from '@tapie-kr/inspire-react';
 import Page from '@/components/page';
 
 import { use, useEffect } from 'react';
+import { PortfolioStackCategory } from '@/lib/types/portfolio/stack';
 import PortfolioDetailBannerSection from '@/sections/portfolio/detail/Banner';
 import PortfolioDetailFormSection from '@/sections/portfolio/detail/Form';
 import { PortfolioDetailTable } from '@/sections/portfolio/detail/table';
+import PortfolioDetailAwardSection from '@/sections/portfolio/detail/Award';
 
 export default function PortfolioDetailPage({ params }: {
   params: Promise<{
@@ -32,6 +42,7 @@ export default function PortfolioDetailPage({ params }: {
           image='https://tapie.kr/thumbnails/sunrin_today.webp'
         />
         <PortfolioDetailFormSection />
+        <PortfolioDetailAwardSection />
         <PortfolioDetailTable.member member={[
           {
             name:       '한유찬',
@@ -44,7 +55,26 @@ export default function PortfolioDetailPage({ params }: {
           },
         ]}
         />
-        <PortfolioDetailTable.link info={[{ label: 'https://sunrintoday.com' }]} />
+        <PortfolioDetailTable.stack stack={[
+          {
+            icon:     <Icon name={BrandIcon.CLOUDFLARE} />,
+            name:     'Cloudflare',
+            category: PortfolioStackCategory.OPERATION,
+          },
+        ]}
+        />
+        <PortfolioDetailTable.tag tag={[
+          { label: '앱' },
+          { label: '해커톤' },
+          { label: '출품작' },
+        ]}
+        />
+        <Button.Default
+          disabled
+          leadingIcon={GlyphIcon.CHECK}
+        >
+          저장하기
+        </Button.Default>
       </VStack>
     </Page>
   );

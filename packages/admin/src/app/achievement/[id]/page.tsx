@@ -27,7 +27,7 @@ export default function AchievementDetailPage({ params }: {
           info={[
             { member: {
               name:      '권지원',
-              studentId: 10404,
+              studentId: '10404',
             } },
           ]}
         />

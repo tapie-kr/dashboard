@@ -44,6 +44,14 @@ export default function PortfolioDetailFormSection() {
           height={150}
         />
       </FormField>
+      <FormField
+        isEssential
+        label='프로젝트 링크'
+      >
+        <Input.Text
+          placeholder='프로젝트 링크 입력'
+        />
+      </FormField>
     </VStack>
   );
 }

@@ -18,14 +18,14 @@ import {
   Weight,
 } from '@tapie-kr/inspire-react';
 
-import { type Info } from '../shared';
+import { type PortfolioTag } from '../shared';
 
-interface PortfolioDetailInfoSectionProps {
-  info: Info[];
+interface PortfolioDetailTagSectionProps {
+  tag: PortfolioTag[];
 }
 
-export default function PortfolioDetailLinkSection(props: PortfolioDetailInfoSectionProps) {
-  const { info } = props;
+export default function PortfolioDetailTagSection(props: PortfolioDetailTagSectionProps) {
+  const { tag } = props;
 
   return (
     <VStack
@@ -37,12 +37,12 @@ export default function PortfolioDetailLinkSection(props: PortfolioDetailInfoSec
         weight={Weight.SEMIBOLD}
         className={s.title}
       >
-        링크
+        태그
       </Typo.Moderate>
       <HStack spacing={spacingVars.micro}>
         <Box className={s.input}>
           <Input.Text
-            placeholder='링크 입력'
+            placeholder='태그 입력'
             size={InputSize.MEDIUM}
           />
         </Box>
@@ -53,7 +53,7 @@ export default function PortfolioDetailLinkSection(props: PortfolioDetailInfoSec
       </HStack>
       <DataTable
         showIndex
-        data={info}
+        data={tag}
         actions={[
           {
             icon:    GlyphIcon.EDIT,
@@ -69,7 +69,7 @@ export default function PortfolioDetailLinkSection(props: PortfolioDetailInfoSec
         columns={[
           {
             key:        'label',
-            label:      '라벨',
+            label:      '이름',
             width:      500,
             isSortable: true,
           },

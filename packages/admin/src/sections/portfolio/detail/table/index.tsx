@@ -1,6 +1,9 @@
-import PortfolioDetailLinkSection from './categories/link';
 import PortfolioDetailMemberSection from './categories/member';
+import PortfolioDetailStackSection from './categories/stack';
+import PortfolioDetailTagSection from './categories/tag';
 
 export const PortfolioDetailTable = {
-  link: PortfolioDetailLinkSection, member: PortfolioDetailMemberSection,
+  tag:    PortfolioDetailTagSection,
+  member: PortfolioDetailMemberSection,
+  stack:  PortfolioDetailStackSection,
 };
