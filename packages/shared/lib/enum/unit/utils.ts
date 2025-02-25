@@ -1,8 +1,7 @@
 import { type FilterGroup, GlyphIcon, type IconName } from '@tapie-kr/inspire-react';
 
 import { MemberUnit } from '@tapie-kr/api-client/enum';
-
-import { UnitEnumToKorean } from '~/lib/utils/unit';
+import { UnitEnumToKorean } from '@tapie-kr/dashboard-shared/lib/utils/enum';
 
 export const getUnitIcon = (unit: MemberUnit): IconName => {
   const unitIcon: {
