@@ -8,13 +8,24 @@ import {
   VStack,
 } from '@tapie-kr/inspire-react';
 import MemberCard from '@/components/card/member';
+import SkeletonMemberCard from '@/components/card/member/Skeleton';
 import Page from '@/components/page';
 
-import { Executive, Unit } from '@tapie-kr/dashboard-shared/lib/enum';
+import { usePrivateMemberList } from '@tapie-kr/api-client';
 import { getContestFilterGroup } from '@tapie-kr/dashboard-shared/lib/enum/utils';
-import { type ChangeEvent, useState } from 'react';
+import { type ChangeEvent, useEffect, useState } from 'react';
 
 export default function MemberPage() {
+  const {
+    data,
+    isPending,
+    fetch,
+  } = usePrivateMemberList();
+
+  useEffect(() => {
+    fetch();
+  }, []);
+
   const [searchValue, setSearchValue] = useState('');
 
   const handleSearchValue = (e: ChangeEvent<HTMLInputElement>) => {
@@ -32,33 +43,24 @@ export default function MemberPage() {
       <VStack
         fullWidth
         align={StackAlign.START}
-        spacing={spacingVars.jumbo}
+        spacing={spacingVars.petite}
       >
         <Filter filters={[getContestFilterGroup()]} />
         <Grid
           columnCount={3}
           gap={spacingVars.petite}
         >
-          <MemberCard
-            executive={Executive.MANAGER}
-            unit={Unit.DEVELOPER}
-            generation={119}
-            profileImage='https://www.jwkwon0817.me/_next/image?url=%2Fassets%2Fprofile.png&w=256&q=75'
-            member={{
-              studentId: 10404,
-              name:      '권지원',
-            }}
-          />
-          {Array.from({ length: 5 }).map((_, index) => (
+          {/* TODO: 한유찬한테 API response 바꾸라고 하기 */}
+          {isPending && <SkeletonMemberCard />}
+          {data && data.data.map(member => (
             <MemberCard
-              key={index}
-              isGraduated
-              unit={Unit.DEVELOPER}
-              generation={119}
+              key={member.uuid}
+              unit={member.unit}
+              generation={member.generation}
               profileImage='https://www.jwkwon0817.me/_next/image?url=%2Fassets%2Fprofile.png&w=256&q=75'
               member={{
-                studentId: 10404,
-                name:      '권지원',
+                studentId: '10417',
+                name:      member.name,
               }}
             />
           ))}

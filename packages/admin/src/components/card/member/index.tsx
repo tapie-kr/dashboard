@@ -17,7 +17,8 @@ import {
   Weight,
 } from '@tapie-kr/inspire-react';
 
-import { type Executive, type Unit } from '@tapie-kr/dashboard-shared/lib/enum';
+import { MemberUnitType } from '@tapie-kr/api-client';
+import { type Executive } from '@tapie-kr/dashboard-shared/lib/enum';
 import { getExecutiveIcon, getExecutiveTheme, getUnitIcon } from '@tapie-kr/dashboard-shared/lib/enum/utils';
 import { useRouter } from 'next/navigation';
 import { path, pathMap } from '@/lib/pathmap';
@@ -28,7 +29,7 @@ interface MemberCardProps {
   profileImage: string;
   member:       Member;
   executive?:   Executive;
-  unit:         Unit;
+  unit:         MemberUnitType;
   generation:   number;
   isGraduated?: boolean;
 }
