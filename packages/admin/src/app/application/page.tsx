@@ -7,6 +7,7 @@ import {
   ButtonSize,
   colorVars,
   DataTable,
+  DatePicker,
   Filter,
   FormField,
   GlyphIcon,
@@ -69,7 +70,7 @@ export default function ApplicationPage() {
     <Page
       hasSearch
       title='신청폼'
-      count={2}
+      count={data?.data.length ?? 0}
       searchValue={searchValue}
       onChangeSearchValue={handleSearchValue}
     >
@@ -188,9 +189,9 @@ export default function ApplicationPage() {
             isEssential
             label='시작일'
           >
-            <Input.Text
+            <DatePicker
+              withTime
               placeholder='날짜 선택'
-              leadingIcon={GlyphIcon.CALENDAR_MONTH}
               value={fromDate}
               onChange={e => {
                 setFromDate(e.target.value);
@@ -201,9 +202,9 @@ export default function ApplicationPage() {
             isEssential
             label='마감일'
           >
-            <Input.Text
+            <DatePicker
+              withTime
               placeholder='날짜 선택'
-              leadingIcon={GlyphIcon.CALENDAR_MONTH}
               value={toDate}
               onChange={e => {
                 setToDate(e.target.value);

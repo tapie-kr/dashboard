@@ -13,6 +13,7 @@ import {
   VStack,
 } from '@tapie-kr/inspire-react';
 import AchievementCard from '@/components/card/achievement';
+import SkeletonAchievementCard from '@/components/card/achievement/Skeleton';
 import Page from '@/components/page';
 
 import { Temporal } from '@js-temporal/polyfill';
@@ -21,7 +22,6 @@ import { Contest } from '@tapie-kr/dashboard-shared/lib/enum';
 import { getContestFilterGroup } from '@tapie-kr/dashboard-shared/lib/enum/utils';
 import { toTemporalDate } from '@tapie-kr/dashboard-shared/lib/utils/date';
 import { type ChangeEvent, useEffect, useState } from 'react';
-import SkeletonAchievementCard from '@/components/card/achievement/Skeleton';
 
 export default function AchievementPage() {
   const [searchValue, setSearchValue] = useState('');
