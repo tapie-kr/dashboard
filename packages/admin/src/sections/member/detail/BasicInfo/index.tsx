@@ -12,7 +12,7 @@ import {
 } from '@tapie-kr/inspire-react';
 
 import { MemberRole, MemberUnit } from '@tapie-kr/api-client/enum';
-import { RoleEnumToKorean, UnitEnumToKorean } from '@tapie-kr/dashboard-shared/lib/utils/unit';
+import { RoleEnumToKorean, UnitEnumToKorean } from '@tapie-kr/dashboard-shared/lib/utils/enum';
 
 export default function MemberDetailBasicInfoSection() {
   return (

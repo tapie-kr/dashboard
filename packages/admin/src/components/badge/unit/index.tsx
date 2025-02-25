@@ -1,10 +1,10 @@
 import { Badge, BadgeSize, BadgeTheme } from '@tapie-kr/inspire-react';
 
-import { MemberUnitType } from '@tapie-kr/api-client';
-import { UnitEnumToKorean } from '@tapie-kr/dashboard-shared/lib/utils/unit';
+import { MemberUnit } from '@tapie-kr/api-client';
+import { UnitEnumToKorean } from '@tapie-kr/dashboard-shared/lib/utils/enum';
 
 interface UnitBadgeProps {
-  unit:   MemberUnitType;
+  unit:   MemberUnit;
   theme?: BadgeTheme;
   size?:  BadgeSize;
 }

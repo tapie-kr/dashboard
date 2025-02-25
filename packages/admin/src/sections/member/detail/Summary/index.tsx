@@ -1,8 +1,7 @@
 import {
   AspectRatio,
-  Badge,
+  BrandIcon,
   colorVars,
-  GlyphIcon,
   HStack,
   Image,
   spacingVars,
@@ -12,13 +11,15 @@ import {
   Weight,
 } from '@tapie-kr/inspire-react';
 
-import { getRoleIcon, getRoleTheme, isExecutive } from '@tapie-kr/dashboard-shared/lib/enum/utils';
-
 interface MemberDetailSummarySectionProps extends MemberType {
   stats: [number, number, number, number];
 }
 
 import * as s from './style.css';
+
+import GenerationBadge from '@/components/badge/generation';
+import IconBadge from '@/components/badge/icon';
+import RoleBadge from '@/components/badge/role';
 
 import { MemberType } from '@tapie-kr/api-client';
 
@@ -62,17 +63,12 @@ export default function MemberDetailSummarySection(props: MemberDetailSummarySec
             </Typo.Base>
           </HStack>
           <HStack spacing={spacingVars.micro}>
-            {isExecutive(role) && (
-              <Badge.Default
-                label={role}
-                theme={getRoleTheme()}
-                leadingIcon={getRoleIcon()}
-              />
-            )}
-            <Badge.Default
-              label={`${generation}기${false ? ' (졸업)' : ''}`}
-              leadingIcon={GlyphIcon.SCHOOL}
+            <IconBadge
+              icon={BrandIcon.BEHANCE}
+              label='Behance'
             />
+            <RoleBadge role={role} />
+            <GenerationBadge generation={`${generation}기${false ? ' (졸업)' : ''}`} />
           </HStack>
         </VStack>
       </HStack>
