@@ -31,7 +31,7 @@ export default function MemberDetailPage({ params }: {
     role:        MemberRole.MANAGER,
     unit:        MemberUnit.DEVELOPER,
     generation:  119,
-    profileUri:  'https://tapie.kr/profile.png',
+    profileUri:  'https://avatars.githubusercontent.com/u/70470873?v=4',
   };
 
   return (

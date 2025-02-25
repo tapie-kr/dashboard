@@ -17,8 +17,13 @@ import {
   Weight,
 } from '@tapie-kr/inspire-react';
 
-import { MemberRole, MemberType } from '@tapie-kr/api-client';
-import { getRoleIcon, getRoleTheme, getUnitIcon } from '@tapie-kr/dashboard-shared/lib/enum/utils';
+import { MemberType } from '@tapie-kr/api-client';
+import {
+  getRoleIcon,
+  getRoleTheme,
+  getUnitIcon,
+  isExecutive,
+} from '@tapie-kr/dashboard-shared/lib/enum/utils';
 import { useRouter } from 'next/navigation';
 import { path, pathMap } from '@/lib/pathmap';
 
@@ -74,7 +79,7 @@ export default function MemberCard(props: MemberCardProps) {
           />
         </HStack>
         <HStack spacing={spacingVars.tiny}>
-          {(role === MemberRole.MANAGER || role === MemberRole.CO_MANAGER) && (
+          {isExecutive(role) && (
             <Badge.Default
               leadingIcon={getRoleIcon()}
               theme={getRoleTheme()}

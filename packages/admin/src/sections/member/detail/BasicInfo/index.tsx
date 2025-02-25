@@ -32,6 +32,7 @@ export default function MemberDetailBasicInfoSection() {
         <VStack
           fullWidth
           spacing={spacingVars.moderate}
+          align={StackAlign.START}
         >
           <FormField
             isEssential
@@ -54,6 +55,7 @@ export default function MemberDetailBasicInfoSection() {
           </FormField>
           <FormField
             isEssential
+            fitContent
             label='프로필 사진'
           >
             <Input.ImagePreview
@@ -62,6 +64,10 @@ export default function MemberDetailBasicInfoSection() {
             />
           </FormField>
         </VStack>
+        <Input.ImagePreview
+          shape={ImagePreviewShape.CIRCLE}
+          size={100}
+        />
         <VStack
           fullWidth
           spacing={spacingVars.moderate}
@@ -87,6 +93,7 @@ export default function MemberDetailBasicInfoSection() {
           <FormField
             isEssential
             label='역할'
+
           >
             <Select
               placeholder='역할 선택'
