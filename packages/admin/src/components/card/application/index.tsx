@@ -21,7 +21,6 @@ import { MemberUnitType } from '@tapie-kr/api-client';
 import { getUnitIcon } from '@tapie-kr/dashboard-shared/lib/enum/utils';
 import { getDatetimeString } from '@tapie-kr/dashboard-shared/lib/utils/date';
 import { useRouter } from 'next/navigation';
-import { use } from 'react';
 import { path, pathMap } from '@/lib/pathmap';
 import { type Member } from '@/lib/types';
 import { getMemberString } from '@/lib/types/utils';
@@ -75,7 +74,7 @@ export default function ApplicationCard(props: ApplicationCardProps) {
         />
         <Badge.Default
           size={BadgeSize.SMALL}
-          label={`${getDatetimeString(date, true)} 제출`}
+          label={`${getDatetimeString(date.toString(), true)} 제출`}
           leadingIcon={GlyphIcon.TODAY}
         />
         <Badge.Default
