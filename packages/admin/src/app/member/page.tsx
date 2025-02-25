@@ -36,7 +36,7 @@ export default function MemberPage() {
     <Page
       hasSearch
       title='부원'
-      count={20}
+      count={data?.data.length || 0}
       searchValue={searchValue}
       onChangeSearchValue={handleSearchValue}
     >
