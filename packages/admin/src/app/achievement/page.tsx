@@ -15,12 +15,26 @@ import {
 import AchievementCard from '@/components/card/achievement';
 import Page from '@/components/page';
 
+import { Temporal } from '@js-temporal/polyfill';
+import { usePrivateAwardList } from '@tapie-kr/api-client';
 import { Contest } from '@tapie-kr/dashboard-shared/lib/enum';
 import { getContestFilterGroup } from '@tapie-kr/dashboard-shared/lib/enum/utils';
-import { type ChangeEvent, useState } from 'react';
+import { toTemporalDate } from '@tapie-kr/dashboard-shared/lib/utils/date';
+import { type ChangeEvent, useEffect, useState } from 'react';
+import SkeletonAchievementCard from '@/components/card/achievement/Skeleton';
 
 export default function AchievementPage() {
   const [searchValue, setSearchValue] = useState('');
+
+  const {
+    data,
+    isPending,
+    fetch,
+  } = usePrivateAwardList();
+
+  useEffect(() => {
+    fetch();
+  }, []);
 
   const handleSearchValue = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
@@ -56,38 +70,21 @@ export default function AchievementPage() {
           columnCount={3}
           gap={spacingVars.petite}
         >
-          {Array.from({ length: 7 }).map((_, index) => (
+          {isPending && <SkeletonAchievementCard />}
+          {data?.data.map((award, idx) => (
             <AchievementCard
-              key={index}
-              contestName='24th 앱잼 생활'
+              key={idx}
+              contestName={award.title}
               contestType={Contest.INTERNAL}
-              year={2025}
+              year={Temporal.PlainDate.from(toTemporalDate(award.rewardedAt)).year}
               grade={{
-                grade:      1,
-                gradeLabel: '최우수상',
+                grade:      award.grade,
+                gradeLabel: award.gradeLabel,
               }}
-              members={[
-                {
-                  name:      '한유찬',
-                  studentId: '10000',
-                },
-                {
-                  name:      '신유준',
-                  studentId: '10000',
-                },
-                {
-                  name:      '신유준',
-                  studentId: '10000',
-                },
-                {
-                  name:      '신유준',
-                  studentId: '10000',
-                },
-                {
-                  name:      '신유준',
-                  studentId: '10000',
-                },
-              ]}
+              members={award.members.map(member => ({
+                name:      member.name,
+                studentId: member.uuid,
+              }))}
             />
           ))}
         </Grid>
