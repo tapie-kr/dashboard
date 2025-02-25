@@ -11,16 +11,16 @@ import {
   Weight,
 } from '@tapie-kr/inspire-react';
 
+import { MemberType } from '@tapie-kr/api-client';
 import { formatParticipants } from '@tapie-kr/dashboard-shared/lib/utils/participants';
 import { useRouter } from 'next/navigation';
 import { path, pathMap } from '@/lib/pathmap';
-import { Member } from '@/lib/types';
 
 interface PortfolioCardProps {
   title:       string;
   image:       string;
   catchphrase: string;
-  members:     Member[];
+  members:     MemberType[];
 }
 
 export default function PortfolioCard(props: PortfolioCardProps) {
@@ -64,7 +64,7 @@ export default function PortfolioCard(props: PortfolioCardProps) {
         <Typo.Mini
           weight={Weight.SEMIBOLD}
           color={colorVars.content.default}
-        >{formatParticipants(members.map((member: Member) => member.name))}
+        >{formatParticipants(members.map(member => member.name))}
         </Typo.Mini>
         <Typo.Base weight={Weight.SEMIBOLD}>{title}</Typo.Base>
         <Typo.Tiny color={colorVars.content.default}>{catchphrase}</Typo.Tiny>

@@ -12,32 +12,24 @@ import {
   Weight,
 } from '@tapie-kr/inspire-react';
 
-import { type Executive, type Unit } from '@tapie-kr/dashboard-shared/lib/enum';
-import { getExecutiveIcon, getExecutiveTheme } from '@tapie-kr/dashboard-shared/lib/enum/utils';
+import { getRoleIcon, getRoleTheme, isExecutive } from '@tapie-kr/dashboard-shared/lib/enum/utils';
 
-interface MemberDetailSummarySectionProps {
-  profileImage: string;
-  member:       Member;
-  unit:         Unit;
-  executive?:   Executive;
-  generation:   number;
-  isGraduated?: boolean;
-  stats:        [number, number, number, number];
+interface MemberDetailSummarySectionProps extends MemberType {
+  stats: [number, number, number, number];
 }
 
 import * as s from './style.css';
 
-import { Member } from '@/lib/types';
-import { getMemberString } from '@/lib/types/utils';
+import { MemberType } from '@tapie-kr/api-client';
 
 export default function MemberDetailSummarySection(props: MemberDetailSummarySectionProps) {
   const {
-    profileImage,
-    member,
+    name,
+    username,
     unit,
-    executive,
+    role,
     generation,
-    isGraduated = false,
+    profileUrl,
     stats,
   } = props;
 
@@ -52,8 +44,8 @@ export default function MemberDetailSummarySection(props: MemberDetailSummarySec
           <Image
             fullWidth
             fullHeight
-            src={profileImage}
-            alt={member.name}
+            src={profileUrl}
+            alt={username}
           />
         </AspectRatio>
         <VStack
@@ -61,7 +53,7 @@ export default function MemberDetailSummarySection(props: MemberDetailSummarySec
           align={StackAlign.START}
         >
           <HStack spacing={spacingVars.micro}>
-            <Typo.Medium weight={Weight.SEMIBOLD}>{getMemberString(member)}</Typo.Medium>
+            <Typo.Medium weight={Weight.SEMIBOLD}>10404 {name}</Typo.Medium>
             <Typo.Base
               weight={Weight.MEDIUM}
               color={colorVars.content.default}
@@ -70,15 +62,15 @@ export default function MemberDetailSummarySection(props: MemberDetailSummarySec
             </Typo.Base>
           </HStack>
           <HStack spacing={spacingVars.micro}>
-            {executive && (
+            {isExecutive(role) && (
               <Badge.Default
-                label={executive}
-                theme={getExecutiveTheme()}
-                leadingIcon={getExecutiveIcon()}
+                label={role}
+                theme={getRoleTheme()}
+                leadingIcon={getRoleIcon()}
               />
             )}
             <Badge.Default
-              label={`${generation}기${isGraduated ? ' (졸업)' : ''}`}
+              label={`${generation}기${false ? ' (졸업)' : ''}`}
               leadingIcon={GlyphIcon.SCHOOL}
             />
           </HStack>

@@ -17,37 +17,30 @@ import {
   Weight,
 } from '@tapie-kr/inspire-react';
 
-import { MemberUnitType } from '@tapie-kr/api-client';
-import { type Executive } from '@tapie-kr/dashboard-shared/lib/enum';
-import { getExecutiveIcon, getExecutiveTheme, getUnitIcon } from '@tapie-kr/dashboard-shared/lib/enum/utils';
+import { MemberRole, MemberType } from '@tapie-kr/api-client';
+import { getRoleIcon, getRoleTheme, getUnitIcon } from '@tapie-kr/dashboard-shared/lib/enum/utils';
 import { useRouter } from 'next/navigation';
 import { path, pathMap } from '@/lib/pathmap';
-import { type Member } from '@/lib/types';
-import { getMemberString } from '@/lib/types/utils';
 
-interface MemberCardProps {
-  profileImage: string;
-  member:       Member;
-  executive?:   Executive;
-  unit:         MemberUnitType;
-  generation:   number;
-  isGraduated?: boolean;
+interface MemberCardProps extends MemberType {
 }
 
 export default function MemberCard(props: MemberCardProps) {
   const {
-    profileImage,
-    member,
-    executive,
+    name,
+    uuid,
+    username,
+    googleEmail,
     unit,
+    role,
     generation,
-    isGraduated = false,
+    profileUrl,
   } = props;
 
   const router = useRouter();
 
   const handleClick = () => {
-    router.push(pathMap.resolvePath(path.member, 5));
+    router.push(pathMap.resolvePath(path.member, uuid));
   };
 
   return (
@@ -65,8 +58,8 @@ export default function MemberCard(props: MemberCardProps) {
         <Image
           fullWidth
           fullHeight
-          src={profileImage}
-          alt={member.name}
+          src={profileUrl}
+          alt={username}
         />
       </AspectRatio>
       <VStack
@@ -74,7 +67,7 @@ export default function MemberCard(props: MemberCardProps) {
         align={StackAlign.START}
       >
         <HStack spacing={spacingVars.mini}>
-          <Typo.Base weight={Weight.SEMIBOLD}>{getMemberString(member)}</Typo.Base>
+          <Typo.Base weight={Weight.SEMIBOLD}>10404 {name}</Typo.Base>
           <Icon
             name={GlyphIcon.ARROW_FORWARD}
             size={14}
@@ -82,11 +75,11 @@ export default function MemberCard(props: MemberCardProps) {
           />
         </HStack>
         <HStack spacing={spacingVars.tiny}>
-          {executive && (
+          {(role === MemberRole.MANAGER || role === MemberRole.CO_MANAGER) && (
             <Badge.Default
-              leadingIcon={getExecutiveIcon()}
-              theme={getExecutiveTheme()}
-              label={executive}
+              leadingIcon={getRoleIcon()}
+              theme={getRoleTheme()}
+              label={role}
               size={BadgeSize.SMALL}
             />
           )}
@@ -97,7 +90,7 @@ export default function MemberCard(props: MemberCardProps) {
           />
           <Badge.Default
             leadingIcon={GlyphIcon.SCHOOL}
-            label={`${generation}기${isGraduated ? ' (졸업)' : ''}`}
+            label={`${generation}기${false ? ' (졸업)' : ''}`}
             size={BadgeSize.SMALL}
           />
         </HStack>

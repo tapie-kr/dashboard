@@ -7,9 +7,8 @@ import {
 } from '@tapie-kr/inspire-react';
 import Page from '@/components/page';
 
-import { Executive, Unit } from '@tapie-kr/dashboard-shared/lib/enum';
+import { MemberRole, MemberType, MemberUnit } from '@tapie-kr/api-client';
 import { use } from 'react';
-import { type Member } from '@/lib/types';
 import MemberDetailActionSection from '@/sections/member/detail/Action';
 import MemberDetailBasicInfoSection from '@/sections/member/detail/BasicInfo';
 import MemberDetailInfoSection from '@/sections/member/detail/Info';
@@ -23,14 +22,16 @@ export default function MemberDetailPage({ params }: {
 }) {
   const { id } = use(params);
 
-  const member: Member = {
-    studentId: '10404',
-    name:      '권지원',
+  const member: MemberType = {
+    uuid:        '3fa85f64-5717-4562-b3fc-2c963f66afa6',
+    name:        'Jeewon Kwon',
+    username:    'jeewonkwon',
+    googleEmail: 'noreply@tapie.kr',
+    role:        MemberRole.MANAGER,
+    unit:        MemberUnit.DEVELOPER,
+    generation:  119,
+    profileUrl:  'https://tapie.kr/profile.png',
   };
-
-  const unit = Unit.DEVELOPER;
-  const executive = Executive.MANAGER;
-  const generation = 119;
 
   return (
     <Page title='부원 상세'>
@@ -40,11 +41,7 @@ export default function MemberDetailPage({ params }: {
         align={StackAlign.START}
       >
         <MemberDetailSummarySection
-          member={member}
-          unit={unit}
-          executive={executive}
-          generation={generation}
-          profileImage='https://www.jwkwon0817.me/_next/image?url=%2Fassets%2Fprofile.png&w=256&q=75'
+          {...member}
           stats={[
             46,
             46,
