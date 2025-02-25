@@ -1,14 +1,19 @@
 import {
   FormField,
+  GlyphIcon,
   HStack,
   ImagePreviewShape,
   Input,
+  Select,
   spacingVars,
   StackAlign,
   Typo,
   VStack,
   Weight,
 } from '@tapie-kr/inspire-react';
+
+import { MemberUnit } from '@tapie-kr/api-client';
+import { UnitEnumToKorean } from '@tapie-kr/dashboard-shared/lib/utils/unit';
 
 export default function MemberDetailBasicInfoSection() {
   return (
@@ -34,6 +39,12 @@ export default function MemberDetailBasicInfoSection() {
             label='이름'
           >
             <Input.Text placeholder='이름 입력' />
+          </FormField>
+          <FormField
+            isEssential
+            label='학번'
+          >
+            <Input.Text placeholder='학번 입력' />
           </FormField>
           <FormField
             isEssential
@@ -67,6 +78,20 @@ export default function MemberDetailBasicInfoSection() {
             label='유닛'
           >
             <Input.Text placeholder='유닛 입력' />
+            <Select
+              style={{ width: '100%' }}
+              leadingIcon={GlyphIcon.ADD}
+            >
+              {
+                Object.values(MemberUnit).map(unit => (
+                  <Select.Item
+                    key={unit}
+                    value={unit}
+                    label={UnitEnumToKorean(unit)}
+                  />
+                ))
+              }
+            </Select>
           </FormField>
           <FormField
             isEssential
