@@ -6,9 +6,10 @@ export interface PortfolioTag {
   label: string;
 }
 
-export interface PortfolioMember extends Member {
+export interface PortfolioMember {
   role:       string;
   roleDetail: string;
+  member:     Member;
 }
 
 export interface PortfolioStack {

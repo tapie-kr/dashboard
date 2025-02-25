@@ -45,13 +45,20 @@ export default function PortfolioDetailPage({ params }: {
         <PortfolioDetailAwardSection />
         <PortfolioDetailTable.member member={[
           {
-            name:       '한유찬',
-            studentId:  '10404',
+            member: {
+              name:      '한유찬',
+              studentId: '10404',
+            },
             role:       '프론트엔드',
             roleDetail: 'Figma를 활용한 디자인에 참여했습니다',
           },
           {
-            name: '신유준', studentId: '10417', role: '백엔드', roleDetail: '백엔드 개발을 담당했습니다',
+            member: {
+              name:      '한유찬',
+              studentId: '10404',
+            },
+            role:       '백엔드',
+            roleDetail: '백엔드 개발을 담당했습니다',
           },
         ]}
         />

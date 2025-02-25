@@ -69,11 +69,23 @@ export default function AchievementPage() {
               members={[
                 {
                   name:      '한유찬',
-                  studentId: 10000,
+                  studentId: '10000',
                 },
                 {
                   name:      '신유준',
-                  studentId: 10000,
+                  studentId: '10000',
+                },
+                {
+                  name:      '신유준',
+                  studentId: '10000',
+                },
+                {
+                  name:      '신유준',
+                  studentId: '10000',
+                },
+                {
+                  name:      '신유준',
+                  studentId: '10000',
                 },
               ]}
             />

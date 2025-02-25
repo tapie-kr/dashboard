@@ -1,7 +1,10 @@
 import * as s from './style.css';
 
 import {
+  Button,
+  ButtonSize,
   FormField,
+  GlyphIcon,
   Input,
   spacingVars,
   VStack,
@@ -17,7 +20,11 @@ export default function AchievementDetailFormSection() {
         isEssential
         label='대회 이름'
       >
-        <Input.Text placeholder='대회 이름 입력' />
+        <Button.Default
+          size={ButtonSize.MEDIUM}
+          leadingIcon={GlyphIcon.TROPHY}
+        >눌러서 대회 선택하기
+        </Button.Default>
       </FormField>
       <FormField
         isEssential

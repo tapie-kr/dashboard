@@ -5,6 +5,7 @@ import * as s from '../style.css';
 import {
   Button,
   ButtonSize,
+  colorVars,
   DataTable,
   GlyphIcon,
   HStack,
@@ -40,7 +41,7 @@ export default function PortfolioDetailMemberSection(props: PortfolioDetailMembe
           weight={Weight.SEMIBOLD}
           className={s.title}
         >
-          팀원
+          참여 부원
         </Typo.Moderate>
         <Button.Default
           size={ButtonSize.MEDIUM}
@@ -66,16 +67,21 @@ export default function PortfolioDetailMemberSection(props: PortfolioDetailMembe
         ]}
         columns={[
           {
-            key:        'studentId',
-            label:      '학번',
-            width:      60,
-            isSortable: true,
-          },
-          {
-            key:        'name',
-            label:      '이름',
+            key:        'member',
+            label:      '참여 부원',
             width:      100,
             isSortable: true,
+            cell:       member => (
+              <HStack spacing={spacingVars.micro}>
+                <Typo.Petite weight={Weight.MEDIUM}>{member.name}</Typo.Petite>
+                <Typo.Petite
+                  weight={Weight.MEDIUM}
+                  color={colorVars.content.muted}
+                >
+                  {member.studentId}
+                </Typo.Petite>
+              </HStack>
+            ),
           },
           {
             key:        'role',
