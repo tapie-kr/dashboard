@@ -1,6 +1,5 @@
 import {
   FormField,
-  GlyphIcon,
   HStack,
   ImagePreviewShape,
   Input,
@@ -12,8 +11,8 @@ import {
   Weight,
 } from '@tapie-kr/inspire-react';
 
-import { MemberUnit } from '@tapie-kr/api-client';
-import { UnitEnumToKorean } from '@tapie-kr/dashboard-shared/lib/utils/unit';
+import { MemberRole, MemberUnit } from '@tapie-kr/api-client/enum';
+import { RoleEnumToKorean, UnitEnumToKorean } from '@tapie-kr/dashboard-shared/lib/utils/unit';
 
 export default function MemberDetailBasicInfoSection() {
   return (
@@ -78,24 +77,24 @@ export default function MemberDetailBasicInfoSection() {
             label='유닛'
           >
             <Select
-              leadingIcon={GlyphIcon.ADD}
-            >
-              {
-                Object.values(MemberUnit).map(unit => (
-                  <Select.Item
-                    key={unit}
-                    value={unit}
-                    label={UnitEnumToKorean(unit)}
-                  />
-                ))
-              }
-            </Select>
+              placeholder='유닛 선택'
+              options={Object.values(MemberUnit).map(unit => ({
+                label: UnitEnumToKorean(unit),
+                value: unit,
+              }))}
+            />
           </FormField>
           <FormField
             isEssential
             label='역할'
           >
-            <Input.Text placeholder='역할 입력' />
+            <Select
+              placeholder='역할 선택'
+              options={Object.values(MemberRole).map(unit => ({
+                label: RoleEnumToKorean(unit),
+                value: unit,
+              }))}
+            />
           </FormField>
         </VStack>
       </HStack>

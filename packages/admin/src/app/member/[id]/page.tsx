@@ -7,7 +7,8 @@ import {
 } from '@tapie-kr/inspire-react';
 import Page from '@/components/page';
 
-import { MemberRole, MemberType, MemberUnit } from '@tapie-kr/api-client';
+import { MemberType } from '@tapie-kr/api-client';
+import { MemberRole, MemberUnit } from '@tapie-kr/api-client/enum';
 import { use } from 'react';
 import MemberDetailActionSection from '@/sections/member/detail/Action';
 import MemberDetailBasicInfoSection from '@/sections/member/detail/BasicInfo';
