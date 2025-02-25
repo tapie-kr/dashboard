@@ -24,7 +24,7 @@ export default function MemberDetailPage({ params }: {
   const { id } = use(params);
 
   const member: Member = {
-    studentId: 10404,
+    studentId: '10404',
     name:      '권지원',
   };
 

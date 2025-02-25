@@ -47,15 +47,15 @@ export default function PortfolioPage() {
               members={[
                 {
                   name:      '한유찬',
-                  studentId: 10000,
+                  studentId: '10000',
                 },
                 {
                   name:      '신유준',
-                  studentId: 10000,
+                  studentId: '10000',
                 },
                 {
                   name:      '좌호빈',
-                  studentId: 10000,
+                  studentId: '10000',
                 },
               ]}
             />

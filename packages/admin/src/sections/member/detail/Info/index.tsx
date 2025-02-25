@@ -10,6 +10,7 @@ import {
   GlyphIcon,
   HStack,
   spacingVars,
+  StackAlign,
   StackJustify,
   Typo,
   VStack,
@@ -43,7 +44,10 @@ export default function MemberDetailInfoSection(props: MemberDetailInfoSectionPr
   } = props;
 
   return (
-    <VStack spacing={spacingVars.jumbo}>
+    <VStack
+      fullWidth
+      spacing={spacingVars.jumbo}
+    >
       <InfoItem
         title='프로필 링크'
         buttonText='링크 추가'
@@ -324,7 +328,11 @@ function InfoItem(props: InfoItemProps) {
   } = props;
 
   return (
-    <VStack spacing={spacingVars.mini}>
+    <VStack
+      fullWidth
+      spacing={spacingVars.mini}
+      align={StackAlign.START}
+    >
       <HStack
         fullWidth
         justify={StackJustify.BETWEEN}
