@@ -11,12 +11,7 @@ import MemberCard from '@/components/card/member';
 import SkeletonMemberCard from '@/components/card/member/Skeleton';
 import Page from '@/components/page';
 
-import {
-  MemberRole,
-  MemberType,
-  MemberUnit,
-  usePrivateMemberList,
-} from '@tapie-kr/api-client';
+import { usePrivateMemberList } from '@tapie-kr/api-client';
 import { getUnitFilterGroup } from '@tapie-kr/dashboard-shared/lib/enum/utils';
 import { type ChangeEvent, useEffect, useState } from 'react';
 
@@ -35,17 +30,6 @@ export default function MemberPage() {
 
   const handleSearchValue = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
-  };
-
-  const memberData: MemberType = {
-    uuid:        '3fa85f64-5717-4562-b3fc-2c963f66afa6',
-    name:        'Jeewon Kwon',
-    username:    'jeewonkwon',
-    googleEmail: 'noreply@tapie.kr',
-    role:        MemberRole.MANAGER,
-    unit:        MemberUnit.DEVELOPER,
-    generation:  119,
-    profileUrl:  'https://tapie.kr/profile.png',
   };
 
   return (
@@ -71,7 +55,7 @@ export default function MemberPage() {
           {data && data.data.map(member => (
             <MemberCard
               key={member.uuid}
-              {...memberData}
+              {...member}
             />
           ))}
         </Grid>

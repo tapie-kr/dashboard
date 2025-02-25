@@ -15,7 +15,8 @@ import {
 
 import cn from 'classnames';
 import { AnimatePresence } from 'framer-motion';
-import { usePathname, useRouter } from 'next/navigation';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import SidebarSubItem from '../sub-item';
 
 import { AnimatedVStack } from '~/lib/animate';
@@ -32,13 +33,7 @@ export default function SidebarItem(props: SidebarItemProps) {
   const title = href.index;
   const subItems = pathMap.getSubItems(href);
   const currentPath = usePathname();
-  const router = useRouter();
   const hrefPath = pathMap.getPath(href);
-
-  const handleClick = () => {
-    router.push(hrefPath);
-  };
-
   const isActive = hrefPath != '/' ? currentPath.startsWith(hrefPath) : currentPath === hrefPath;
 
   return (
@@ -46,25 +41,29 @@ export default function SidebarItem(props: SidebarItemProps) {
       fullWidth
       className={s.base}
     >
-      <HStack
-        fullWidth
-        className={cn(s.button, isActive && s.active)}
-        onClick={handleClick}
+      <Link
+        href={hrefPath}
+        style={{ width: '100%' }}
       >
         <HStack
           fullWidth
-          className={s.titleContainer}
-          justify={StackJustify.START}
-          align={StackAlign.CENTER}
+          className={cn(s.button, isActive && s.active)}
         >
-          <Typo.Petite
-            weight={isActive ? Weight.MEDIUM : Weight.REGULAR}
-            color={isActive ? colorVars.content.emphasized : colorVars.content.default}
+          <HStack
+            fullWidth
+            className={s.titleContainer}
+            justify={StackJustify.START}
+            align={StackAlign.CENTER}
           >
-            {title}
-          </Typo.Petite>
+            <Typo.Petite
+              weight={isActive ? Weight.MEDIUM : Weight.REGULAR}
+              color={isActive ? colorVars.content.emphasized : colorVars.content.default}
+            >
+              {title}
+            </Typo.Petite>
+          </HStack>
         </HStack>
-      </HStack>
+      </Link>
       <AnimatePresence>
         {isActive && subItems.length > 0 && (
           <AnimatedVStack

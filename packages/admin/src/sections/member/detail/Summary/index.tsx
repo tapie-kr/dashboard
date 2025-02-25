@@ -29,7 +29,7 @@ export default function MemberDetailSummarySection(props: MemberDetailSummarySec
     unit,
     role,
     generation,
-    profileUrl,
+    profileUri,
     stats,
   } = props;
 
@@ -44,7 +44,7 @@ export default function MemberDetailSummarySection(props: MemberDetailSummarySec
           <Image
             fullWidth
             fullHeight
-            src={profileUrl}
+            src={profileUri}
             alt={username}
           />
         </AspectRatio>
