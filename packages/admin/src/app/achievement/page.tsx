@@ -74,6 +74,7 @@ export default function AchievementPage() {
           {data?.data.map((award, idx) => (
             <AchievementCard
               key={idx}
+              uuid={award.uuid}
               contestName={award.title}
               contestType={Contest.INTERNAL}
               year={Temporal.PlainDate.from(toTemporalDate(award.rewardedAt)).year}
