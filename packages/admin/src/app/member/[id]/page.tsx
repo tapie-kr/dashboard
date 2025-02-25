@@ -30,7 +30,7 @@ export default function MemberDetailPage({ params }: {
     role:        MemberRole.MANAGER,
     unit:        MemberUnit.DEVELOPER,
     generation:  119,
-    profileUrl:  'https://tapie.kr/profile.png',
+    profileUri:  'https://tapie.kr/profile.png',
   };
 
   return (

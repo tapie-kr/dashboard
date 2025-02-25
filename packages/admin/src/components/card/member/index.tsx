@@ -30,11 +30,10 @@ export default function MemberCard(props: MemberCardProps) {
     name,
     uuid,
     username,
-    googleEmail,
     unit,
     role,
     generation,
-    profileUrl,
+    profileUri,
   } = props;
 
   const router = useRouter();
@@ -58,7 +57,7 @@ export default function MemberCard(props: MemberCardProps) {
         <Image
           fullWidth
           fullHeight
-          src={profileUrl}
+          src={profileUri}
           alt={username}
         />
       </AspectRatio>
