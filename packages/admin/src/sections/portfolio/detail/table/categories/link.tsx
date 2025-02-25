@@ -1,6 +1,6 @@
 'use client';
 
-import * as s from './style.css';
+import * as s from '../style.css';
 
 import {
   Box,
@@ -13,16 +13,18 @@ import {
   InputSize,
   spacingVars,
   StackAlign,
+  Typo,
   VStack,
+  Weight,
 } from '@tapie-kr/inspire-react';
 
-import { type Info } from './shared';
+import { type Info } from '../shared';
 
 interface PortfolioDetailInfoSectionProps {
   info: Info[];
 }
 
-export default function PortfolioDetailInfoSection(props: PortfolioDetailInfoSectionProps) {
+export default function PortfolioDetailLinkSection(props: PortfolioDetailInfoSectionProps) {
   const { info } = props;
 
   return (
@@ -31,6 +33,12 @@ export default function PortfolioDetailInfoSection(props: PortfolioDetailInfoSec
       spacing={spacingVars.mini}
       align={StackAlign.START}
     >
+      <Typo.Moderate
+        weight={Weight.SEMIBOLD}
+        className={s.title}
+      >
+        링크
+      </Typo.Moderate>
       <HStack spacing={spacingVars.micro}>
         <Box className={s.input}>
           <Input.Text

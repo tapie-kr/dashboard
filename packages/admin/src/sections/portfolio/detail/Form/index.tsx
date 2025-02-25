@@ -2,6 +2,7 @@ import * as s from './style.css';
 
 import {
   FormField,
+  HStack,
   Input,
   spacingVars,
   StackAlign,
@@ -16,18 +17,23 @@ export default function PortfolioDetailFormSection() {
       align={StackAlign.START}
       className={s.base}
     >
-      <FormField
-        isEssential
-        label='이름'
+      <HStack
+        fullWidth
+        spacing={spacingVars.moderate}
       >
-        <Input.Text placeholder='이름 입력' />
-      </FormField>
-      <FormField
-        isEssential
-        label='캐치프레이즈'
-      >
-        <Input.Text placeholder='캐치프레이즈 입력' />
-      </FormField>
+        <FormField
+          isEssential
+          label='이름'
+        >
+          <Input.Text placeholder='이름 입력' />
+        </FormField>
+        <FormField
+          isEssential
+          label='캐치프레이즈'
+        >
+          <Input.Text placeholder='캐치프레이즈 입력' />
+        </FormField>
+      </HStack>
       <FormField
         isEssential
         label='설명'

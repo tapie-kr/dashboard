@@ -1,10 +1,12 @@
+'use client';
+
 import { spacingVars, StackAlign, VStack } from '@tapie-kr/inspire-react';
 import Page from '@/components/page';
 
-import { use } from 'react';
+import { use, useEffect } from 'react';
 import PortfolioDetailBannerSection from '@/sections/portfolio/detail/Banner';
 import PortfolioDetailFormSection from '@/sections/portfolio/detail/Form';
-import PortfolioDetailInfoSection from '@/sections/portfolio/detail/Info';
+import { PortfolioDetailTable } from '@/sections/portfolio/detail/table';
 
 export default function PortfolioDetailPage({ params }: {
   params: Promise<{
@@ -12,6 +14,10 @@ export default function PortfolioDetailPage({ params }: {
   }>;
 }) {
   const { id } = use(params);
+
+  useEffect(() => {
+    id;
+  }, []);
 
   return (
     <Page title='포트폴리오 상세'>
@@ -26,7 +32,19 @@ export default function PortfolioDetailPage({ params }: {
           image='https://tapie.kr/thumbnails/sunrin_today.webp'
         />
         <PortfolioDetailFormSection />
-        <PortfolioDetailInfoSection info={[{ label: 'https://github.com/tapie-kr' }]} />
+        <PortfolioDetailTable.member member={[
+          {
+            name:       '한유찬',
+            studentId:  '10404',
+            role:       '프론트엔드',
+            roleDetail: 'Figma를 활용한 디자인에 참여했습니다',
+          },
+          {
+            name: '신유준', studentId: '10417', role: '백엔드', roleDetail: '백엔드 개발을 담당했습니다',
+          },
+        ]}
+        />
+        <PortfolioDetailTable.link info={[{ label: 'https://sunrintoday.com' }]} />
       </VStack>
     </Page>
   );
