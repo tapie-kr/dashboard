@@ -38,6 +38,8 @@ export function withTAPIEDashboardConfig(config = {}) {
       NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL || 'https://tapie-api-dev.vport.dev', API_VERSION: '/api/v1', ...config.env,
     },
 
+    transpilePackages: ['@tapie-kr/api-client'],
+
     rewrites() {
       return [
         {
