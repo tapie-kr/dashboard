@@ -12,7 +12,7 @@ import SkeletonMemberCard from '@/components/card/member/Skeleton';
 import Page from '@/components/page';
 
 import { usePrivateMemberList } from '@tapie-kr/api-client';
-import { getContestFilterGroup } from '@tapie-kr/dashboard-shared/lib/enum/utils';
+import { getUnitFilterGroup } from '@tapie-kr/dashboard-shared/lib/enum/utils';
 import { type ChangeEvent, useEffect, useState } from 'react';
 
 export default function MemberPage() {
@@ -45,7 +45,7 @@ export default function MemberPage() {
         align={StackAlign.START}
         spacing={spacingVars.petite}
       >
-        <Filter filters={[getContestFilterGroup()]} />
+        <Filter filters={[getUnitFilterGroup()]} />
         <Grid
           columnCount={3}
           gap={spacingVars.petite}
