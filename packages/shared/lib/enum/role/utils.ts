@@ -1,6 +1,6 @@
 import { BadgeTheme, GlyphIcon, type IconName } from '@tapie-kr/inspire-react';
 
-import { MemberRole } from '@tapie-kr/api-client';
+import { MemberRole } from '@tapie-kr/api-client/enum';
 
 export const getRoleTheme = () => {
   return BadgeTheme.GREEN;

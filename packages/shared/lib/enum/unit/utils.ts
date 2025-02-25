@@ -1,6 +1,6 @@
 import { type FilterGroup, GlyphIcon, type IconName } from '@tapie-kr/inspire-react';
 
-import { MemberUnit } from '@tapie-kr/api-client';
+import { MemberUnit } from '@tapie-kr/api-client/enum';
 
 import { UnitEnumToKorean } from '~/lib/utils/unit';
 

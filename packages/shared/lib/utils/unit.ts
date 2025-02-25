@@ -1,14 +1,21 @@
-import { MemberUnit } from '@tapie-kr/api-client';
+import { MemberRole, MemberUnit } from '@tapie-kr/api-client/enum';
 
 export function UnitEnumToKorean(unit: MemberUnit): string {
-  switch (unit) {
-    case MemberUnit.DEVELOPER:
-      return '개발자';
+  const unitMap: Record<MemberUnit, string> = {
+    [MemberUnit.DEVELOPER]: '개발자',
+    [MemberUnit.DESIGNER]:  '디자이너',
+  };
 
-    case MemberUnit.DESIGNER:
-      return '디자이너';
+  return unitMap[unit];
+}
 
-    default:
-      return '알 수 없음';
-  }
+export function RoleEnumToKorean(unit: MemberRole): string {
+  const roleMap: Record<MemberRole, string> = {
+    [MemberRole.GUEST]:      '게스트',
+    [MemberRole.MEMBER]:     '부원',
+    [MemberRole.CO_MANAGER]: '부부장',
+    [MemberRole.MANAGER]:    '부장',
+  };
+
+  return roleMap[unit];
 }
