@@ -24,16 +24,13 @@ export type AwardsCreateCompetitionType = {
   name?:     string;
 };
 
-export type AwardsCreateGradeType = {
-  grade?: number;
-  label?: string;
-};
-
 interface AwardsCreateFormSectionProps {
   competition:    AwardsCreateCompetitionType;
   setCompetition: (competition: AwardsCreateCompetitionType) => void;
-  grade:          AwardsCreateGradeType;
-  setGrade:       (grade: AwardsCreateGradeType) => void;
+  grade:          number | undefined;
+  setGrade:       (grade: number | undefined) => void;
+  gradeLabel:     string | undefined;
+  setGradeLabel:  (gradeLabel: string | undefined) => void;
   title:          string;
   setTitle:       (title: string) => void;
   rewardedAt:     Temporal.PlainDate | undefined;
@@ -46,6 +43,8 @@ export default function AwardsCreateFormSection(props: AwardsCreateFormSectionPr
     setCompetition,
     grade,
     setGrade,
+    gradeLabel,
+    setGradeLabel,
     title,
     setTitle,
     rewardedAt,
@@ -97,17 +96,9 @@ export default function AwardsCreateFormSection(props: AwardsCreateFormSectionPr
       >
         <Input.Text
           placeholder='등급 입력 (ex. 1)'
-          value={grade.grade}
+          value={grade}
           onChange={e => {
-            console.log('Grade Label', grade.label);
-
-            console.log({
-              ...grade, grade: Number(e.target.value),
-            });
-
-            setGrade({
-              ...grade,  grade: Number(e.target.value),
-            });
+            setGrade(Number(e.target.value));
           }}
         />
       </FormField>
@@ -117,17 +108,9 @@ export default function AwardsCreateFormSection(props: AwardsCreateFormSectionPr
       >
         <Input.Text
           placeholder='등급 이름 입력 (ex. 최우수상)'
-          value={grade.label}
+          value={gradeLabel}
           onChange={e => {
-            console.log('Grade Number', grade.grade);
-
-            console.log({
-              ...grade, label: e.target.value,
-            });
-
-            setGrade({
-              ...grade, label: e.target.value,
-            });
+            setGradeLabel(e.target.value);
           }}
         />
       </FormField>

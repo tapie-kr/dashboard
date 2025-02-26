@@ -6,12 +6,13 @@ import Page from '@/components/page';
 import { Temporal } from '@js-temporal/polyfill';
 import { useState } from 'react';
 import AwardsCreateActionSection from '@/sections/awards/create/Action';
-import AwardsCreateFormSection, { AwardsCreateCompetitionType, AwardsCreateGradeType } from '@/sections/awards/create/Form';
+import AwardsCreateFormSection, { AwardsCreateCompetitionType } from '@/sections/awards/create/Form';
 import AwardsCreateInfoSection, { AwardsCreateMemberType } from '@/sections/awards/create/Info';
 
 export default function AwardsCreatePage() {
   const [competition, setCompetition] = useState<AwardsCreateCompetitionType>({});
-  const [grade, setGrade] = useState<AwardsCreateGradeType>({});
+  const [grade, setGrade] = useState<number | undefined>();
+  const [gradeLabel, setGradeLabel] = useState<string | undefined>();
   const [rewardedAt, setRewardedAt] = useState<Temporal.PlainDate | undefined>(undefined);
   const [title, setTitle] = useState<string>('');
   const [members, setMembers] = useState<AwardsCreateMemberType[]>([]);
@@ -28,6 +29,8 @@ export default function AwardsCreatePage() {
           setCompetition={setCompetition}
           grade={grade}
           setGrade={setGrade}
+          gradeLabel={gradeLabel}
+          setGradeLabel={setGradeLabel}
           title={title}
           setTitle={setTitle}
           rewardedAt={rewardedAt}
@@ -40,6 +43,7 @@ export default function AwardsCreatePage() {
         <AwardsCreateActionSection
           competition={competition}
           grade={grade}
+          gradeLabel={gradeLabel}
           members={members}
           title={title}
           rewardedAt={rewardedAt}

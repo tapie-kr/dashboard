@@ -29,6 +29,7 @@ export default function AwardsCard(props: AchievementCardProps) {
     grade,
     gradeLabel,
     rewardedAt,
+    competition,
   } = props;
 
   const router = useRouter();
@@ -59,7 +60,7 @@ export default function AwardsCard(props: AchievementCardProps) {
         spacing={spacingVars.optical}
         align={StackAlign.START}
       >
-        <Typo.Petite weight={Weight.SEMIBOLD}>{title}</Typo.Petite>
+        <Typo.Petite weight={Weight.SEMIBOLD}>{competition.name} {title}</Typo.Petite>
         <Typo.Tiny color={colorVars.content.default}>{getMemberString()}</Typo.Tiny>
       </VStack>
       <HStack spacing={spacingVars.tiny}>

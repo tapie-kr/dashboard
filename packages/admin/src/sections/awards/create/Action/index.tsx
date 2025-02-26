@@ -14,13 +14,14 @@ import { usePrivateCreateAward } from '@tapie-kr/api-client';
 import { formatDateToISO } from '@tapie-kr/dashboard-shared/lib/utils/date';
 import { useRouter } from 'next/navigation';
 import { path, pathMap } from '@/lib/pathmap';
-import { AwardsCreateCompetitionType, AwardsCreateGradeType } from '../Form';
+import { AwardsCreateCompetitionType } from '../Form';
 import { AwardsCreateMemberType } from '../Info';
 
 interface AwardsCreateActionSectionProps {
   competition: AwardsCreateCompetitionType;
   members:     AwardsCreateMemberType[];
-  grade:       AwardsCreateGradeType;
+  grade:       number | undefined;
+  gradeLabel:  string | undefined;
   title:       string;
   rewardedAt:  Temporal.PlainDate | undefined;
 }
@@ -30,6 +31,7 @@ export default function AwardsCreateActionSection(props: AwardsCreateActionSecti
     competition,
     members,
     grade,
+    gradeLabel,
     title,
     rewardedAt,
   } = props;
@@ -46,8 +48,8 @@ export default function AwardsCreateActionSection(props: AwardsCreateActionSecti
           uuid: competition.uuid || undefined,
         },
         rewardedAt:  formatDateToISO(rewardedAt),
-        grade:       grade.grade || 0,
-        gradeLabel:  grade.label || '',
+        grade:       grade || 0,
+        gradeLabel:  gradeLabel || '',
         membersUUID: members.map(member => member.uuid),
       })}
       <Button.Default
@@ -60,7 +62,7 @@ export default function AwardsCreateActionSection(props: AwardsCreateActionSecti
             return;
           }
 
-          if (!grade.grade || !grade.label) {
+          if (!grade || !gradeLabel) {
             console.log('grade is not selected');
 
             return;
@@ -93,8 +95,8 @@ export default function AwardsCreateActionSection(props: AwardsCreateActionSecti
               uuid: competition.uuid || undefined,
             },
             rewardedAt:  formatDateToISO(rewardedAt),
-            grade:       grade.grade || 0,
-            gradeLabel:  grade.label || '',
+            grade:       grade || 0,
+            gradeLabel:  gradeLabel || '',
             membersUUID: members.map(member => member.uuid),
           });
 
