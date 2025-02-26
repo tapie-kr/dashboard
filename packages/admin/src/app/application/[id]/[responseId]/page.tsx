@@ -5,7 +5,7 @@ import * as s from './page.css';
 import { spacingVars, StackAlign, VStack } from '@tapie-kr/inspire-react';
 import Page from '@/components/page';
 
-import { MemberUnitType, usePrivateFormApplication } from '@tapie-kr/api-client';
+import { usePrivateFormApplication } from '@tapie-kr/api-client';
 import { use, useEffect } from 'react';
 import ApplicationDetailActionSection from '@/sections/application/detail/Action';
 import ApplicationDetailInfoSection from '@/sections/application/detail/Info';
@@ -22,10 +22,10 @@ export default function ApplicationDetailResponsePage({ params }: {
     data,
     fetch,
     isPending,
-  } = usePrivateFormApplication(responseId);
+  } = usePrivateFormApplication();
 
   useEffect(() => {
-    fetch();
+    fetch({param: {formUUID: responseId}});
   }, []);
 
   return (
