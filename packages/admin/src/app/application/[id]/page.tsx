@@ -14,7 +14,6 @@ import Page from '@/components/page';
 
 import { usePrivateFormResponseList } from '@tapie-kr/api-client';
 import { getUnitFilterGroup } from '@tapie-kr/dashboard-shared/lib/enum/utils';
-import { toTemporalDateTime } from '@tapie-kr/dashboard-shared/lib/utils/date';
 import {
   type ChangeEvent,
   use,
@@ -37,7 +36,7 @@ export default function ApplicationDetailPage({ params }: {
   } = usePrivateFormResponseList();
 
   useEffect(() => {
-    fetch({ param: { formUUID: id } });
+    fetch({ param: { formId: id } });
   }, []);
 
   const handleSearchValue = (e: ChangeEvent<HTMLInputElement>) => {
@@ -65,12 +64,13 @@ export default function ApplicationDetailPage({ params }: {
           {data && Array.isArray(data.data)
             ? data.data.map((item, idx) => (
               <ApplicationCard
+                {...item}
                 key={idx}
                 uuid={item.uuid}
                 formId={id}
                 unit={item.unit}
-                content={item.introduction}
-                date={toTemporalDateTime(item.createdAt)}
+                introduction={item.introduction}
+                createdAt={item.createdAt}
                 name={item.name}
                 hasPortfolio={!!item.portfolioAssetUUID}
               />

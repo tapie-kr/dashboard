@@ -16,13 +16,14 @@ import {
   Weight,
 } from '@tapie-kr/inspire-react';
 
-import { FormDetailData } from '@tapie-kr/api-client';
+import { FormApplicationResponseType } from '@tapie-kr/api-client';
 import UnitBadge from '@tapie-kr/dashboard-shared/components/atoms/badge/unit';
 import { getDatetimeString } from '@tapie-kr/dashboard-shared/lib/utils/date';
 import { useRouter } from 'next/navigation';
 import { path, pathMap } from '@/lib/pathmap';
 
-interface ApplicationCardProps extends FormDetailData {
+interface ApplicationCardProps extends FormApplicationResponseType {
+  hasPortfolio: boolean;
 }
 
 export default function ApplicationCard(props: ApplicationCardProps) {
@@ -30,9 +31,9 @@ export default function ApplicationCard(props: ApplicationCardProps) {
     uuid,
     formId,
     name,
-    content,
+    introduction,
     unit,
-    date,
+    createdAt,
     hasPortfolio = true,
   } = props;
 
@@ -54,7 +55,7 @@ export default function ApplicationCard(props: ApplicationCardProps) {
         align={StackAlign.START}
       >
         <Typo.Petite weight={Weight.SEMIBOLD}>{name}</Typo.Petite>
-        <Typo.Tiny color={colorVars.content.default}>{content}</Typo.Tiny>
+        <Typo.Tiny color={colorVars.content.default}>{introduction}</Typo.Tiny>
       </VStack>
       <HStack spacing={spacingVars.tiny}>
         <UnitBadge
@@ -63,7 +64,7 @@ export default function ApplicationCard(props: ApplicationCardProps) {
         />
         <Badge.Default
           size={BadgeSize.SMALL}
-          label={`${getDatetimeString(date.toString(), true)} 제출`}
+          label={`${getDatetimeString(createdAt.toString(), true)} 제출`}
           leadingIcon={GlyphIcon.TODAY}
         />
         <Badge.Default
