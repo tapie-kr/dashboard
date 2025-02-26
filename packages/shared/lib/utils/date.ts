@@ -5,7 +5,8 @@ export const getPaddingZero = (num: number): string => {
 };
 
 export function toTemporalDateTime(isoString: string) {
-  return Temporal.Instant.from(isoString).toZonedDateTimeISO('UTC');
+  return Temporal.Instant.from(isoString).toZonedDateTimeISO('UTC')
+    .toPlainDateTime();
 }
 
 export function toTemporalDate(isoString: string) {

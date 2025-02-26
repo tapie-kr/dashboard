@@ -39,6 +39,10 @@ export default function ApplicationDetailPage({ params }: {
     fetch({ param: { formId: id } });
   }, []);
 
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
+
   const handleSearchValue = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
   };
@@ -47,7 +51,7 @@ export default function ApplicationDetailPage({ params }: {
     <Page
       hasSearch
       title='신청폼'
-      count={2}
+      count={data?.data.length}
       searchValue={searchValue}
       onChangeSearchValue={handleSearchValue}
     >
@@ -66,13 +70,6 @@ export default function ApplicationDetailPage({ params }: {
               <ApplicationCard
                 {...item}
                 key={idx}
-                uuid={item.uuid}
-                formId={id}
-                unit={item.unit}
-                introduction={item.introduction}
-                createdAt={item.createdAt}
-                name={item.name}
-                hasPortfolio={!!item.portfolioAssetUUID}
               />
             ))
             : (
