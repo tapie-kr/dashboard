@@ -19,14 +19,14 @@ import MemberDetailSummarySection from '@/sections/member/detail/Summary';
 
 export default function MemberDetailPage({ params }: {
   params: Promise<{
-    id: string;
+    uuid: string;
   }>;
 }) {
-  const { id } = use(params);
-  const { data: member, fetch } = usePrivateMember(id);
+  const { uuid } = use(params);
+  const { data: member, fetch } = usePrivateMember();
 
   useEffect(() => {
-    fetch();
+    fetch({ param: { memberUUID: uuid } });
   }, []);
 
   const data = member?.data;

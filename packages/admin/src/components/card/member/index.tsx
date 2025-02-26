@@ -30,6 +30,7 @@ export default function MemberCard(props: MemberCardProps) {
   const {
     name,
     uuid,
+    studentID,
     username,
     unit,
     role,
@@ -67,7 +68,7 @@ export default function MemberCard(props: MemberCardProps) {
         align={StackAlign.START}
       >
         <HStack spacing={spacingVars.mini}>
-          <Typo.Base weight={Weight.SEMIBOLD}>10404 {name}</Typo.Base>
+          <Typo.Base weight={Weight.SEMIBOLD}>{studentID} {name}</Typo.Base>
           <Icon
             name={GlyphIcon.ARROW_FORWARD}
             size={14}

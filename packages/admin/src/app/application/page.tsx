@@ -31,7 +31,6 @@ import {
   usePrivateCreateForm,
   usePrivateDeactivateForm,
   usePrivateDeleteForm,
-  usePrivateForm,
   usePrivateFormList,
   usePrivateUpdateForm,
 } from '@tapie-kr/api-client';
@@ -52,12 +51,6 @@ export default function ApplicationPage() {
   } = usePrivateFormList();
 
   const {
-    fetch: fetchForm,
-    refetch: refetchForm,
-    data: formData,
-  } = usePrivateForm();
-
-  const {
     mutate: createForm,
     isPending: isCreatePending,
     isSuccess: isCreateSuccess,
@@ -69,12 +62,7 @@ export default function ApplicationPage() {
     isSuccess: isUpdateSuccess,
   } = usePrivateUpdateForm();
 
-  const {
-    mutate: deleteForm,
-    isPending: isDeletePending,
-    isSuccess: isDeleteSuccess,
-  } = usePrivateDeleteForm();
-
+  const { mutate: deleteForm } = usePrivateDeleteForm();
   const createToggler = useToggle();
   const [_isCreateModalOpen, toggleCreate] = createToggler;
   const updateToggler = useToggle();
@@ -122,10 +110,6 @@ export default function ApplicationPage() {
   };
 
   const router = useRouter();
-
-  useEffect(() => {
-    console.log(formList);
-  }, [formList]);
 
   return (
     <Page

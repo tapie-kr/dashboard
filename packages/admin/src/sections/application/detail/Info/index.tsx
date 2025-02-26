@@ -1,7 +1,6 @@
 import * as s from './style.css';
 
 import {
-  Badge,
   BadgeSize,
   Button,
   ButtonSize,
@@ -18,7 +17,7 @@ import {
 } from '@tapie-kr/inspire-react';
 
 import { MemberUnitType } from '@tapie-kr/api-client';
-import { getUnitIcon } from '@tapie-kr/dashboard-shared/lib/enum/utils';
+import UnitBadge from '@tapie-kr/dashboard-shared/components/atoms/badge/unit';
 import { type JSX } from 'react';
 
 type PersonalInfo = {
@@ -84,10 +83,9 @@ export default function ApplicationDetailInfoSection(props: ApplicationDetailInf
             label:  '유닛',
             value:  applicationInfo.unit,
             render: () => (
-              <Badge.Default
+              <UnitBadge
+                unit={applicationInfo.unit}
                 size={BadgeSize.SMALL}
-                label={applicationInfo.unit}
-                leadingIcon={getUnitIcon(applicationInfo.unit)}
               />
             ),
           },

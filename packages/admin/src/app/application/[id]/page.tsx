@@ -39,10 +39,6 @@ export default function ApplicationDetailPage({ params }: {
     fetch({ param: { formId: id } });
   }, []);
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
-
   const handleSearchValue = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
   };

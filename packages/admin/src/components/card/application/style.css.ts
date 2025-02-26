@@ -18,3 +18,11 @@ export const base = style([
     background:   colorVars.surface.default,
   },
 ]);
+
+export const container = style({ overflow: 'hidden' });
+
+export const introduction = style({
+  width:        '100%',
+  overflow:     'hidden',
+  textOverflow: 'ellipsis',
+});

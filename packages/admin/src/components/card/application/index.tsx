@@ -40,11 +40,17 @@ export default function ApplicationCard(props: ApplicationCardProps) {
       onClick={handleNavigate}
     >
       <VStack
+        fullWidth
         spacing={spacingVars.optical}
         align={StackAlign.START}
       >
         <Typo.Petite weight={Weight.SEMIBOLD}>{props.name}</Typo.Petite>
-        <Typo.Tiny color={colorVars.content.default}>{props.introduction}</Typo.Tiny>
+        <Typo.Tiny
+          nowrap
+          color={colorVars.content.default}
+          className={s.introduction}
+        >{props.introduction}
+        </Typo.Tiny>
       </VStack>
       <HStack spacing={spacingVars.tiny}>
         <UnitBadge
