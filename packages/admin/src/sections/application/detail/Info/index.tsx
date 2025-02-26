@@ -16,7 +16,7 @@ import {
   Weight,
 } from '@tapie-kr/inspire-react';
 
-import { MemberUnitType } from '@tapie-kr/api-client';
+import { MemberUnit } from '@tapie-kr/api-client/enum';
 import UnitBadge from '@tapie-kr/dashboard-shared/components/atoms/badge/unit';
 import { type JSX } from 'react';
 
@@ -28,7 +28,7 @@ type PersonalInfo = {
 };
 
 type ApplicationInfo = {
-  unit:               MemberUnitType;
+  unit:               MemberUnit;
   introduction:       string;
   motivation:         string;
   expectedActivities: string;
@@ -192,7 +192,7 @@ function InfoGroup(props: InfoGroupProps) {
               className={s.content}
             >
               {item.render
-                ?                 item.render()
+                ? item.render()
                 : (
                   <Typo.Micro
                     weight={Weight.MEDIUM}

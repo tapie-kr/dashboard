@@ -12,30 +12,23 @@ import {
   Weight,
 } from '@tapie-kr/inspire-react';
 
-import { type Contest } from '@tapie-kr/dashboard-shared/lib/enum';
-import { getContestIcon } from '@tapie-kr/dashboard-shared/lib/enum/utils';
+import { AwardType } from '@tapie-kr/api-client';
+import { toTemporalDate } from '@tapie-kr/dashboard-shared/lib/utils/date';
 import { useRouter } from 'next/navigation';
 import { path, pathMap } from '@/lib/pathmap';
-import { type Garde, type Member } from '@/lib/types';
 import { getGradeIcon, getGradeTheme } from '@/lib/types/utils';
 
-interface AchievementCardProps {
-  contestName: string;
-  members:     Member[];
-  grade:       Garde;
-  year:        number;
-  contestType: Contest;
-  uuid:        string;
+interface AchievementCardProps extends AwardType {
 }
 
-export default function AchievementCard(props: AchievementCardProps) {
+export default function AwardsCard(props: AchievementCardProps) {
   const {
-    contestName,
-    members,
-    grade,
-    year,
-    contestType,
     uuid,
+    members,
+    title,
+    grade,
+    gradeLabel,
+    rewardedAt,
   } = props;
 
   const router = useRouter();
@@ -52,7 +45,7 @@ export default function AchievementCard(props: AchievementCardProps) {
   };
 
   const handleClick = () => {
-    router.push(pathMap.resolvePath(path.achievement, uuid));
+    router.push(pathMap.resolvePath(path.awards, uuid));
   };
 
   return (
@@ -66,7 +59,7 @@ export default function AchievementCard(props: AchievementCardProps) {
         spacing={spacingVars.optical}
         align={StackAlign.START}
       >
-        <Typo.Petite weight={Weight.SEMIBOLD}>{contestName}</Typo.Petite>
+        <Typo.Petite weight={Weight.SEMIBOLD}>{title}</Typo.Petite>
         <Typo.Tiny color={colorVars.content.default}>{getMemberString()}</Typo.Tiny>
       </VStack>
       <HStack spacing={spacingVars.tiny}>
@@ -74,16 +67,11 @@ export default function AchievementCard(props: AchievementCardProps) {
           theme={getGradeTheme(grade)}
           leadingIcon={getGradeIcon()}
           size={BadgeSize.SMALL}
-          label={grade.gradeLabel}
+          label={gradeLabel}
         />
         <Badge.Default
           size={BadgeSize.SMALL}
-          label={`${year}년`}
-        />
-        <Badge.Default
-          size={BadgeSize.SMALL}
-          label={contestType}
-          leadingIcon={getContestIcon(contestType)}
+          label={`${toTemporalDate(rewardedAt).year}년`}
         />
       </HStack>
     </VStack>

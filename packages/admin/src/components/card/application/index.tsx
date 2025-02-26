@@ -16,20 +16,20 @@ import {
   Weight,
 } from '@tapie-kr/inspire-react';
 
-import { FormApplicationResponseType } from '@tapie-kr/api-client';
+import { FormApplicationType } from '@tapie-kr/api-client';
 import UnitBadge from '@tapie-kr/dashboard-shared/components/atoms/badge/unit';
 import { getDatetimeString } from '@tapie-kr/dashboard-shared/lib/utils/date';
 import { useRouter } from 'next/navigation';
 import { path, pathMap } from '@/lib/pathmap';
 
-interface ApplicationCardProps  extends FormApplicationResponseType {
+interface ApplicationCardProps  extends FormApplicationType {
 }
 
 export default function ApplicationCard(props: ApplicationCardProps) {
   const router = useRouter();
 
   const handleNavigate = () => {
-    router.push(pathMap.resolvePath(path.application, props.formId, props.uuid));
+    router.push(pathMap.resolvePath(path.form, props.formId, props.uuid));
   };
 
   return (

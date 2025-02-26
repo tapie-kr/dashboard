@@ -20,11 +20,11 @@ export const path = {
     index:    '포트폴리오',
     fallback: { index: '포트폴리오 상세' },
   },
-  achievement: {
+  awards: {
     index:    '수상실적',
     fallback: { index: '수상실적 상세' },
   },
-  application: {
+  form: {
     index:    '신청폼',
     fallback: {
       index:    '신청폼 응답',
@@ -63,8 +63,8 @@ export const sidebarMap = [
     children: [
       path.member,
       path.portfolio,
-      path.achievement,
-      path.application,
+      path.awards,
+      path.form,
     ],
   },
   {

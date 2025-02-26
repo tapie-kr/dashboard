@@ -19,14 +19,12 @@ import {
   Weight,
 } from '@tapie-kr/inspire-react';
 
-import { type AchievementDetailInfo } from './shared';
-
 interface AchievementDetailInfoSectionProps {
-  info: AchievementDetailInfo[];
+  uuid: string;
 }
 
-export default function AchievementDetailInfoSection(props: AchievementDetailInfoSectionProps) {
-  const { info } = props;
+export default function AwardsDetailInfoSection(props: AchievementDetailInfoSectionProps) {
+  const { uuid } = props;
 
   const getGradeString = (studentId: number) => {
     const studentIdString = studentId.toString();

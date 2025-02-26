@@ -3,7 +3,7 @@ import { Segment, SegmentGroup } from '@tapie-kr/inspire-react';
 import { Contest } from '@tapie-kr/dashboard-shared/lib/enum';
 import { getContestIcon } from '@tapie-kr/dashboard-shared/lib/enum/utils';
 
-export default function AchievementDetailContestSegment() {
+export default function AwardsDetailContestSegment() {
   return (
     <SegmentGroup defaultValue={Contest.INTERNAL}>
       <Segment

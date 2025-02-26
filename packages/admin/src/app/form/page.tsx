@@ -182,7 +182,7 @@ export default function ApplicationPage() {
               isSortable: true,
               cell:       (title, _, data) => {
                 const handleNavigate = () => {
-                  router.push(pathMap.resolvePath(path.application, data.id));
+                  router.push(pathMap.resolvePath(path.form, data.id));
                 };
 
                 return (

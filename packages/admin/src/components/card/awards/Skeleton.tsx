@@ -1,6 +1,6 @@
 import { Skeleton } from '@tapie-kr/inspire-react';
 
-export default function SkeletonAchievementCard() {
+export default function SkeletonAwardsCard() {
   return (
     <>
       {Array.from({ length: 3 }).map((_, index) => (

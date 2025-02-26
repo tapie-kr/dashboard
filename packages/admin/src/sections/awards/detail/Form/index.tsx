@@ -10,7 +10,7 @@ import {
   VStack,
 } from '@tapie-kr/inspire-react';
 
-export default function AchievementDetailFormSection() {
+export default function AwardsDetailFormSection() {
   return (
     <VStack
       spacing={spacingVars.medium}

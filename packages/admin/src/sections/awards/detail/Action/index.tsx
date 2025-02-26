@@ -8,7 +8,7 @@ import {
   Theme,
 } from '@tapie-kr/inspire-react';
 
-export default function AchievementDetailActionSection() {
+export default function AwardsDetailActionSection() {
   return (
     <HStack spacing={spacingVars.petite}>
       <Button.Default

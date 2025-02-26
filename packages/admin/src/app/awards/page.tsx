@@ -12,18 +12,15 @@ import {
   StackJustify,
   VStack,
 } from '@tapie-kr/inspire-react';
-import AchievementCard from '@/components/card/achievement';
-import SkeletonAchievementCard from '@/components/card/achievement/Skeleton';
+import AwardsCard from '@/components/card/awards';
+import SkeletonAwardsCard from '@/components/card/awards/Skeleton';
 import Page from '@/components/page';
 
-import { Temporal } from '@js-temporal/polyfill';
 import { usePrivateAwardList } from '@tapie-kr/api-client';
-import { Contest } from '@tapie-kr/dashboard-shared/lib/enum';
 import { getContestFilterGroup } from '@tapie-kr/dashboard-shared/lib/enum/utils';
-import { toTemporalDate } from '@tapie-kr/dashboard-shared/lib/utils/date';
 import { type ChangeEvent, useEffect, useState } from 'react';
 
-export default function AchievementPage() {
+export default function AwardsPage() {
   const [searchValue, setSearchValue] = useState('');
 
   const {
@@ -44,7 +41,7 @@ export default function AchievementPage() {
     <Page
       hasSearch
       title='수상실적'
-      count={7}
+      count={data?.data.length || 0}
       searchValue={searchValue}
       onChangeSearchValue={handleSearchValue}
     >
@@ -70,22 +67,11 @@ export default function AchievementPage() {
           columnCount={3}
           gap={spacingVars.petite}
         >
-          {isPending && <SkeletonAchievementCard />}
+          {isPending && <SkeletonAwardsCard />}
           {data?.data.map((award, idx) => (
-            <AchievementCard
+            <AwardsCard
               key={idx}
-              uuid={award.uuid}
-              contestName={award.title}
-              contestType={Contest.INTERNAL}
-              year={Temporal.PlainDate.from(toTemporalDate(award.rewardedAt)).year}
-              grade={{
-                grade:      award.grade,
-                gradeLabel: award.gradeLabel,
-              }}
-              members={award.members.map(member => ({
-                name:      member.name,
-                studentId: member.uuid,
-              }))}
+              {...award}
             />
           ))}
         </Grid>
