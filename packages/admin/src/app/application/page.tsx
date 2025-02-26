@@ -188,8 +188,6 @@ export default function ApplicationPage() {
         isSuccess={isSuccess}
         onClick={async () => {
           if (title.trim() === '' || !fromDate || !toDate) {
-            console.log(getDatetimeString('2025-02-27T08:12:00.000Z', true));
-
             return;
           }
 
