@@ -7,13 +7,12 @@ import {
   ButtonSize,
   colorVars,
   DataTable,
-  DatePicker,
+  DatetimePicker,
   Filter,
   FormField,
   GlyphIcon,
   HStack,
   Input,
-  Select,
   spacingVars,
   StackAlign,
   StackJustify,
@@ -25,7 +24,13 @@ import {
 import MutateDialog from '@/components/dialog/mutate';
 import Page from '@/components/page';
 
-import { usePrivateCreateForm, usePrivateFormList } from '@tapie-kr/api-client';
+import { Temporal } from '@js-temporal/polyfill';
+import {
+  usePrivateActivateForm,
+  usePrivateCreateForm,
+  usePrivateDeactivateForm,
+  usePrivateFormList,
+} from '@tapie-kr/api-client';
 import { getStatusFilterGroup } from '@tapie-kr/dashboard-shared/lib/enum/utils';
 import { getDatetimeString } from '@tapie-kr/dashboard-shared/lib/utils/date';
 import { useRouter } from 'next/navigation';
@@ -34,7 +39,12 @@ import { path, pathMap } from '@/lib/pathmap';
 
 export default function ApplicationPage() {
   const [searchValue, setSearchValue] = useState('');
-  const { fetch, data } = usePrivateFormList();
+
+  const {
+    fetch,
+    refetch,
+    data,
+  } = usePrivateFormList();
 
   const {
     mutate,
@@ -45,10 +55,16 @@ export default function ApplicationPage() {
   const toggler = useToggle();
   const [_isModalOpen, toggle] = toggler;
   const [title, setTitle] = useState('');
-  const [fromDate, setFromDate] = useState('');
-  const [toDate, setToDate] = useState('');
+  const [fromDate, setFromDate] = useState<Temporal.PlainDateTime | undefined>(undefined);
+  const [toDate, setToDate] = useState<Temporal.PlainDateTime | undefined>(undefined);
   const [isEdit, setIsEdit] = useState(false);
   const [currentId, setCurrentId] = useState<number>();
+
+  const { mutate: active } =
+  usePrivateActivateForm();
+
+  const { mutate: deactive } =
+  usePrivateDeactivateForm();
 
   useEffect(() => {
     fetch()
@@ -101,13 +117,20 @@ export default function ApplicationPage() {
               icon:    GlyphIcon.EDIT,
               onClick: () => {
                 setIsEdit(true);
-
-                // setCurrentId(as.id);
               },
             },
             {
-              icon:    GlyphIcon.LOCK_OPEN,
-              onClick: () => {
+              icon: data => {
+                return data.active ? GlyphIcon.LOCK_OPEN : GlyphIcon.LOCK;
+              },
+              onClick: async value => {
+                if (value.active) {
+                  await deactive({ param: { formId: value.id } });
+                } else {
+                  await active({ param: { formId: value.id } });
+                }
+
+                await refetch();
               },
             },
             {
@@ -164,8 +187,8 @@ export default function ApplicationPage() {
         onClick={async () => {
           await mutate({
             name:     title,
-            startsAt: fromDate,
-            endsAt:   toDate,
+            startsAt: fromDate?.toLocaleString() ?? '',
+            endsAt:   toDate?.toLocaleString() ?? '',
             active:   false,
           });
         }}
@@ -190,9 +213,7 @@ export default function ApplicationPage() {
             isEssential
             label='시작일'
           >
-            <DatePicker
-              withTime
-              placeholder='날짜 선택'
+            <DatetimePicker
               value={fromDate}
               onChange={e => {
                 setFromDate(e.target.value);
@@ -203,9 +224,7 @@ export default function ApplicationPage() {
             isEssential
             label='마감일'
           >
-            <DatePicker
-              withTime
-              placeholder='날짜 선택'
+            <DatetimePicker
               value={toDate}
               onChange={e => {
                 setToDate(e.target.value);
