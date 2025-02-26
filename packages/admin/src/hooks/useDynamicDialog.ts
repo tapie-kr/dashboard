@@ -21,9 +21,7 @@ interface UseDynamicDialogReturn<T = {
  * @returns {UseDynamicDialogReturn<T>} An object containing modal state, toggling functions, and parameters.
  */
 export default function useDynamicDialog<T = {
-}>({ toggler }: {
-  toggler: Toggler;
-}): UseDynamicDialogReturn<T> {
+}>(toggler: Toggler): UseDynamicDialogReturn<T> {
   const [
     _isModalOpen,
     _toggle,

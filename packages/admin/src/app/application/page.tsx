@@ -37,6 +37,7 @@ import { getStatusFilterGroup } from '@tapie-kr/dashboard-shared/lib/enum/utils'
 import { getDatetimeString } from '@tapie-kr/dashboard-shared/lib/utils/date';
 import { useRouter } from 'next/navigation';
 import { type ChangeEvent, useEffect, useState } from 'react';
+import useDynamicDialog from '@/hooks/useDynamicDialog';
 import { path, pathMap } from '@/lib/pathmap';
 
 export default function ApplicationPage() {
@@ -63,7 +64,11 @@ export default function ApplicationPage() {
   const mutateToggler = useToggle();
   const [isMutateModalOpen, toggleMutate] = mutateToggler;
   const deleteToggler = useToggle();
-  const [_isDeleteModalOpen, toggleDelete] = deleteToggler;
+
+  const { openModal, params } = useDynamicDialog<{
+    formId: number;
+  }>(deleteToggler);
+
   const [title, setTitle] = useState('');
   const [fromDate, setFromDate] = useState<Temporal.PlainDateTime | undefined>(undefined);
   const [toDate, setToDate] = useState<Temporal.PlainDateTime | undefined>(undefined);
@@ -150,7 +155,7 @@ export default function ApplicationPage() {
               onClick: value => {
                 setCurrentId(value.id);
 
-                toggleDelete();
+                openModal({ formId: value.id });
               },
             },
           ]}
@@ -258,7 +263,7 @@ export default function ApplicationPage() {
         onClick={async () => {
           if (!currentId) return;
 
-          await deleteForm({ param: { formId: currentId } });
+          await deleteForm({ param: { formId: params?.formId || 0 } });
 
           setCurrentId(undefined);
 
