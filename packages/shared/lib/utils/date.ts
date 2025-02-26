@@ -5,18 +5,12 @@ export const getPaddingZero = (num: number): string => {
 };
 
 export function toTemporalDateTime(isoString: string) {
-  const timeZone = Temporal.TimeZone.from('Asia/Seoul');
-  const isoStringStr = String(isoString);
-  const instant = Temporal.Instant.from(isoStringStr.endsWith('Z') ? isoStringStr : isoStringStr + 'Z');
-
-  return instant.toZonedDateTimeISO(timeZone).toPlainDateTime();
+  return Temporal.Instant.from(isoString).toZonedDateTimeISO('UTC');
 }
 
 export function toTemporalDate(isoString: string) {
-  const timeZone = Temporal.TimeZone.from('Asia/Seoul');
-  const instant = Temporal.Instant.from(isoString);
-
-  return instant.toZonedDateTimeISO(timeZone).toPlainDate();
+  return Temporal.Instant.from(isoString).toZonedDateTimeISO('UTC')
+    .toPlainDate();
 }
 
 export const getDatetimeString = (date: string, containYear: boolean) => {

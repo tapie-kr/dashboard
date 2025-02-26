@@ -70,6 +70,15 @@ export default function ApplicationPage() {
     fetch();
   }, []);
 
+  const formatToISO = (date?: Temporal.PlainDateTime) => {
+    if (!date) return '';
+
+    return date
+      .toZonedDateTime('UTC')
+      .toInstant()
+      .toString();
+  };
+
   const handleSearchValue = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
   };
@@ -178,10 +187,16 @@ export default function ApplicationPage() {
         isPending={isPending}
         isSuccess={isSuccess}
         onClick={async () => {
+          if (title.trim() === '' || !fromDate || !toDate) {
+            console.log(getDatetimeString('2025-02-27T08:12:00.000Z', true));
+
+            return;
+          }
+
           await mutate({
             name:     title,
-            startsAt: fromDate?.toLocaleString() ?? '',
-            endsAt:   toDate?.toLocaleString() ?? '',
+            startsAt: formatToISO(fromDate),
+            endsAt:   formatToISO(toDate),
             active:   false,
           });
         }}
