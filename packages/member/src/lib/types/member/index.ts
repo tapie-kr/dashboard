@@ -1,4 +1,4 @@
 export interface Member {
   studentId: number;
-  name: string;
+  name:      string;
 }

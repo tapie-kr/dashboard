@@ -34,10 +34,10 @@ export default function ApplicationDetailPage({ params }: {
     data,
     fetch,
     isPending,
-  } = usePrivateFormResponseList(id);
+  } = usePrivateFormResponseList();
 
   useEffect(() => {
-    fetch();
+    fetch({ param: { formUUID: id } });
   }, []);
 
   const handleSearchValue = (e: ChangeEvent<HTMLInputElement>) => {
@@ -71,10 +71,8 @@ export default function ApplicationDetailPage({ params }: {
                 unit={item.unit}
                 content={item.introduction}
                 date={toTemporalDateTime(item.createdAt)}
-                member={{
-                  studentId: item.studentId,
-                  name:      item.name,
-                }}
+                name={item.name}
+                hasPortfolio={!!item.portfolioAssetUUID}
               />
             ))
             : (

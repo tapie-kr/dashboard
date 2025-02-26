@@ -27,8 +27,13 @@ importers:
         specifier: ^0.4.4
         version: 0.4.4
       '@tapie-kr/api-client':
+<<<<<<< HEAD
         specifier: ^0.0.31
         version: 0.0.31(axios@1.7.9)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(zod@3.24.2)
+=======
+        specifier: ^0.0.27
+        version: 0.0.27(axios@1.7.9)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(zod@3.24.2)
+>>>>>>> d9f3e983c0939b19af5b54fbda930062f86a37b7
       '@tapie-kr/dashboard-shared':
         specifier: workspace:*
         version: link:../shared
@@ -125,8 +130,13 @@ importers:
         specifier: ^0.4.4
         version: 0.4.4
       '@tapie-kr/api-client':
+<<<<<<< HEAD
         specifier: ^0.0.31
         version: 0.0.31(axios@1.7.9)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(zod@3.24.2)
+=======
+        specifier: ^0.0.27
+        version: 0.0.27(axios@1.7.9)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(zod@3.24.2)
+>>>>>>> d9f3e983c0939b19af5b54fbda930062f86a37b7
       '@tapie-kr/inspire-react':
         specifier: 0.2.12
         version: 0.2.12(framer-motion@11.18.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(jotai@2.12.1(@types/react@19.0.10)(react@19.0.0))(next@15.1.7(@babel/core@7.26.9)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -694,8 +704,13 @@ packages:
     peerDependencies:
       react: ^18 || ^19
 
+<<<<<<< HEAD
   '@tapie-kr/api-client@0.0.31':
     resolution: {integrity: sha512-FGl6VsOBFEZM5bfH/SlozkV2lUfyw88D3IRM4cKTV8NQoGVZW01MtOE7mzMWll2p3B+8WfM1buwyMDVcRyJtVw==}
+=======
+  '@tapie-kr/api-client@0.0.27':
+    resolution: {integrity: sha512-dU4cJfRaJMuJHhEQWQHW301aVkFokrA6QjzURdFJDrM0JbxhXFZBWBL5yGv4jIoRGWFDKF1nh3BCVAnV1IMrSg==}
+>>>>>>> d9f3e983c0939b19af5b54fbda930062f86a37b7
     peerDependencies:
       axios: ^1.7.9
       react: ^19.0.0
@@ -2745,7 +2760,11 @@ snapshots:
       '@tanstack/query-core': 5.66.4
       react: 19.0.0
 
+<<<<<<< HEAD
   '@tapie-kr/api-client@0.0.31(axios@1.7.9)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(zod@3.24.2)':
+=======
+  '@tapie-kr/api-client@0.0.27(axios@1.7.9)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(zod@3.24.2)':
+>>>>>>> d9f3e983c0939b19af5b54fbda930062f86a37b7
     dependencies:
       axios: 1.7.9
       react: 19.0.0

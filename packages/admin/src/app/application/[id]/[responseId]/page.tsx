@@ -5,7 +5,8 @@ import * as s from './page.css';
 import { spacingVars, StackAlign, VStack } from '@tapie-kr/inspire-react';
 import Page from '@/components/page';
 
-import { MemberUnitType, usePrivateFormApplication } from '@tapie-kr/api-client';
+import { usePrivateFormApplication } from '@tapie-kr/api-client';
+import { MemberUnit } from '@tapie-kr/api-client/enum';
 import { use, useEffect } from 'react';
 import ApplicationDetailActionSection from '@/sections/application/detail/Action';
 import ApplicationDetailInfoSection from '@/sections/application/detail/Info';
@@ -22,10 +23,10 @@ export default function ApplicationDetailResponsePage({ params }: {
     data,
     fetch,
     isPending,
-  } = usePrivateFormApplication(responseId);
+  } = usePrivateFormApplication();
 
   useEffect(() => {
-    fetch();
+    fetch({ param: { applicationUUID: responseId } });
   }, []);
 
   return (
@@ -47,7 +48,7 @@ export default function ApplicationDetailResponsePage({ params }: {
               phoneNumber: data?.data.phoneNumber || '불러오는 중',
             }}
             applicationInfo={{
-              unit:               data?.data.unit || MemberUnitType.DEVELOPER,
+              unit:               data?.data.unit || MemberUnit.DEVELOPER,
               introduction:       data?.data.introduction || '불러오는 중',
               motivation:         data?.data.motivation || '불러오는 중',
               expectedActivities: data?.data.expectedActivities || '불러오는 중',

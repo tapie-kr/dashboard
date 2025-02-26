@@ -18,7 +18,7 @@ interface UnitBadgeProps {
 export default function RoleBadge(props: UnitBadgeProps) {
   const { role, size = BadgeSize.LARGE } = props;
 
-  if (!isExecutive(role)) return <></>;
+  if (!isExecutive(role)) return null;
 
   return (
     <Badge.Default
