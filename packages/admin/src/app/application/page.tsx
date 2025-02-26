@@ -51,15 +51,8 @@ export default function ApplicationPage() {
   const [currentId, setCurrentId] = useState<number>();
 
   useEffect(() => {
-    fetch()
-      .then(res => {
-        console.log(res);
-      });
+    fetch();
   }, []);
-
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
 
   const handleSearchValue = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);

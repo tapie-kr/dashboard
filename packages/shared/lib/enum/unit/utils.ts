@@ -6,13 +6,13 @@ import { UnitEnumToKorean } from '~/lib/utils/enum';
 
 export const getUnitIcon = (unit: MemberUnit): IconName => {
   const unitIcon: {
-    [key in MemberUnit]: IconName;
+    [key in MemberUnit]?: IconName;
   } = {
     [MemberUnit.DEVELOPER]: GlyphIcon.CODE,
     [MemberUnit.DESIGNER]:  GlyphIcon.BRUSH,
   };
 
-  return unitIcon[unit];
+  return unitIcon[unit] ?? GlyphIcon.DEFAULT;
 };
 
 export const getUnitFilterGroup = (): FilterGroup => {

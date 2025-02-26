@@ -34,10 +34,10 @@ export default function ApplicationDetailPage({ params }: {
     data,
     fetch,
     isPending,
-  } = usePrivateFormResponseList(id);
+  } = usePrivateFormResponseList();
 
   useEffect(() => {
-    fetch();
+    fetch({ param: { formUUID: id } });
   }, []);
 
   const handleSearchValue = (e: ChangeEvent<HTMLInputElement>) => {

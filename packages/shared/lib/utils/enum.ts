@@ -9,7 +9,7 @@ export function UnitEnumToKorean(unit: MemberUnit): string {
   return unitMap[unit];
 }
 
-export function RoleEnumToKorean(unit: MemberRole): string {
+export function RoleEnumToKorean(role: MemberRole): string {
   const roleMap: Record<MemberRole, string> = {
     [MemberRole.GUEST]:      '게스트',
     [MemberRole.MEMBER]:     '부원',
@@ -17,5 +17,5 @@ export function RoleEnumToKorean(unit: MemberRole): string {
     [MemberRole.MANAGER]:    '부장',
   };
 
-  return roleMap[unit];
+  return roleMap[role];
 }
