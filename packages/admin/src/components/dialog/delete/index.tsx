@@ -4,6 +4,7 @@ import * as s from './style.css';
 
 import {
   Button,
+  ButtonVariant,
   colorVars,
   Dialog,
   GlyphIcon,
@@ -11,6 +12,7 @@ import {
   Icon,
   spacingVars,
   StackAlign,
+  Theme,
   Toggler,
   Typo,
   VStack,
@@ -19,20 +21,17 @@ import {
 
 import React, { useEffect } from 'react';
 
-interface MutateDialogProps {
+interface DeleteDialogProps {
   title:     string;
-  type:      'create' | 'update';
   toggler:   Toggler;
   isPending: boolean;
   isSuccess: boolean;
   onClick:   () => void;
-  children:  React.ReactNode;
 }
 
-export default function MutateDialog(props: MutateDialogProps) {
+export default function DeleteDialog(props: DeleteDialogProps) {
   const {
     title,
-    type,
     toggler,
     isPending,
     isSuccess,
@@ -75,11 +74,11 @@ export default function MutateDialog(props: MutateDialogProps) {
               fullWidth
               align={StackAlign.START}
             >
-              <Typo.Moderate weight={Weight.SEMIBOLD}>{title} {type === 'create' ? '추가' : '수정'}</Typo.Moderate>
+              <Typo.Moderate weight={Weight.SEMIBOLD}>{title} 삭제</Typo.Moderate>
               <Typo.Base
                 weight={Weight.MEDIUM}
                 color={colorVars.content.default}
-              >아래 필드를 채워주세요
+              >정말로 삭제하시겠습니까?
               </Typo.Base>
             </VStack>
             <Icon
@@ -88,23 +87,32 @@ export default function MutateDialog(props: MutateDialogProps) {
             />
           </HStack>
         </VStack>
-        <VStack
+        <HStack
           fullWidth
-          spacing={spacingVars.base}
+          spacing={spacingVars.micro}
         >
-          {props.children}
-        </VStack>
-        <Button.Default
-          fullWidth
-          leadingIcon={GlyphIcon.INBOX}
-          disabled={isPending}
-          onClick={async () => {
-            await onClick();
+          <Button.Default
+            fullWidth
+            leadingIcon={GlyphIcon.DELETE}
+            disabled={isPending}
+            theme={Theme.RED}
+            variant={ButtonVariant.SECONDARY}
+            onClick={async () => {
+              await onClick();
 
-            handleCloseDialog();
-          }}
-        >저장
-        </Button.Default>
+              handleCloseDialog();
+            }}
+          >삭제
+          </Button.Default>
+          <Button.Default
+            fullWidth
+            leadingIcon={GlyphIcon.CLOSE}
+            disabled={isPending}
+            variant={ButtonVariant.SECONDARY}
+            onClick={handleCloseDialog}
+          >취소
+          </Button.Default>
+        </HStack>
       </VStack>
     </Dialog>
   );

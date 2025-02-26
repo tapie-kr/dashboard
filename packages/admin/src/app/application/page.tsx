@@ -21,6 +21,7 @@ import {
   VStack,
   Weight,
 } from '@tapie-kr/inspire-react';
+import DeleteDialog from '@/components/dialog/delete';
 import MutateDialog from '@/components/dialog/mutate';
 import Page from '@/components/page';
 
@@ -29,6 +30,7 @@ import {
   usePrivateActivateForm,
   usePrivateCreateForm,
   usePrivateDeactivateForm,
+  usePrivateDeleteForm,
   usePrivateFormList,
 } from '@tapie-kr/api-client';
 import { getStatusFilterGroup } from '@tapie-kr/dashboard-shared/lib/enum/utils';
@@ -47,13 +49,21 @@ export default function ApplicationPage() {
   } = usePrivateFormList();
 
   const {
-    mutate,
-    isPending,
-    isSuccess,
+    mutate: createForm,
+    isPending: isCreatePending,
+    isSuccess: isCreateSuccess,
   } = usePrivateCreateForm();
 
-  const toggler = useToggle();
-  const [_isModalOpen, toggle] = toggler;
+  const {
+    mutate: deleteForm,
+    isPending: isDeletePending,
+    isSuccess: isDeleteSuccess,
+  } = usePrivateDeleteForm();
+
+  const mutateToggler = useToggle();
+  const [isMutateModalOpen, toggleMutate] = mutateToggler;
+  const deleteToggler = useToggle();
+  const [_isDeleteModalOpen, toggleDelete] = deleteToggler;
   const [title, setTitle] = useState('');
   const [fromDate, setFromDate] = useState<Temporal.PlainDateTime | undefined>(undefined);
   const [toDate, setToDate] = useState<Temporal.PlainDateTime | undefined>(undefined);
@@ -107,7 +117,7 @@ export default function ApplicationPage() {
           <Button.Default
             size={ButtonSize.SMALL}
             leadingIcon={GlyphIcon.ADD}
-            onClick={toggle}
+            onClick={toggleMutate}
           >신청폼 추가
           </Button.Default>
         </HStack>
@@ -137,7 +147,10 @@ export default function ApplicationPage() {
             },
             {
               icon:    GlyphIcon.DELETE,
-              onClick: () => {
+              onClick: value => {
+                setCurrentId(value.id);
+
+                toggleDelete();
               },
             },
           ]}
@@ -183,20 +196,22 @@ export default function ApplicationPage() {
       <MutateDialog
         title='신청폼'
         type='create'
-        toggler={toggler}
-        isPending={isPending}
-        isSuccess={isSuccess}
+        toggler={mutateToggler}
+        isPending={isCreatePending}
+        isSuccess={isCreateSuccess}
         onClick={async () => {
           if (title.trim() === '' || !fromDate || !toDate) {
             return;
           }
 
-          await mutate({
+          await createForm({
             name:     title,
             startsAt: formatToISO(fromDate),
             endsAt:   formatToISO(toDate),
             active:   false,
           });
+
+          refetch();
         }}
       >
         <FormField
@@ -235,6 +250,22 @@ export default function ApplicationPage() {
           </FormField>
         </HStack>
       </MutateDialog>
+      <DeleteDialog
+        title='신청폼'
+        toggler={deleteToggler}
+        isPending={false}
+        isSuccess={true}
+        onClick={async () => {
+          if (!currentId) return;
+
+          await deleteForm({ param: { formId: currentId } });
+
+          setCurrentId(undefined);
+
+          refetch();
+        }}
+      />
+
     </Page>
   );
 }
