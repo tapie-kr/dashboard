@@ -22,6 +22,7 @@ export const path = {
   },
   awards: {
     index:    '수상실적',
+    create:   { index: '수상실적 등록' },
     fallback: { index: '수상실적 상세' },
   },
   form: {

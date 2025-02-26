@@ -33,3 +33,21 @@ export const getDateString = (date: string, containYear: boolean) => {
     return `${getPaddingZero(dateObject.month)}월 ${getPaddingZero(dateObject.day)}일`;
   }
 };
+
+export const formatDatetimeToISO = (date?: Temporal.PlainDateTime) => {
+  if (!date) return '';
+
+  return date
+    .toZonedDateTime('UTC')
+    .toInstant()
+    .toString();
+};
+
+export const formatDateToISO = (date?: Temporal.PlainDate) => {
+  if (!date) return '';
+
+  return date
+    .toZonedDateTime('UTC')
+    .toInstant()
+    .toString();
+};

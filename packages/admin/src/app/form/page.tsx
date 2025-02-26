@@ -35,7 +35,7 @@ import {
   usePrivateUpdateForm,
 } from '@tapie-kr/api-client';
 import { getStatusFilterGroup } from '@tapie-kr/dashboard-shared/lib/enum/utils';
-import { getDatetimeString, toTemporalDateTime } from '@tapie-kr/dashboard-shared/lib/utils/date';
+import { formatDatetimeToISO, getDatetimeString, toTemporalDateTime } from '@tapie-kr/dashboard-shared/lib/utils/date';
 import { useRouter } from 'next/navigation';
 import { type ChangeEvent, useEffect, useState } from 'react';
 import useDynamicDialog from '@/hooks/useDynamicDialog';
@@ -95,15 +95,6 @@ export default function ApplicationPage() {
   useEffect(() => {
     fetchFormList();
   }, []);
-
-  const formatToISO = (date?: Temporal.PlainDateTime) => {
-    if (!date) return '';
-
-    return date
-      .toZonedDateTime('UTC')
-      .toInstant()
-      .toString();
-  };
 
   const handleSearchValue = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
@@ -232,8 +223,8 @@ export default function ApplicationPage() {
 
           await createForm({
             name,
-            startsAt: formatToISO(startsAt),
-            endsAt:   formatToISO(endsAt),
+            startsAt: formatDatetimeToISO(startsAt),
+            endsAt:   formatDatetimeToISO(endsAt),
             active:   false,
           });
 
@@ -305,8 +296,8 @@ export default function ApplicationPage() {
             param: { formId: updateParams?.formId },
             data:  {
               name,
-              startsAt: formatToISO(startsAt),
-              endsAt:   formatToISO(endsAt),
+              startsAt: formatDatetimeToISO(startsAt),
+              endsAt:   formatDatetimeToISO(endsAt),
               active:   false,
             },
           });

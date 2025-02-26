@@ -52,7 +52,7 @@ export default function AwardsDetailInfoSection(props: AchievementDetailInfoSect
       </HStack>
       <DataTable
         showIndex
-        data={info}
+        data={[]}
         actions={[
           {
             icon:    GlyphIcon.EDIT,

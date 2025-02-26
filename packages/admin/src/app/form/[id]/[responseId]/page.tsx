@@ -38,25 +38,25 @@ export default function ApplicationDetailResponsePage({ params }: {
         align={StackAlign.START}
       >
         {isPending && <SkeletonApplicationDetailInfo />}
-        {data && (
+        {data?.data && (
           <ApplicationDetailInfoSection
-            portfolio={data?.data.portfolioAssetUUID}
+            portfolio={data.data.portfolioAssetUUID}
             personalInfo={{
-              name:        data?.data.name || '불러오는 중',
-              studentId:   Number(data?.data.studentId) || 0,
-              googleEmail: data?.data.googleEmail || '불러오는 중',
-              phoneNumber: data?.data.phoneNumber || '불러오는 중',
+              name:        data.data.name || '불러오는 중',
+              studentId:   Number(data.data.studentId) || 0,
+              googleEmail: data.data.googleEmail || '불러오는 중',
+              phoneNumber: data.data.phoneNumber || '불러오는 중',
             }}
             applicationInfo={{
-              unit:               data?.data.unit || MemberUnit.DEVELOPER,
-              introduction:       data?.data.introduction || '불러오는 중',
-              motivation:         data?.data.motivation || '불러오는 중',
-              expectedActivities: data?.data.expectedActivities || '불러오는 중',
-              reasonToChoose:     data?.data.reasonToChoose || '불러오는 중',
+              unit:               data.data.unit || MemberUnit.DEVELOPER,
+              introduction:       data.data.introduction || '불러오는 중',
+              motivation:         data.data.motivation || '불러오는 중',
+              expectedActivities: data.data.expectedActivities || '불러오는 중',
+              reasonToChoose:     data.data.reasonToChoose || '불러오는 중',
             }}
           />
         )}
-        <ApplicationDetailActionSection />
+        <ApplicationDetailActionSection responseId={responseId} />
       </VStack>
     </Page>
   );

@@ -18,7 +18,9 @@ import Page from '@/components/page';
 
 import { usePrivateAwardList } from '@tapie-kr/api-client';
 import { getContestFilterGroup } from '@tapie-kr/dashboard-shared/lib/enum/utils';
+import { useRouter } from 'next/navigation';
 import { type ChangeEvent, useEffect, useState } from 'react';
+import { path, pathMap } from '@/lib/pathmap';
 
 export default function AwardsPage() {
   const [searchValue, setSearchValue] = useState('');
@@ -32,6 +34,8 @@ export default function AwardsPage() {
   useEffect(() => {
     fetch();
   }, []);
+
+  const router = useRouter();
 
   const handleSearchValue = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
@@ -59,6 +63,9 @@ export default function AwardsPage() {
           <Button.Default
             size={ButtonSize.SMALL}
             leadingIcon={GlyphIcon.ADD}
+            onClick={() => {
+              router.push(pathMap.resolvePath(path.awards.create));
+            }}
           >
             수상실적 등록
           </Button.Default>

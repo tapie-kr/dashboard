@@ -6,9 +6,30 @@ import {
   HStack,
   spacingVars,
   Theme,
+  useToggle,
 } from '@tapie-kr/inspire-react';
+import DeleteDialog from '@/components/dialog/delete';
 
-export default function ApplicationDetailActionSection() {
+import { usePrivateDeleteFormApplication } from '@tapie-kr/api-client';
+import { useRouter } from 'next/navigation';
+
+interface ApplicationDetailActionSectionProps {
+  responseId: number;
+}
+
+export default function ApplicationDetailActionSection(props: ApplicationDetailActionSectionProps) {
+  const { responseId } = props;
+  const router = useRouter();
+
+  const {
+    mutate,
+    isPending,
+    isSuccess,
+  } = usePrivateDeleteFormApplication();
+
+  const toggler = useToggle();
+  const [_isModalOpen, toggle] = toggler;
+
   return (
     <HStack spacing={spacingVars.petite}>
       <Button.Default
@@ -22,9 +43,21 @@ export default function ApplicationDetailActionSection() {
         size={ButtonSize.MEDIUM}
         theme={Theme.RED}
         leadingIcon={GlyphIcon.DELETE}
+        onClick={toggle}
       >
         삭제
       </Button.Default>
+      <DeleteDialog
+        title='신청폼 응답'
+        toggler={toggler}
+        isPending={isPending}
+        isSuccess={isSuccess}
+        onClick={async () => {
+          await mutate({ param: { applicationUUID: responseId } });
+
+          router.back();
+        }}
+      />
     </HStack>
   );
 }
