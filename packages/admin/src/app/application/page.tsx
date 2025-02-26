@@ -123,7 +123,7 @@ export default function ApplicationPage() {
         </HStack>
         <DataTable
           showIndex
-          data={data?.data ?? []}
+          data={data?.data.sort((a, b) => a.id - b.id) ?? []}
           actions={[
             {
               icon:    GlyphIcon.EDIT,
