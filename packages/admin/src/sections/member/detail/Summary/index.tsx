@@ -25,6 +25,7 @@ export default function MemberDetailSummarySection(props: MemberDetailSummarySec
     name,
     username,
     unit,
+    studentID,
     role,
     generation,
     profileUri,
@@ -52,7 +53,7 @@ export default function MemberDetailSummarySection(props: MemberDetailSummarySec
           align={StackAlign.START}
         >
           <HStack spacing={spacingVars.micro}>
-            <Typo.Medium weight={Weight.SEMIBOLD}>10404 {name}</Typo.Medium>
+            <Typo.Medium weight={Weight.SEMIBOLD}>{studentID} {name}</Typo.Medium>
             <Typo.Base
               weight={Weight.MEDIUM}
               color={colorVars.content.default}

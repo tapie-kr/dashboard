@@ -17,21 +17,15 @@ import {
   Weight,
 } from '@tapie-kr/inspire-react';
 
-import {
-  getSkillIcon,
-  type MemberInfoAwards,
-  type MemberInfoHistory,
-  type MemberInfoPortfolio,
-  type MemberInfoProfileLink,
-  type MemberInfoSkill,
-} from './shared';
+import { MemberAwardsType, MemberHistoryType, MemberSkillType } from '@tapie-kr/api-client';
+import { getSkillIcon, type MemberInfoProfileLink } from './shared';
 
 interface MemberDetailInfoSectionProps {
   profileLink: MemberInfoProfileLink[];
-  awards:      MemberInfoAwards[];
-  portfolio:   MemberInfoPortfolio[];
-  skill:       MemberInfoSkill[];
-  history:     MemberInfoHistory[];
+  awards:      MemberAwardsType[];
+  portfolio:   string[];
+  skill:       MemberSkillType[];
+  history:     MemberHistoryType[];
 }
 
 export default function MemberDetailInfoSection(props: MemberDetailInfoSectionProps) {
@@ -116,7 +110,7 @@ export default function MemberDetailInfoSection(props: MemberDetailInfoSectionPr
           ]}
           columns={[
             {
-              key:        'contestName',
+              key:        'title',
               label:      '대회 이름',
               width:      250,
               isSortable: true,
@@ -133,13 +127,16 @@ export default function MemberDetailInfoSection(props: MemberDetailInfoSectionPr
               width:      100,
               isSortable: true,
             },
-            {
-              key:        'memberCount',
-              label:      '참여 인원',
-              width:      100,
-              isSortable: true,
-              cell:       memberCount => `${memberCount}명`,
-            },
+
+            /*
+             * {
+             *   key:        '',
+             *   label:      '참여 인원',
+             *   width:      100,
+             *   isSortable: true,
+             *   cell:       memberCount => `${memberCount}명`,
+             * },
+             */
           ]}
         />
       </InfoItem>
