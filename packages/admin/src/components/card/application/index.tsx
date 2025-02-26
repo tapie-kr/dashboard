@@ -16,30 +16,13 @@ import {
   Weight,
 } from '@tapie-kr/inspire-react';
 
-<<<<<<< HEAD
-import { FormResponseType } from '@tapie-kr/api-client';
-import { getUnitIcon } from '@tapie-kr/dashboard-shared/lib/enum/utils';
-=======
-import { type Temporal } from '@js-temporal/polyfill';
-import { MemberUnit } from '@tapie-kr/api-client/enum';
+import { FormDetailData } from '@tapie-kr/api-client';
 import UnitBadge from '@tapie-kr/dashboard-shared/components/atoms/badge/unit';
->>>>>>> d9f3e983c0939b19af5b54fbda930062f86a37b7
 import { getDatetimeString } from '@tapie-kr/dashboard-shared/lib/utils/date';
 import { useRouter } from 'next/navigation';
 import { path, pathMap } from '@/lib/pathmap';
 
-<<<<<<< HEAD
-interface ApplicationCardProps extends FormResponseType {
-=======
-interface ApplicationCardProps {
-  uuid:          string;
-  formId:        number;
-  name:          string;
-  content:       string;
-  unit:          MemberUnit;
-  date:          Temporal.PlainDateTime;
-  hasPortfolio?: boolean;
->>>>>>> d9f3e983c0939b19af5b54fbda930062f86a37b7
+interface ApplicationCardProps extends FormDetailData {
 }
 
 export default function ApplicationCard(props: ApplicationCardProps) {

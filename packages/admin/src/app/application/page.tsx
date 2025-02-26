@@ -208,9 +208,7 @@ export default function ApplicationPage() {
           >
             <DatetimePicker
               value={fromDate}
-              onChange={e => {
-                setFromDate(e.target.value);
-              }}
+              onChange={setFromDate}
             />
           </FormField>
           <FormField
@@ -219,9 +217,7 @@ export default function ApplicationPage() {
           >
             <DatetimePicker
               value={toDate}
-              onChange={e => {
-                setToDate(e.target.value);
-              }}
+              onChange={setToDate}
             />
           </FormField>
         </HStack>
