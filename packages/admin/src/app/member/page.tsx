@@ -52,12 +52,14 @@ export default function MemberPage() {
         >
           {/* TODO: 한유찬한테 API response 바꾸라고 하기 */}
           {isPending && <SkeletonMemberCard />}
-          {data && data.data.map(member => (
-            <MemberCard
-              key={member.uuid}
-              {...member}
-            />
-          ))}
+          {data && data.data.map(member =>  {
+            return (
+              <MemberCard
+                key={member.uuid}
+                {...member}
+              />
+            );
+          })}
         </Grid>
       </VStack>
     </Page>

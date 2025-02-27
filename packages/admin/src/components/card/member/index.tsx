@@ -23,8 +23,19 @@ import UnitBadge from '@tapie-kr/dashboard-shared/components/atoms/badge/unit';
 import { useRouter } from 'next/navigation';
 import { path, pathMap } from '@/lib/pathmap';
 
-interface MemberCardProps extends MemberType {
+interface MemberCardProps extends Omit<MemberType, 'awards' | 'skills' | 'permissions' | 'history' | 'links' | 'isGraduated'> {
 }
+
+/*
+ *uuid: string;
+ *    username: string;
+ *    googleEmail: string;
+ *    unit: MemberUnit;
+ *    role: MemberRole;
+ *    generation: number;
+ *    studentID: number;
+ *    profileUri: string;
+ */
 
 export default function MemberCard(props: MemberCardProps) {
   const {
