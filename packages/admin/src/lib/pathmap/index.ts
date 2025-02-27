@@ -2,17 +2,22 @@ import { PathMap } from '@tapie-kr/dashboard-shared/lib/pathmap';
 import { PathNode } from '@tapie-kr/dashboard-shared/lib/pathmap/types';
 
 export const path = {
-  home:    { index: '홈' },
-  lecture: {
-    index: '수업',
-    board: { index: '게시판' },
-  },
-  homework: {
-    index:    '과제',
-    fallback: { index: '수업 상세' },
-  },
-  attendance: { index: '출석' },
-  member:     {
+  home: { index: '홈' },
+
+  /*
+   * lecture: {
+   *   index: '수업',
+   *   board: { index: '게시판' },
+   * },
+   */
+  /*
+   * homework: {
+   *   index:    '과제',
+   *   fallback: { index: '수업 상세' },
+   * },
+   * attendance: { index: '출석' },
+   */
+  member: {
     index:    '부원',
     fallback: { index: '부원 상세' },
   },
@@ -51,14 +56,17 @@ export const path = {
 
 export const sidebarMap = [
   path.home,
-  {
-    title:    '수업',
-    children: [
-      path.lecture,
-      path.homework,
-      path.attendance,
-    ],
-  },
+
+  /*
+   * {
+   *   title:    '수업',
+   *   children: [
+   *     path.lecture,
+   *     path.homework,
+   *     path.attendance,
+   *   ],
+   * },
+   */
   {
     title:    '관리',
     children: [
