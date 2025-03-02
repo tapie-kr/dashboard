@@ -19,6 +19,7 @@ import {
 import { MemberUnit } from '@tapie-kr/api-client/enum';
 import UnitBadge from '@tapie-kr/dashboard-shared/components/atoms/badge/unit';
 import { type JSX } from 'react';
+import { FormApplicationFileType, FormApplicationPortfolioType } from '@tapie-kr/api-client';
 
 type PersonalInfo = {
   name:        string;
@@ -38,7 +39,7 @@ type ApplicationInfo = {
 interface ApplicationDetailInfoSectionProps {
   personalInfo:    PersonalInfo;
   applicationInfo: ApplicationInfo;
-  portfolio:       string | null;
+  portfolio:       FormApplicationPortfolioType;
 }
 
 export default function ApplicationDetailInfoSection(props: ApplicationDetailInfoSectionProps) {
@@ -126,7 +127,7 @@ export default function ApplicationDetailInfoSection(props: ApplicationDetailInf
               variant={ButtonVariant.SECONDARY}
               leadingIcon={GlyphIcon.DOWNLOAD}
             >
-              {portfolio}
+              {portfolio.filename}
             </Button.Default>
 
           </HStack>

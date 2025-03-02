@@ -26,7 +26,7 @@ export default function ApplicationDetailResponsePage({ params }: {
   } = usePrivateFormApplication();
 
   useEffect(() => {
-    fetch({ param: { applicationUUID: responseId } });
+    fetch({ param: { applicationUUID: String(responseId) } });
   }, []);
 
   return (
@@ -40,7 +40,7 @@ export default function ApplicationDetailResponsePage({ params }: {
         {isPending && <SkeletonApplicationDetailInfo />}
         {data?.data && (
           <ApplicationDetailInfoSection
-            portfolio={data.data.portfolioAssetUUID}
+            portfolio={data.data.portfolio}
             personalInfo={{
               name:        data.data.name || '불러오는 중',
               studentId:   Number(data.data.studentId) || 0,
