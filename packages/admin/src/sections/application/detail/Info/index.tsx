@@ -176,15 +176,20 @@ function InfoGroup(props: InfoGroupProps) {
         {content.map((item, index) => (
           <HStack
             key={index}
+            fullWidth
             spacing={spacingVars.micro}
             align={StackAlign.START}
           >
             <HStack
+              fullWidth
               justify={StackJustify.START}
               className={s.label}
               align={StackAlign.START}
             >
-              <Typo.Micro weight={Weight.SEMIBOLD}>{item.label}</Typo.Micro>
+              <Typo.Micro
+                weight={Weight.SEMIBOLD}
+              >{item.label}
+              </Typo.Micro>
             </HStack>
             <HStack
               fullWidth
@@ -198,6 +203,7 @@ function InfoGroup(props: InfoGroupProps) {
                   <Typo.Micro
                     weight={Weight.MEDIUM}
                     color={colorVars.content.muted}
+                    className={s.contentText}
                   >
                     {item.value}
                   </Typo.Micro>

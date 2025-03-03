@@ -10,3 +10,9 @@ export const base = style({
 
 export const label = style({ width: 120 });
 export const content = style({ width: 700 });
+
+export const contentText = style({
+  width:        '100%',
+  wordWrap:     'break-word',
+  overflowWrap: 'break-word',
+});
