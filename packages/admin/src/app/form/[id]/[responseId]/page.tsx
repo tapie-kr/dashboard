@@ -42,17 +42,17 @@ export default function ApplicationDetailResponsePage({ params }: {
           <ApplicationDetailInfoSection
             portfolio={data.data.portfolio}
             personalInfo={{
-              name:        data.data.name || '불러오는 중',
-              studentId:   Number(data.data.studentId) || 0,
-              googleEmail: data.data.googleEmail || '불러오는 중',
-              phoneNumber: data.data.phoneNumber || '불러오는 중',
+              name:        data.data.name,
+              studentId:   Number(data.data.studentId),
+              googleEmail: data.data.googleEmail,
+              phoneNumber: data.data.phoneNumber,
             }}
             applicationInfo={{
               unit:               data.data.unit || MemberUnit.DEVELOPER,
-              introduction:       data.data.introduction || '불러오는 중',
-              motivation:         data.data.motivation || '불러오는 중',
-              expectedActivities: data.data.expectedActivities || '불러오는 중',
-              reasonToChoose:     data.data.reasonToChoose || '불러오는 중',
+              introduction:       data.data.introduction,
+              motivation:         data.data.motivation,
+              expectedActivities: data.data.expectedActivities,
+              reasonToChoose:     data.data.reasonToChoose,
             }}
           />
         )}

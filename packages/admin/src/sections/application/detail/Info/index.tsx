@@ -16,10 +16,10 @@ import {
   Weight,
 } from '@tapie-kr/inspire-react';
 
+import { FormApplicationPortfolioType } from '@tapie-kr/api-client';
 import { MemberUnit } from '@tapie-kr/api-client/enum';
 import UnitBadge from '@tapie-kr/dashboard-shared/components/atoms/badge/unit';
 import { type JSX } from 'react';
-import { FormApplicationFileType, FormApplicationPortfolioType } from '@tapie-kr/api-client';
 
 type PersonalInfo = {
   name:        string;

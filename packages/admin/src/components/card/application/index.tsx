@@ -22,7 +22,7 @@ import { getDatetimeString } from '@tapie-kr/dashboard-shared/lib/utils/date';
 import { useRouter } from 'next/navigation';
 import { path, pathMap } from '@/lib/pathmap';
 
-interface ApplicationCardProps  extends FormApplicationType {
+interface ApplicationCardProps extends FormApplicationType {
 }
 
 export default function ApplicationCard(props: ApplicationCardProps) {

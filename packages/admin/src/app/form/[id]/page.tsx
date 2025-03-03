@@ -12,7 +12,7 @@ import {
 import ApplicationCard from '@/components/card/application';
 import Page from '@/components/page';
 
-import { usePrivateFormResponseList } from '@tapie-kr/api-client';
+import { usePrivateFormApplicationList } from '@tapie-kr/api-client';
 import { getUnitFilterGroup } from '@tapie-kr/dashboard-shared/lib/enum/utils';
 import {
   type ChangeEvent,
@@ -33,7 +33,7 @@ export default function ApplicationDetailPage({ params }: {
     data,
     fetch,
     isPending,
-  } = usePrivateFormResponseList();
+  } = usePrivateFormApplicationList();
 
   useEffect(() => {
     fetch({ param: { formId: id } });
@@ -62,10 +62,10 @@ export default function ApplicationDetailPage({ params }: {
           gap={spacingVars.petite}
         >
           {data && Array.isArray(data.data)
-            ? data.data.map((item, idx) => (
+            ? data.data.map((item, index) => (
               <ApplicationCard
                 {...item}
-                key={idx}
+                key={index}
               />
             ))
             : (
