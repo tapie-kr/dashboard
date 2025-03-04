@@ -16,10 +16,10 @@ import {
   Weight,
 } from '@tapie-kr/inspire-react';
 
-import { FormApplicationPortfolioType } from '@tapie-kr/api-client';
+import { FormApplicationPortfolioType, usePrivateDownloadApplicationPortfolio } from '@tapie-kr/api-client';
 import { MemberUnit } from '@tapie-kr/api-client/enum';
 import UnitBadge from '@tapie-kr/dashboard-shared/components/atoms/badge/unit';
-import { type JSX } from 'react';
+import { useEffect, type JSX } from 'react';
 
 type PersonalInfo = {
   name:        string;
@@ -40,6 +40,7 @@ interface ApplicationDetailInfoSectionProps {
   personalInfo:    PersonalInfo;
   applicationInfo: ApplicationInfo;
   portfolio:       FormApplicationPortfolioType;
+  applicationUUID: string;
 }
 
 export default function ApplicationDetailInfoSection(props: ApplicationDetailInfoSectionProps) {
@@ -47,7 +48,23 @@ export default function ApplicationDetailInfoSection(props: ApplicationDetailInf
     personalInfo,
     applicationInfo,
     portfolio,
+    applicationUUID,
   } = props;
+
+  const {
+    data: portfolioDownloadUrl,
+    fetch: getPortfolioDownloadUrl,
+  } = usePrivateDownloadApplicationPortfolio();
+
+  const redirectPortfolioDownloadUrl = () => {
+    if (portfolioDownloadUrl) {
+      window.open(portfolioDownloadUrl.data.downloadUrl, '_blank');
+    }
+  }
+
+  useEffect(() => {
+    getPortfolioDownloadUrl({ param: { applicationUUID } });
+  }, []);
 
   return (
     <VStack
@@ -121,15 +138,14 @@ export default function ApplicationDetailInfoSection(props: ApplicationDetailInf
             포트폴리오
           </Typo.Tiny>
           <HStack spacing={spacingVars.tiny}>
-
             <Button.Default
               size={ButtonSize.MEDIUM}
               variant={ButtonVariant.SECONDARY}
               leadingIcon={GlyphIcon.DOWNLOAD}
+              onClick={redirectPortfolioDownloadUrl}
             >
               {portfolio.filename}
             </Button.Default>
-
           </HStack>
         </VStack>
       )}

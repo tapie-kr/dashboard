@@ -14,7 +14,7 @@ import { usePrivateDeleteFormApplication } from '@tapie-kr/api-client';
 import { useRouter } from 'next/navigation';
 
 interface ApplicationDetailActionSectionProps {
-  responseId: number;
+  responseId: string;
 }
 
 export default function ApplicationDetailActionSection(props: ApplicationDetailActionSectionProps) {

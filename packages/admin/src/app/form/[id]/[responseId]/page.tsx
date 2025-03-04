@@ -14,7 +14,7 @@ import SkeletonApplicationDetailInfo from '@/sections/application/detail/Info/Sk
 
 export default function ApplicationDetailResponsePage({ params }: {
   params: Promise<{
-    responseId: number;
+    responseId: string;
   }>;
 }) {
   const { responseId } = use(params);
@@ -40,6 +40,7 @@ export default function ApplicationDetailResponsePage({ params }: {
         {isPending && <SkeletonApplicationDetailInfo />}
         {data?.data && (
           <ApplicationDetailInfoSection
+            applicationUUID={responseId}
             portfolio={data.data.portfolio}
             personalInfo={{
               name:        data.data.name,
