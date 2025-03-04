@@ -19,7 +19,7 @@ import {
 
 import React, { useEffect } from 'react';
 
-interface MutateDialogProps {
+interface DialogTemplateProps {
   title:     string;
   toggler:   Toggler;
   isPending: boolean;
@@ -28,7 +28,7 @@ interface MutateDialogProps {
   children:  React.ReactNode;
 }
 
-export default function DialogTemplate(props: MutateDialogProps) {
+export default function DialogTemplate(props: DialogTemplateProps) {
   const {
     title,
     toggler,
