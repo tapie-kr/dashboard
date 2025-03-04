@@ -41,7 +41,7 @@ export default function AwardsCreateActionSection(props: AwardsCreateActionSecti
 
   return (
     <HStack spacing={spacingVars.petite}>
-      {JSON.stringify({
+      {/* {JSON.stringify({
         title:       title,
         competition: {
           name: competition.name || undefined,
@@ -51,7 +51,7 @@ export default function AwardsCreateActionSection(props: AwardsCreateActionSecti
         grade:       grade || 0,
         gradeLabel:  gradeLabel || '',
         membersUUID: members.map(member => member.uuid),
-      })}
+      })} */}
       <Button.Default
         size={ButtonSize.SMALL}
         leadingIcon={GlyphIcon.ADD}
