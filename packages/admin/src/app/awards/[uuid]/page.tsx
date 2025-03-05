@@ -8,7 +8,7 @@ import AwardsDetailActionSection from '@/sections/awards/detail/Action';
 import AwardsDetailFormSection from '@/sections/awards/detail/Form';
 import AwardsDetailInfoSection from '@/sections/awards/detail/Info';
 
-export default function AwardsDetailpage({ params }: {
+export default function AwardsDetailPage({ params }: {
   params: Promise<{
     uuid: string;
   }>;
