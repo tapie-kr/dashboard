@@ -19,7 +19,7 @@ import {
 import { FormApplicationPortfolioType, usePrivateDownloadApplicationPortfolio } from '@tapie-kr/api-client';
 import { MemberUnit } from '@tapie-kr/api-client/enum';
 import UnitBadge from '@tapie-kr/dashboard-shared/components/atoms/badge/unit';
-import { useEffect, type JSX } from 'react';
+import { type JSX, useEffect } from 'react';
 
 type PersonalInfo = {
   name:        string;
@@ -51,16 +51,13 @@ export default function ApplicationDetailInfoSection(props: ApplicationDetailInf
     applicationUUID,
   } = props;
 
-  const {
-    data: portfolioDownloadUrl,
-    fetch: getPortfolioDownloadUrl,
-  } = usePrivateDownloadApplicationPortfolio();
+  const { data: portfolioDownloadUrl, fetch: getPortfolioDownloadUrl } = usePrivateDownloadApplicationPortfolio();
 
   const redirectPortfolioDownloadUrl = () => {
     if (portfolioDownloadUrl) {
       window.open(portfolioDownloadUrl.data.downloadUrl, '_blank');
     }
-  }
+  };
 
   useEffect(() => {
     getPortfolioDownloadUrl({ param: { applicationUUID } });
