@@ -56,6 +56,9 @@ importers:
       react-dom:
         specifier: ^19.0.0
         version: 19.0.0(react@19.0.0)
+      typescript:
+        specifier: 5.7.3
+        version: 5.7.3
     devDependencies:
       '@types/node':
         specifier: ^20.17.16
@@ -66,9 +69,6 @@ importers:
       '@types/react-dom':
         specifier: ^19.0.3
         version: 19.0.4(@types/react@19.0.10)
-      typescript:
-        specifier: 5.7.3
-        version: 5.7.3
 
   packages/member:
     dependencies:
