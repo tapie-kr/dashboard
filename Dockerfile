@@ -5,6 +5,7 @@ WORKDIR /app
 
 ENV time_zone=Asia/Seoul
 ENV NODE_ENV=production
+ENV API_VERSION=v1
 
 RUN corepack enable
 RUN corepack prepare pnpm --activate
