@@ -20,22 +20,21 @@ import {
 } from '@tapie-kr/inspire-react';
 import Page from '@/components/page';
 
-import { Status, Unit } from '@tapie-kr/dashboard-shared/lib/enum';
+import { MemberUnit } from '@tapie-kr/api-client/enum';
+import { Status } from '@tapie-kr/dashboard-shared/lib/enum';
 import {
   getContestFilterGroup,
   getStatusIcon,
   getStatusTheme,
   getUnitIcon,
 } from '@tapie-kr/dashboard-shared/lib/enum/utils';
-import { useRouter } from 'next/navigation';
 import { type ChangeEvent, useState } from 'react';
-import { path, pathMap } from '@/lib/pathmap';
 
 interface HomeworkDateType {
   id:       number;
   title:    string;
   status:   Status;
-  unit:     Unit;
+  unit:     MemberUnit;
   fromDate: string;
   toDate:   string;
 }
@@ -45,7 +44,7 @@ export const homeworkData: HomeworkDateType[] = [
     id:       1,
     title:    '리액트 성능 최적화',
     status:   Status.IN_PROGRESS,
-    unit:     Unit.DEVELOPER,
+    unit:     MemberUnit.DEVELOPER,
     fromDate: '2025-01-01',
     toDate:   '2025-01-01',
   },
@@ -53,7 +52,7 @@ export const homeworkData: HomeworkDateType[] = [
     id:       2,
     title:    '리액트 라우터 기초 및 개념 정리',
     status:   Status.CONFIRMED,
-    unit:     Unit.DESIGNER,
+    unit:     MemberUnit.DESIGNER,
     fromDate: '2025-01-01',
     toDate:   '2025-01-01',
   },
@@ -61,14 +60,14 @@ export const homeworkData: HomeworkDateType[] = [
     id:       3,
     title:    '리액트 라우터 기초 및 개념 정리',
     status:   Status.CONFIRMED,
-    unit:     Unit.DESIGNER,
+    unit:     MemberUnit.DESIGNER,
     fromDate: '2025-01-01',
     toDate:   '2025-01-01',
   },
 ];
 
 export default function HomeworkPage() {
-  const router = useRouter();
+  // const router = useRouter();
   const [searchValue, setSearchValue] = useState('');
 
   const handleSearchValue = (e: ChangeEvent<HTMLInputElement>) => {
@@ -122,8 +121,8 @@ export default function HomeworkPage() {
           actions={[
             {
               icon:    GlyphIcon.EDIT,
-              onClick: index => {
-                router.push(pathMap.resolvePath(path.homework, index.id));
+              onClick: _index => {
+                // router.push(pathMap.resolvePath(path.homework, index.id));
               },
             },
             {
@@ -138,9 +137,9 @@ export default function HomeworkPage() {
               label:      '제목',
               width:      250,
               isSortable: true,
-              cell:       (title, _, index) => {
+              cell:       (title, _, _index) => {
                 const handleNavigate = () => {
-                  router.push(pathMap.resolvePath(path.homework, index.id));
+                  // router.push(pathMap.resolvePath(path.homework, index.id));
                 };
 
                 return (
