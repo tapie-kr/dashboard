@@ -23,14 +23,18 @@ interface AchievementDetailInfoSectionProps {
   uuid: string;
 }
 
-export default function AwardsDetailInfoSection(props: AchievementDetailInfoSectionProps) {
-  const { uuid } = props;
+export default function AwardsDetailInfoSection(_props: AchievementDetailInfoSectionProps) {
+  // const { uuid } = props;
 
-  const getGradeString = (studentId: number) => {
-    const studentIdString = studentId.toString();
+  /*
+   * const getGradeString = (studentId: number) => {
+   *   const studentIdString = studentId.toString();
+   */
 
-    return studentIdString.slice(0, 1) + '학년';
-  };
+  /*
+   *   return studentIdString.slice(0, 1) + '학년';
+   * };
+   */
 
   return (
     <VStack
@@ -71,14 +75,14 @@ export default function AwardsDetailInfoSection(props: AchievementDetailInfoSect
             label:      '참여 부원',
             width:      500,
             isSortable: true,
-            cell:       member => (
+            cell:       _member => (
               <HStack spacing={spacingVars.micro}>
-                <Typo.Petite weight={Weight.MEDIUM}>{member.name}</Typo.Petite>
+                <Typo.Petite weight={Weight.MEDIUM}>Test</Typo.Petite>
                 <Typo.Petite
                   weight={Weight.MEDIUM}
                   color={colorVars.content.muted}
                 >
-                  {getGradeString(member.studentId)}
+                  {/* {getGradeString(member.studentId)} */}
                 </Typo.Petite>
               </HStack>
             ),

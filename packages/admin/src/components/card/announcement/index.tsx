@@ -14,7 +14,6 @@ import {
 } from '@tapie-kr/inspire-react';
 
 import { type Temporal } from '@js-temporal/polyfill';
-import { getDatetimeString } from '@tapie-kr/dashboard-shared/lib/utils/date';
 
 interface AnnouncementCardProps {
   content:  string;
@@ -57,7 +56,7 @@ export default function AnnouncementCard(props: AnnouncementCardProps) {
         )}
         <Badge.Default
           size={BadgeSize.SMALL}
-          label={getDatetimeString(date, true)}
+          label={date.toString()}
           leadingIcon={GlyphIcon.TODAY}
         />
       </HStack>

@@ -13,11 +13,11 @@ import {
   Weight,
 } from '@tapie-kr/inspire-react';
 
-import { type Member } from '@/lib/types/member';
-import { getMemberString } from '@/lib/types/utils';
-
 interface AttendanceCardProps {
-  member:    Member;
+  member:    {
+    studentId: number;
+    name:      string;
+  };
   day:       number;
   count:     number;
   isAbsent?: boolean;
@@ -43,7 +43,7 @@ export default function AttendanceCard(props: AttendanceCardProps) {
         spacing={spacingVars.optical}
         align={StackAlign.START}
       >
-        <Typo.Petite weight={Weight.SEMIBOLD}>{getMemberString(member)}</Typo.Petite>
+        <Typo.Petite weight={Weight.SEMIBOLD}>{member.studentId} {member.name}</Typo.Petite>
         <Typo.Tiny color={colorVars.content.default}>
           {dayString} 연속 출석, {count}번 결석
         </Typo.Tiny>

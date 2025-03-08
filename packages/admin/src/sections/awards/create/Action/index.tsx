@@ -56,37 +56,15 @@ export default function AwardsCreateActionSection(props: AwardsCreateActionSecti
         size={ButtonSize.SMALL}
         leadingIcon={GlyphIcon.ADD}
         onClick={async ()  => {
-          if (!competition.uuid && !competition.name) {
-            console.log('competition is not selected');
+          if (!competition.uuid && !competition.name) return;
 
-            return;
-          }
+          if (!grade || !gradeLabel) return;
 
-          if (!grade || !gradeLabel) {
-            console.log('grade is not selected');
+          if (members.length === 0) return;
 
-            return;
-          }
+          if (!rewardedAt) return;
 
-          if (members.length === 0) {
-            console.log('members are not selected');
-
-            return;
-          }
-
-          if (!rewardedAt) {
-            console.log('rewardedAt is not selected');
-
-            return;
-          }
-
-          if (!title) {
-            console.log('title is not selected');
-
-            return;
-          }
-
-          console.log('create award');
+          if (!title) return;
 
           await mutate({
             title:       title,

@@ -17,15 +17,16 @@ import {
 } from '@tapie-kr/inspire-react';
 
 import { type Temporal } from '@js-temporal/polyfill';
-import { type Unit } from '@tapie-kr/dashboard-shared/lib/enum';
+import { MemberUnit } from '@tapie-kr/api-client/enum';
 import { getUnitIcon } from '@tapie-kr/dashboard-shared/lib/enum/utils';
 import { getDatetimeString } from '@tapie-kr/dashboard-shared/lib/utils/date';
-import { type Member } from '@/lib/types';
-import { getMemberString } from '@/lib/types/utils';
 
 interface HomeworkCardProps {
-  member:      Member;
-  unit:        Unit;
+  member:      {
+    studentId: number;
+    name:      string;
+  };
+  unit:        MemberUnit;
   isSubmitted: boolean;
   files:       string[];
   date:        Temporal.PlainDateTime;
@@ -108,7 +109,7 @@ export default function HomeworkCard(props: HomeworkCardProps) {
             leadingIcon={getUnitIcon(unit)}
             size={BadgeSize.SMALL}
           />
-          <Typo.Petite weight={Weight.SEMIBOLD}>{getMemberString(member)}</Typo.Petite>
+          <Typo.Petite weight={Weight.SEMIBOLD}>{member.studentId} {member.name}</Typo.Petite>
         </VStack>
         <VStack
           spacing={spacingVars.tiny}
@@ -127,7 +128,7 @@ export default function HomeworkCard(props: HomeworkCardProps) {
             />
           </HStack>
           <Badge.Default
-            label={`${getDatetimeString(date, false)} 제출`}
+            label={`${getDatetimeString(date.toLocaleString(), false)} 제출`}
             leadingIcon={GlyphIcon.SCHEDULE}
           />
         </VStack>

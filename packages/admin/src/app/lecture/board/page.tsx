@@ -20,7 +20,8 @@ import {
 } from '@tapie-kr/inspire-react';
 import Page from '@/components/page';
 
-import { Status, Unit } from '@tapie-kr/dashboard-shared/lib/enum';
+import { MemberUnit } from '@tapie-kr/api-client/enum';
+import { Status } from '@tapie-kr/dashboard-shared/lib/enum';
 import {
   getContestFilterGroup,
   getStatusFilterGroup,
@@ -34,7 +35,7 @@ interface DataType {
   title:      string;
   status:     Status;
   instructor: string;
-  unit:       Unit;
+  unit:       MemberUnit;
   date:       string;
 }
 
@@ -43,35 +44,35 @@ const data: DataType[] = [
     title:      'React 작동 원리 및 최적화',
     status:     Status.CONFIRMED,
     instructor: '성이름',
-    unit:       Unit.DEVELOPER,
+    unit:       MemberUnit.DEVELOPER,
     date:       '2025-01-01',
   },
   {
     title:      '수업 제목',
     status:     Status.CANCELED,
     instructor: '성이름',
-    unit:       Unit.DESIGNER,
+    unit:       MemberUnit.DESIGNER,
     date:       '2025-01-01',
   },
   {
     title:      '수업 제목',
     status:     Status.SCHEDULED,
     instructor: '성이름',
-    unit:       Unit.DEVELOPER,
+    unit:       MemberUnit.DEVELOPER,
     date:       '2025-01-01',
   },
   {
     title:      '수업 제목',
     status:     Status.POSTPONED,
     instructor: '성이름',
-    unit:       Unit.DEVELOPER,
+    unit:       MemberUnit.DEVELOPER,
     date:       '2025-01-01',
   },
   {
     title:      '수업 제목',
     status:     Status.IN_PROGRESS,
     instructor: '성이름',
-    unit:       Unit.DEVELOPER,
+    unit:       MemberUnit.DEVELOPER,
     date:       '2025-01-01',
   },
 ];

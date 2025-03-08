@@ -14,7 +14,7 @@ import HomeworkCard from '@/components/card/homework';
 import Page from '@/components/page';
 
 import { Temporal } from '@js-temporal/polyfill';
-import { Unit } from '@tapie-kr/dashboard-shared/lib/enum';
+import { MemberUnit } from '@tapie-kr/api-client/enum';
 import { getContestFilterGroup } from '@tapie-kr/dashboard-shared/lib/enum/utils';
 import { use } from 'react';
 import HomeworkDetailContentSection from '@/sections/homework/detail/Content';
@@ -91,7 +91,7 @@ React.memo, useMemo, useCallback 사용
             >
               <HomeworkCard
                 isSubmitted
-                unit={Unit.DESIGNER}
+                unit={MemberUnit.DESIGNER}
                 files={['https://minio-s4008w0wsg40sg48o0wwscc8.apne2a.algorix.cloud/tapie-management-system/AppCleaner_3.6.8.zip', 'https://minio-s4008w0wsg40sg48o0wwscc8.apne2a.algorix.cloud/tapie-management-system/datepicker-context.png']}
                 member={{
                   studentId: 10417,
@@ -108,7 +108,7 @@ React.memo, useMemo, useCallback 사용
               {Array.from({ length: 5 }).map((_, index) => (
                 <HomeworkCard
                   key={index}
-                  unit={Unit.DEVELOPER}
+                  unit={MemberUnit.DEVELOPER}
                   isSubmitted={false}
                   files={['https://minio-s4008w0wsg40sg48o0wwscc8.apne2a.algorix.cloud/tapie-management-system/AppCleaner_3.6.8.zip', 'https://minio-s4008w0wsg40sg48o0wwscc8.apne2a.algorix.cloud/tapie-management-system/2024학년도고등학교학사일정현황(탑재용).pdf']}
                   member={{
