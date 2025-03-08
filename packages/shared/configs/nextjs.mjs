@@ -1,5 +1,7 @@
 import { createVanillaExtractPlugin } from '@vanilla-extract/next-plugin';
 
+// dotenv.config({ path: '../../.env' });
+
 /**
  * TAPIE 대시보드 웹 프로젝트를 위한 Next.js 설정을 반환합니다.
  * @param {string} type
@@ -7,6 +9,8 @@ import { createVanillaExtractPlugin } from '@vanilla-extract/next-plugin';
  */
 export function withTAPIEDashboardConfig(type) {
   const withVanillaExtract = createVanillaExtractPlugin({ identifiers: 'short' });
+
+  console.log(process.env);
 
   /** @type {import('next').NextConfig} */
   const nextConfig = {
