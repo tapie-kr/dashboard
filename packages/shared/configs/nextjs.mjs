@@ -35,12 +35,21 @@ export function withTAPIEDashboardConfig(config = {}) {
     typescript: { ignoreBuildErrors: true },
 
     env: {
-      NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL || 'https://tapie-api-dev.vport.dev', API_VERSION: '/api/v1', ...config.env,
+      NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL || 'https://tapie-api-dev.vport.dev',
+      AUTH_SERVICE:        'website',
+      AUTH_URL:            process.env.AUTH_URL || 'http://localhost:9876',
+      API_HOSTNAME:        process.env.API_HOSTNAME || 'http://localhost:8765',
+      API_VERSION:         process.env.API_VERSION || 'api/v1',
+      ...config.env,
     },
 
     transpilePackages: ['@tapie-kr/api-client'],
 
     rewrites() {
+      if (process.env.NODE_ENV === 'production') {
+        return [];
+      }
+
       return [
         {
           source: '/api/:path*', destination: `${this.env.NEXT_PUBLIC_API_URL}/:path*`,
