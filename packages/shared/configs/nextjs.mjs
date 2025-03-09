@@ -10,8 +10,6 @@ import { createVanillaExtractPlugin } from '@vanilla-extract/next-plugin';
 export function withTAPIEDashboardConfig(type) {
   const withVanillaExtract = createVanillaExtractPlugin({ identifiers: 'short' });
 
-  console.log(process.env);
-
   /** @type {import('next').NextConfig} */
   const nextConfig = {
     webpack(config) {
