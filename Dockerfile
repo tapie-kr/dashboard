@@ -5,6 +5,9 @@ WORKDIR /app
 
 ENV time_zone=Asia/Seoul
 ENV NODE_ENV=production
+
+ENV NEXT_PUBLIC_API_URL=https://api.tapie.kr
+ENV API_HOSTNAME=https://api.tapie.kr
 ENV API_VERSION=v1
 ENV AUTH_URL=https://auth.tapie.kr
 
