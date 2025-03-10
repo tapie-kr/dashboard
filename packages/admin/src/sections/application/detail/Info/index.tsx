@@ -39,7 +39,7 @@ type ApplicationInfo = {
 
 type Metadata = {
   updatedAt: string;
-  submittedAt: string;
+  submittedAt?: string;
 }
 
 interface ApplicationDetailInfoSectionProps {
@@ -161,7 +161,7 @@ export default function ApplicationDetailInfoSection(props: ApplicationDetailInf
         },
         {
           label: '제출일',
-          value: getDatetimeString(metadata.submittedAt.toString(), true),
+          value: metadata.submittedAt ? getDatetimeString(metadata.submittedAt.toString(),  true) : '미제출',
         },
       ]} />
     </VStack>

@@ -56,7 +56,7 @@ export default function ApplicationDetailResponsePage({ params }: {
               reasonToChoose:     data.data.reasonToChoose,
             }}
             metadata={{
-              submittedAt: data.data.createdAt,
+              submittedAt: data.data.submitted ? data.data.createdAt : undefined,
               updatedAt:   data.data.updatedAt,
             }}
           />
