@@ -57,11 +57,15 @@ export default function ApplicationCard(props: ApplicationCardProps) {
           unit={props.unit}
           size={BadgeSize.SMALL}
         />
-        <Badge.Default
-          size={BadgeSize.SMALL}
-          label={`${getDatetimeString(props.createdAt.toString(), true)} 제출`}
-          leadingIcon={GlyphIcon.TODAY}
-        />
+        {
+          props.submitted && (
+            <Badge.Default
+              size={BadgeSize.SMALL}
+              label={`${getDatetimeString(props.createdAt.toString(), true)} 제출`}
+              leadingIcon={GlyphIcon.TODAY}
+            />
+          )
+        }
         <Badge.Default
           size={BadgeSize.SMALL}
           label='포트폴리오'
