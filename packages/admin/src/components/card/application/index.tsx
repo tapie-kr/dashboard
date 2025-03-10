@@ -48,7 +48,7 @@ export default function ApplicationCard(props: ApplicationCardProps) {
           nowrap
           color={colorVars.content.default}
           className={s.introduction}
-        >{props.introduction}
+        >{props.introduction.split('\n')[0]}
         </Typo.Tiny>
       </VStack>
       <HStack spacing={spacingVars.tiny}>

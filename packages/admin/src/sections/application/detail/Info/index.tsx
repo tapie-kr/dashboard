@@ -170,6 +170,15 @@ interface InfoGroupProps {
   spacing: string;
 }
 
+function enterToBr(text: string) {
+  return text.split('\n').map((item, index) => (
+    <span key={index}>
+      {item}
+      {index !== text.split('\n').length - 1 && <br />}
+    </span>
+  ));
+}
+
 function InfoGroup(props: InfoGroupProps) {
   const {
     title,
@@ -226,7 +235,7 @@ function InfoGroup(props: InfoGroupProps) {
                     color={colorVars.content.muted}
                     className={s.contentText}
                   >
-                    {item.value}
+                    {enterToBr(item.value)}
                   </Typo.Micro>
                 )}
             </HStack>
