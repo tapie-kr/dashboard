@@ -1,7 +1,6 @@
 'use client';
 
 import {
-  Filter,
   Grid,
   radiusVars,
   Skeleton,
@@ -13,7 +12,6 @@ import ApplicationCard from '@/components/card/application';
 import Page from '@/components/page';
 
 import { usePrivateFormApplicationList } from '@tapie-kr/api-client';
-import { getUnitFilterGroup } from '@tapie-kr/dashboard-shared/lib/enum/utils';
 import {
   type ChangeEvent,
   use,
@@ -53,10 +51,8 @@ export default function ApplicationDetailPage({ params }: {
     >
       <VStack
         fullWidth
-        spacing={spacingVars.base}
         align={StackAlign.START}
       >
-        <Filter filters={[getUnitFilterGroup()]} />
         <Grid
           columnCount={3}
           gap={spacingVars.petite}

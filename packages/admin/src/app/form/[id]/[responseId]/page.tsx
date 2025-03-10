@@ -6,7 +6,6 @@ import { spacingVars, StackAlign, VStack } from '@tapie-kr/inspire-react';
 import Page from '@/components/page';
 
 import { usePrivateFormApplication } from '@tapie-kr/api-client';
-import { MemberUnit } from '@tapie-kr/api-client/enum';
 import { use, useEffect } from 'react';
 import ApplicationDetailActionSection from '@/sections/application/detail/Action';
 import ApplicationDetailInfoSection from '@/sections/application/detail/Info';
@@ -49,7 +48,6 @@ export default function ApplicationDetailResponsePage({ params }: {
               phoneNumber: data.data.phoneNumber,
             }}
             applicationInfo={{
-              unit:               data.data.unit || MemberUnit.DEVELOPER,
               introduction:       data.data.introduction,
               motivation:         data.data.motivation,
               expectedActivities: data.data.expectedActivities,

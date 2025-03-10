@@ -1,7 +1,6 @@
 import * as s from './style.css';
 
 import {
-  BadgeSize,
   Button,
   ButtonSize,
   ButtonVariant,
@@ -17,8 +16,6 @@ import {
 } from '@tapie-kr/inspire-react';
 
 import { FormApplicationPortfolioType, usePrivateDownloadApplicationPortfolio } from '@tapie-kr/api-client';
-import { MemberUnit } from '@tapie-kr/api-client/enum';
-import UnitBadge from '@tapie-kr/dashboard-shared/components/atoms/badge/unit';
 import { getDatetimeString } from '@tapie-kr/dashboard-shared/lib/utils/date';
 import { type JSX, useEffect } from 'react';
 
@@ -30,7 +27,6 @@ type PersonalInfo = {
 };
 
 type ApplicationInfo = {
-  unit:               MemberUnit;
   introduction:       string;
   motivation:         string;
   expectedActivities: string;
@@ -102,16 +98,6 @@ export default function ApplicationDetailInfoSection(props: ApplicationDetailInf
         title='지원 정보'
         spacing={spacingVars.moderate}
         content={[
-          {
-            label:  '유닛',
-            value:  applicationInfo.unit,
-            render: () => (
-              <UnitBadge
-                unit={applicationInfo.unit}
-                size={BadgeSize.SMALL}
-              />
-            ),
-          },
           {
             label: '자기소개',
             value: applicationInfo.introduction,

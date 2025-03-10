@@ -17,7 +17,6 @@ import {
 } from '@tapie-kr/inspire-react';
 
 import { FormApplicationType } from '@tapie-kr/api-client';
-import UnitBadge from '@tapie-kr/dashboard-shared/components/atoms/badge/unit';
 import { getDatetimeString } from '@tapie-kr/dashboard-shared/lib/utils/date';
 import { useRouter } from 'next/navigation';
 import { path, pathMap } from '@/lib/pathmap';
@@ -53,10 +52,6 @@ export default function ApplicationCard(props: ApplicationCardProps) {
         </Typo.Tiny>
       </VStack>
       <HStack spacing={spacingVars.tiny}>
-        <UnitBadge
-          unit={props.unit}
-          size={BadgeSize.SMALL}
-        />
         {
           props.submitted
             ? (

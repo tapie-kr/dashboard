@@ -13,6 +13,8 @@ import {
   GlyphIcon,
   HStack,
   Input,
+  Select,
+  SelectSize,
   spacingVars,
   StackAlign,
   StackJustify,
@@ -34,8 +36,11 @@ import {
   usePrivateFormList,
   usePrivateUpdateForm,
 } from '@tapie-kr/api-client';
+import { MemberUnit } from '@tapie-kr/api-client/enum';
+import UnitBadge from '@tapie-kr/dashboard-shared/components/atoms/badge/unit';
 import { getStatusFilterGroup } from '@tapie-kr/dashboard-shared/lib/enum/utils';
 import { formatDatetimeToISO, getDatetimeString, toTemporalDateTime } from '@tapie-kr/dashboard-shared/lib/utils/date';
+import { UnitEnumToKorean } from '@tapie-kr/dashboard-shared/lib/utils/enum';
 import { useRouter } from 'next/navigation';
 import { type ChangeEvent, useEffect, useState } from 'react';
 import useDynamicDialog from '@/hooks/useDynamicDialog';
@@ -78,10 +83,12 @@ export default function ApplicationPage() {
 
   const [modalFormData, setModalFormData] = useState<{
     name:     string;
+    unit:     MemberUnit;
     startsAt: Temporal.PlainDateTime | undefined;
     endsAt:   Temporal.PlainDateTime | undefined;
   }>({
     name:     '',
+    unit:     MemberUnit.DEVELOPER,
     startsAt: undefined,
     endsAt:   undefined,
   });
@@ -137,6 +144,7 @@ export default function ApplicationPage() {
               onClick: async value => {
                 setModalFormData({
                   name:     value.name,
+                  unit:     value.unit,
                   startsAt: toTemporalDateTime(value.startsAt),
                   endsAt:   toTemporalDateTime(value.endsAt),
                 });
@@ -146,7 +154,7 @@ export default function ApplicationPage() {
             },
             {
               icon: data => {
-                return data.active ? GlyphIcon.LOCK_OPEN : GlyphIcon.LOCK;
+                return data.active ? GlyphIcon.CHECK : GlyphIcon.BLOCK;
               },
               onClick: async value => {
                 if (value.active) {
@@ -188,6 +196,17 @@ export default function ApplicationPage() {
               },
             },
             {
+              key:        'unit',
+              label:      '유닛',
+              width:      100,
+              isSortable: true,
+              cell:       unit => {
+                return (
+                  <UnitBadge unit={unit} />
+                );
+              },
+            },
+            {
               key:        'startsAt',
               label:      '시작일',
               width:      150,
@@ -215,6 +234,7 @@ export default function ApplicationPage() {
             name,
             startsAt,
             endsAt,
+            unit,
           } = modalFormData;
 
           if (name.trim() === '' || !startsAt || !endsAt) {
@@ -225,7 +245,15 @@ export default function ApplicationPage() {
             name,
             startsAt: formatDatetimeToISO(startsAt),
             endsAt:   formatDatetimeToISO(endsAt),
+            unit,
             active:   false,
+          });
+
+          setModalFormData({
+            name:     '',
+            unit:     MemberUnit.DEVELOPER,
+            startsAt: undefined,
+            endsAt:   undefined,
           });
 
           refetchFormList();
@@ -242,6 +270,33 @@ export default function ApplicationPage() {
               setModalFormData({
                 ...modalFormData,
                 name: e.target.value,
+              });
+            }}
+          />
+        </FormField>
+        <FormField
+          isEssential
+          label='유닛'
+        >
+          <Select
+            size={SelectSize.MEDIUM}
+            placeholder='유닛 선택'
+            value={modalFormData.unit}
+            leadingIcon={modalFormData.unit === MemberUnit.DEVELOPER ? GlyphIcon.CODE : GlyphIcon.BRUSH}
+            options={[
+              {
+                label: UnitEnumToKorean(MemberUnit.DEVELOPER),
+                value: MemberUnit.DEVELOPER,
+              },
+              {
+                label: UnitEnumToKorean(MemberUnit.DESIGNER),
+                value: MemberUnit.DESIGNER,
+              },
+            ]}
+            onChange={e => {
+              setModalFormData({
+                ...modalFormData,
+                unit: e.target.value as MemberUnit,
               });
             }}
           />
@@ -298,7 +353,6 @@ export default function ApplicationPage() {
               name,
               startsAt: formatDatetimeToISO(startsAt),
               endsAt:   formatDatetimeToISO(endsAt),
-              active:   false,
             },
           });
 
@@ -316,6 +370,33 @@ export default function ApplicationPage() {
               setModalFormData({
                 ...modalFormData,
                 name: e.target.value,
+              });
+            }}
+          />
+        </FormField>
+        <FormField
+          isEssential
+          label='유닛'
+        >
+          <Select
+            size={SelectSize.MEDIUM}
+            placeholder='유닛 선택'
+            value={modalFormData.unit}
+            leadingIcon={modalFormData.unit === MemberUnit.DEVELOPER ? GlyphIcon.CODE : GlyphIcon.BRUSH}
+            options={[
+              {
+                label: UnitEnumToKorean(MemberUnit.DEVELOPER),
+                value: MemberUnit.DEVELOPER,
+              },
+              {
+                label: UnitEnumToKorean(MemberUnit.DESIGNER),
+                value: MemberUnit.DESIGNER,
+              },
+            ]}
+            onChange={e => {
+              setModalFormData({
+                ...modalFormData,
+                unit: e.target.value as MemberUnit,
               });
             }}
           />
