@@ -19,8 +19,8 @@ import {
 import { FormApplicationPortfolioType, usePrivateDownloadApplicationPortfolio } from '@tapie-kr/api-client';
 import { MemberUnit } from '@tapie-kr/api-client/enum';
 import UnitBadge from '@tapie-kr/dashboard-shared/components/atoms/badge/unit';
-import { type JSX, useEffect } from 'react';
 import { getDatetimeString } from '@tapie-kr/dashboard-shared/lib/utils/date';
+import { type JSX, useEffect } from 'react';
 
 type PersonalInfo = {
   name:        string;
@@ -38,16 +38,16 @@ type ApplicationInfo = {
 };
 
 type Metadata = {
-  updatedAt: string;
+  updatedAt:    string;
   submittedAt?: string;
-}
+};
 
 interface ApplicationDetailInfoSectionProps {
   personalInfo:    PersonalInfo;
   applicationInfo: ApplicationInfo;
   portfolio:       FormApplicationPortfolioType;
   applicationUUID: string;
-  metadata: Metadata;
+  metadata:        Metadata;
 }
 
 export default function ApplicationDetailInfoSection(props: ApplicationDetailInfoSectionProps) {
@@ -56,7 +56,7 @@ export default function ApplicationDetailInfoSection(props: ApplicationDetailInf
     applicationInfo,
     portfolio,
     applicationUUID,
-    metadata
+    metadata,
   } = props;
 
   const { data: portfolioDownloadUrl, fetch: getPortfolioDownloadUrl } = usePrivateDownloadApplicationPortfolio();
@@ -154,16 +154,20 @@ export default function ApplicationDetailInfoSection(props: ApplicationDetailInf
           </HStack>
         </VStack>
       )}
-      <InfoGroup title={'정보'} spacing={spacingVars.petite} content={[
-        {
-          label: '마지막 수정일',
-          value: getDatetimeString(metadata.updatedAt.toString(), true),
-        },
-        {
-          label: '제출일',
-          value: metadata.submittedAt ? getDatetimeString(metadata.submittedAt.toString(),  true) : '미제출',
-        },
-      ]} />
+      <InfoGroup
+        title='정보'
+        spacing={spacingVars.petite}
+        content={[
+          {
+            label: '마지막 수정일',
+            value: getDatetimeString(metadata.updatedAt.toString(), true),
+          },
+          {
+            label: '제출일',
+            value: metadata.submittedAt ? getDatetimeString(metadata.submittedAt.toString(),  true) : '미제출',
+          },
+        ]}
+      />
     </VStack>
   );
 }
