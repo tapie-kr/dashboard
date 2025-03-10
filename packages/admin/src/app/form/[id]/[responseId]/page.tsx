@@ -55,6 +55,10 @@ export default function ApplicationDetailResponsePage({ params }: {
               expectedActivities: data.data.expectedActivities,
               reasonToChoose:     data.data.reasonToChoose,
             }}
+            metadata={{
+              submittedAt: data.data.createdAt,
+              updatedAt:   data.data.updatedAt,
+            }}
           />
         )}
         <ApplicationDetailActionSection responseId={responseId} />
